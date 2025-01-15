@@ -37,10 +37,10 @@ html {
 
 :root {
   --bg-color: #080808;
-  --second-bg-color: #5a423a;
+  --second-bg-color: #121212;
   --text-color: white;
-  --main-color: #beab9e;
-  --secondry-color: #d4c3b8;
+  --main-color: #3c3b3b;
+  --secondry-color: #333433;
   /* --gradient: linear-gradient(90deg, var(--main-color), var(--secondry-color)); */
   --gradient: var(--main-color);
   --header: rgba(0, 0, 0, 0.3);
