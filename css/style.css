@@ -7,7 +7,7 @@
   outline: none;
   scroll-behavior: smooth;
   font-family: "Poppins", sans-serif;
-  transition: background 1s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 html {
@@ -35,12 +35,17 @@ html {
   50% { box-shadow: 0 0 50px var(--main-color); }
 }
 
+@keyframes subtleFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
 :root {
   --bg-color: #080808;
   --second-bg-color: #0c0b0d;
   --text-color: white;
   --main-color: #544d45;
-  --secondry-color: #333433;
+  --secondry-color: #35312a  ;
   /* --gradient: linear-gradient(90deg, var(--main-color), var(--secondry-color)); */
   --gradient: var(--main-color);
   --header: rgba(0, 0, 0, 0.3);
@@ -141,7 +146,8 @@ section{
   border-radius: 50%;
   box-shadow: 0 0 25px var(--main-color);
   transition: 0.4s ease-in-out;
-  animation: float 6s ease-in-out infinite;
+  /* animation: float 6s ease-in-out infinite; */
+  animation: subtleFloat 4s ease-in-out infinite;
 }
 .home-img img:hover{
   box-shadow: 0 0 25px var(--main-color),
@@ -164,8 +170,8 @@ section{
 .social-icons a:hover{
   color: var(--text-color);
   background-color: var(--main-color);
-  transform: scale(1.2) translateY(-5px);
-  box-shadow: 0 0 25px var(--main-color);
+  transform: scale(1.1) translateY(-5px);
+  box-shadow: 0 5px 15px var(--main-color);
 }
 .btn-group{
   display: flex;
@@ -287,7 +293,8 @@ section{
   background-color: var(--second-bg-color);
   color: var(--main-color);
   border: 5px solid var(--main-color);
-  transform: scale(1.03);
+  transform: scale(1.03) translateY(-15px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 .service-box:hover::before {
   opacity: 0.1;
@@ -345,7 +352,8 @@ section{
 .project-card:nth-child(2) { animation-delay: 0.4s; }
 
 .project-card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-15px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
   border-color: var(--main-color);
 }
 
@@ -449,6 +457,15 @@ section{
 }
 
 @media (max-width: 768px) {
+  .home-content {
+    text-align: center;
+    align-items: center;
+  }
+  .services-container,
+  .projects-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
   .projects-container {
     grid-template-columns: 1fr;
   }
