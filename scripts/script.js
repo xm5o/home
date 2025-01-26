@@ -31,6 +31,28 @@ window.onscroll = () => {
     });
 }
 
+// document.addEventListener('DOMContentLoaded', () => {
+    // async function fetchDiscordStats() {
+    //     try {
+    //         const serverId = 'F8ekFRzRaN';
+    //         const response = await fetch(`https://discord.me/api/v1/servers/${serverId}`);
+    //         const data = await response.json();
+
+    //         document.getElementById('total-members').textContent = data.members || 'N/A';
+    //         document.getElementById('active-discussions').textContent = data.online || 'N/A';
+    //         document.getElementById('weekly-growth').textContent = `${(data.growth || 0).toFixed(1)}%`;
+    //     } catch (error) {
+    //         console.error('Failed to fetch Discord stats:', error);
+    //     }
+    // }
+
+//     document.getElementById('total-members').textContent = '';
+//     document.getElementById('active-discussions').textContent = '';
+//     document.getElementById('weekly-growth').textContent = '';
+
+//     fetchDiscordStats();
+// });
+
 const themeToggle = document.createElement('div');
 themeToggle.className = 'theme-toggle';
 themeToggle.innerHTML = '<i class="bx bx-moon"></i>';
@@ -83,20 +105,20 @@ const filterButtons = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
     
     filterButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
+        btn.addEventListener('click', () => {
         filterButtons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         
         const filterValue = btn.getAttribute('data-filter');
         
         projectCards.forEach(card => {
-          if (filterValue === 'all' || card.classList.contains(filterValue)) {
-            card.style.display = 'block';
-            setTimeout(() => card.style.opacity = '1', 0);
-          } else {
-            card.style.opacity = '0';
-            setTimeout(() => card.style.display = 'none', 300);
-          }
+            if (filterValue === 'all' || card.classList.contains(filterValue)) {
+                card.style.display = 'block';
+                setTimeout(() => card.style.opacity = '1', 0);
+            } else {
+                card.style.opacity = '0';
+                setTimeout(() => card.style.display = 'none', 300);
+            }
         });
-      });
     });
+});

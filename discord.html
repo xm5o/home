@@ -2,188 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Discord Profile Viewer</title>
-    <style>
-        body {
-            background-color: #36393f;
-            font-family: 'Whitney', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            color: white;
-        }
-        .profile-container {
-            background-color: #2f3136;
-            border-radius: 8px;
-            width: 800px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        .banner {
-            height: 300px;
-            position: relative;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-        .avatar {
-            position: absolute;
-            bottom: -75px;
-            left: 30px;
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 6px solid #2f3136;
-            object-fit: cover;
-        }
-        .profile-content {
-            padding: 80px 30px 30px;
-        }
-        .username-container {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 12px;
-        }
-        .username {
-            font-size: 32px;
-            font-weight: 600;
-        }
-        .display-username {
-            color: #b9bbbe;
-            font-size: 20px;
-        }
-        .bio {
-            color: #dcddde;
-            margin-top: 12px;
-        }
-        .connections {
-            margin-top: 25px;
-            border-top: 1px solid #4f545c;
-            padding-top: 20px;
-        }
-        .connection-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 12px;
-            cursor: pointer;
-            transition: background-color 0.2s;
-            padding: 8px;
-            border-radius: 6px;
-        }
-        .connection-item:hover {
-            background-color: rgba(255,255,255,0.1);
-        }
-        .connection-icon {
-            width: 32px;
-            height: 32px;
-            margin-right: 12px;
-        }
-        .connection-link {
-            color: #7289da;
-            text-decoration: none;
-        }
-        /* Nitro Theme Styles */
-        .nitro-theme {
-            background: linear-gradient(180deg, #000000, #1a1a1a);
-        }
-        .nitro-theme .avatar {
-            border: 6px solid #2f3136;
-            box-shadow: 0 0 20px rgba(0,0,0,0.3);
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="profile-container" id="profileContainer">
-        <div class="banner" id="userBanner">
-            <img class="avatar" id="userAvatar" src="" alt="User Avatar">
+    <main class="profile-container" id="profileContainer" role="main">
+        <div class="banner" id="userBanner" role="img" aria-label="User Banner">
+            <img class="avatar" id="userAvatar" src="" alt="User Avatar" loading="lazy">
         </div>
         <div class="profile-content">
             <div class="username-container">
-                <span class="username" id="username"></span>
-                <span class="display-username" id="displayUsername"></span>
+                <h1 class="username" id="username" aria-label="Username"></h1>
+                <span class="display-username" id="displayUsername" aria-label="Display Username"></span>
             </div>
-            <div class="bio" id="userBio"></div>
-            <!-- <div class="connections" id="userConnections"></div> -->
+            <p class="bio" id="userBio" aria-label="User Biography"></p>
+            <section class="connections" id="userConnections" aria-label="User Connections"></section>
         </div>
-    </div>
-
-    <script>
-        const userProfile = {
-            username: 'イモータル',
-            displayUsername: '@xm5o_',
-            avatarUrl: 'https://cdn.discordapp.com/avatars/1282747277206884436/573764a219f1e26d5c5fa09b99266210?size=1024',
-            banner: {
-                type: 'image',
-                value: 'https://cdn.discordapp.com/banners/1282747277206884436/e2bae3491bc2ee61478bacba8c7e64af?size=4096'
-            },
-            bio: 'سبحان الله وبحمده سبحان الله العظيم',
-            hasNitro: true,
-            connections: [
-                { 
-                    platform: 'Battle.net', 
-                    icon: 'battlenet.png', 
-                    username: 'F0m#2582', 
-                    link: 'https://x.com/voixj1'
-                },
-                { 
-                    platform: 'X', 
-                    icon: 'x.png', 
-                    username: 'voixj1', 
-                    link: 'https://x.com/voixj1'
-                }
-            ]
-        };
-
-        function renderProfile(profile) {
-            const bannerElement = document.getElementById('userBanner');
-            const profileContainer = document.getElementById('profileContainer');
-
-            // Apply Nitro theme if user has Nitro
-            if (profile.hasNitro) {
-                profileContainer.classList.add('nitro-theme');
-            }
-
-            // Set banner
-            if (profile.banner.type === 'color') {
-                bannerElement.style.backgroundColor = profile.banner.value;
-            } else if (profile.banner.type === 'image') {
-                bannerElement.style.backgroundImage = `url('${profile.banner.value}')`;
-            }
-
-            // Set avatar
-            const avatarImg = document.getElementById('userAvatar');
-            avatarImg.src = profile.avatarUrl;
-            avatarImg.alt = `${profile.username}'s avatar`;
-
-            // Set username and bio
-            document.getElementById('username').textContent = profile.username;
-            document.getElementById('displayUsername').textContent = profile.displayUsername;
-            document.getElementById('userBio').textContent = profile.bio;
-
-            // Render connections
-            const connectionsContainer = document.getElementById('userConnections');
-            connectionsContainer.innerHTML = '<h3>Connections</h3>';
-            profile.connections.forEach(connection => {
-                const connectionItem = document.createElement('div');
-                connectionItem.classList.add('connection-item');
-                
-                // Create connection item with optional link
-                const connectionHTML = `
-                    <img src="icons/${connection.icon}" class="connection-icon" alt="${connection.platform}">
-                    <span>${connection.platform}: ${connection.username}</span>
-                `;
-                
-                connectionItem.innerHTML = connectionHTML;
-                connectionsContainer.appendChild(connectionItem);
-            });
-        }
-
-        // Initialize profile on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            renderProfile(userProfile);
-        });
-    </script>
+    </main>
+    <script type="module" src="profile.js"></script>
 </body>
 </html>

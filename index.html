@@ -3,33 +3,40 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Personal portfolio showcasing projects and skills">
-    <meta name="keywords" content="developer, portfolio, projects, skills">
+    <meta name="description" content="Personal portfolio of a developer showcasing projects, skills, and creative coding journey">
+    <meta name="keywords" content="developer, portfolio, web development, mobile apps, gaming, coding projects">
     
-    <link rel="preload" href="assest/image.jpg" as="image">
-    <title>Portfolio Website</title>
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="- X D - Developer Portfolio">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assest/image.jpg">
+    <meta property="og:description" content="Personal portfolio of a creative developer">
+
+    <!-- Preload Critical Assets -->
+    <link rel="preload" href="assest/image.jpg" as="image" type="image/jpeg">
+    <link rel="preload" href="css/style.css" as="style">
+    
+    <title>- X D - Developer Portfolio</title>
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/contact.css" />
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"
-    />
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
   </head>
   <body>
 
-    <header class="header">
-      <a href="#" class="logo">- X <span>D -</span></a>
+    <header class="header" role="banner">
+      <a href="#" class="logo" aria-label="Personal Logo">- X <span>D -</span></a>
     
-    <i class="bx bx-menu" id="menu-icon"></i>
+      <button id="menu-icon" aria-label="Toggle Mobile Menu" aria-expanded="false">
+        <i class="bx bx-menu"></i>
+      </button>
 
-    <nav class="navbar">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#services">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-      <a href="https://xm5o.github.io/fortnite/">Fortnite</a>
-    </nav>
+      <nav class="navbar" role="navigation" aria-label="Main Navigation">
+        <a href="#home" aria-label="Home Section">Home</a>
+        <a href="#about" aria-label="About Me Section">About</a>
+        <a href="#services" aria-label="Skills Section">Skills</a>
+        <a href="#projects" aria-label="Projects Section">Projects</a>
+        <a href="#contact" aria-label="Contact Section">Contact</a>
+      </nav>
     </header>
 
     <section class="home" id="home">
@@ -77,7 +84,7 @@
 
       <div class="about-content">
         <h2>About <span>Me</span></h2>
-        <p>Normal person love to code random things and make a websites and and love to play games and chill with the <span>friends</span>, love to make some <span>new friends</span> and love to chat with everyone <span>(maybe)</span>, Favorite game is <span>Overwatch</span>.</p>
+        <p>Normal person love to code random things and make a websites and and love to play games and chill with the <span>friends</span>, love to make some <span>new friends</span> and love to chat with everyone <span>(maybe)</span>, Favorite game is <span>Fortnite</span>.</p>
         <!-- <a href="#" class="btn"></a> -->
       </div>
     </section>
@@ -121,6 +128,52 @@
 
       </div>
       
+    </section>
+
+    <section class="discord-community" id="community">
+      <h2 class="heading">Community <span>Hub</span></h2>
+      
+      <div class="community-container">
+        <div class="community-stats">
+          <div class="stat-card">
+            <i class="bx bx-crown"></i>
+            <h3>Server Owner</h3>
+            <p>- X Đ -</p>
+          </div>
+          <div class="stat-card">
+            <i class="bx bx-group"></i>
+            <h3>Total Members</h3>
+            <p>43</p>
+          </div>
+          <div class="stat-card">
+            <i class="bx bx-chat"></i>
+            <h3>Active Discussions</h3>
+            <p>782</p>
+          </div>
+          <div class="stat-card">
+            <i class="bx bx-joystick-alt"></i>
+            <h3>Gaming supported</h3>
+            <p>Yes</p>
+          </div>
+          <div class="stat-card">
+            <i class="bx bx-trending-up"></i>
+            <h3>Weekly Growth</h3>
+            <p>10%</p>
+          </div>
+          <div class="stat-card">
+            <i class="bx bx-info-circle"></i>
+            <h3>Server about</h3>
+            <p>Just chatting, Gaming</p>
+          </div>
+        </div>
+        
+        <div class="community-join">
+          <a href="https://discord.gg/F8ekFRzRaN" target="_blank" class="discord-join-btn">
+            <i class="bx bxl-discord-alt"></i>
+            Join Our Discord
+          </a>
+        </div>
+      </div>
     </section>
 
     <section class="projects" id="projects">

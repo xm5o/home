@@ -249,7 +249,7 @@ section{
 
 .heading{
   text-align: center;
-  font-size: 7rem;
+  font-size: 6rem;
   margin: 5rem 0;
 }
 .services{
@@ -323,6 +323,102 @@ section{
   font-size: 1.4rem;
   font-weight: 600;
   line-height: 1.7;
+}
+
+.discord-community {
+  background-color: var(--second-bg-color);
+  padding: 10rem 12%;
+}
+
+.community-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+.community-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  width: 100%;
+}
+
+.stat-card {
+  background-color: var(--bg-color);
+  border-radius: 2rem;
+  padding: 2rem;
+  text-align: center;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.stat-card:hover {
+  border-color: var(--main-color);
+  transform: translateY(-10px);
+}
+
+.stat-card i {
+  font-size: 5rem;
+  color: var(--main-color);
+  margin-bottom: 1rem;
+}
+
+.stat-card h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.stat-card p {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--main-color);
+}
+
+.community-join {
+  margin-top: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.discord-join-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #5865F2;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 2rem;
+  font-size: 1.8rem;
+  gap: 1rem;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+}
+
+.discord-join-btn:hover {
+  background-color: #4752C4;
+}
+
+.discord-join-btn i {
+  font-size: 2.5rem;
+}
+
+@media (max-width: 768px) {
+  .community-stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .stat-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .stat-card p {
+    font-size: 2.5rem;
+  }
 }
 
 .projects {
