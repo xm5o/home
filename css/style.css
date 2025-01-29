@@ -325,6 +325,9 @@ section{
   line-height: 1.7;
 }
 
+/* Add this to the existing CSS */
+
+/* Community Hub Section */
 .discord-community {
   background-color: var(--second-bg-color);
   padding: 10rem 12%;
@@ -571,6 +574,108 @@ section{
   }
 }
 
+/* Add this to the existing CSS */
+
+/* Testimonials Section */
+.testimonials {
+  background-color: var(--bg-color);
+  padding: 10rem 12%;
+}
+
+.testimonials-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.testimonial-card {
+  background: var(--second-bg-color);
+  border-radius: 15px;
+  padding: 2rem;
+  border: 2px solid transparent;
+  transition: 0.3s ease;
+}
+
+.testimonial-card:hover {
+  border-color: var(--main-color);
+  transform: translateY(-10px);
+}
+
+.testimonial-content p {
+  font-size: 1.6rem;
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.testimonial-author img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.testimonial-author h4 {
+  font-size: 1.8rem;
+  color: var(--text-color);
+}
+
+.testimonial-author span {
+  font-size: 1.4rem;
+  color: var(--main-color);
+}
+
+/* Skill Bars */
+.skill-bars {
+  margin-top: 2rem;
+}
+
+.skill-bar {
+  width: 100%;
+  height: 10px;
+  background: var(--second-bg-color);
+  border-radius: 5px;
+  margin: 1rem 0;
+  overflow: hidden;
+}
+
+.skill-progress {
+  height: 100%;
+  background: var(--gradient);
+  border-radius: 5px;
+  transition: width 1.5s ease-in-out;
+}
+
+/* Projects Filter */
+.projects-filter {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.filter-btn {
+  padding: 0.5rem 1.5rem;
+  background: transparent;
+  border: 2px solid var(--main-color);
+  color: var(--text-color);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background: var(--main-color);
+  color: var(--bg-color);
+}
+
 .contact{
   background-color: var(--second-bg-color);
 }
@@ -739,5 +844,173 @@ section{
   
   .contact form {
     width: 100%;
+  }
+}
+
+/* Language Toggle Button */
+#language-toggle {
+  background: transparent;
+  border: 2px solid var(--main-color);
+  color: var(--text-color);
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: 0.3s ease;
+}
+
+#language-toggle:hover {
+  background: var(--main-color);
+  color: var(--bg-color);
+}
+
+#language-toggle i {
+  font-size: 1.8rem;
+}
+
+/* Mobile Navigation Styles */
+#menu-icon {
+  font-size: 3.6rem;
+  color: var(--main-color);
+  display: none; /* Hidden by default */
+  cursor: pointer;
+}
+
+#close-menu {
+  display: none; /* Hidden by default */
+  font-size: 3.6rem;
+  color: var(--main-color);
+  background: transparent;
+  border: none;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+}
+
+.navbar {
+  display: flex;
+  gap: 2rem;
+}
+
+.navbar.active {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 70%;
+  height: 100vh;
+  background: var(--bg-color);
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  z-index: 1000;
+  transform: translateX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.navbar a {
+  font-size: 1.8rem;
+  color: var(--text-color);
+  margin: 1rem 0;
+  padding: 1rem;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.navbar a:hover {
+  border-bottom: 2px solid var(--main-color);
+  color: var(--main-color);
+}
+
+/* Show/Hide Menu for Mobile */
+@media (max-width: 1024px) {
+  #menu-icon {
+    display: block; /* Show hamburger menu */
+  }
+
+  .navbar {
+    display: none; /* Hide navbar by default on mobile */
+    position: fixed;
+    top: 0;
+    right: -100%; /* Move navbar off-screen */
+    width: 70%;
+    height: 100vh;
+    background: var(--bg-color);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .navbar.active {
+    display: flex; /* Show navbar when active */
+    transform: translateX(0); /* Slide in from the right */
+  }
+
+  #close-menu {
+    display: block; /* Show close button when navbar is active */
+  }
+}
+
+/* style.css */
+/* Mobile Language Toggle */
+.mobile-language-toggle {
+  display: none;
+  margin-top: auto;
+  padding: 2rem;
+}
+
+#mobile-language-toggle {
+  width: 100%;
+  background: transparent;
+  border: 2px solid var(--main-color);
+  color: var(--text-color);
+  padding: 1rem;
+  border-radius: 5px;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+#desktop-language-toggle {
+  /* width: 100%; */
+  background: transparent;
+  border: 2px solid var(--main-color);
+  color: var(--text-color);
+  padding: 1rem;
+  border-radius: 5px;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+/* Hide desktop language toggle on mobile */
+@media (max-width: 1024px) {
+  #desktop-language-toggle {
+    display: none;
+  }
+  
+  .mobile-language-toggle {
+    display: block;
+  }
+}
+
+/* Show desktop language toggle on larger screens */
+@media (min-width: 1025px) {
+  .mobile-language-toggle {
+    display: none;
+  }
+  
+  .desktop-language {
+    display: flex;
   }
 }

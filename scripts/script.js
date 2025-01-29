@@ -1,11 +1,24 @@
-// Existing menu functionality
-const menuIcon = document.querySelector('#menu-icon');
-const navbar = document.querySelector('.navbar');
+// Mobile Menu Toggle
+const menuIcon = document.getElementById("menu-icon");
+const closeMenu = document.getElementById("close-menu");
+const navbar = document.querySelector(".navbar");
 
-menuIcon.onclick = () => {
-    menuIcon.classList.toggle('bx-x');
-    navbar.classList.toggle('active');
-}
+// Toggle Menu
+menuIcon.addEventListener("click", () => {
+  navbar.classList.add("active");
+});
+
+// Close Menu
+closeMenu.addEventListener("click", () => {
+  navbar.classList.remove("active");
+});
+
+// Close Menu When a Link is Clicked
+navbar.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    navbar.classList.remove("active");
+  });
+});
 
 const scrollProgress = document.createElement('div');
 scrollProgress.className = 'scroll-progress';
@@ -53,19 +66,19 @@ window.onscroll = () => {
 //     fetchDiscordStats();
 // });
 
-const themeToggle = document.createElement('div');
-themeToggle.className = 'theme-toggle';
-themeToggle.innerHTML = '<i class="bx bx-moon"></i>';
-document.body.appendChild(themeToggle);
+// const themeToggle = document.createElement('div');
+// themeToggle.className = 'theme-toggle';
+// themeToggle.innerHTML = '<i class="bx bx-moon"></i>';
+// document.body.appendChild(themeToggle);
 
-themeToggle.onclick = () => {
-    document.body.setAttribute('data-theme',
-        document.body.getAttribute('data-theme') === 'midnight' ? 'dark' : 'midnight'
-    );
-    themeToggle.innerHTML = document.body.getAttribute('data-theme') === 'midnight' 
-        ? '<i class="bx bx-moon"></i>' 
-        : '<i class="bx bx-sun"></i>';
-}
+// themeToggle.onclick = () => {
+//     document.body.setAttribute('data-theme',
+//         document.body.getAttribute('data-theme') === 'midnight' ? 'dark' : 'midnight'
+//     );
+//     themeToggle.innerHTML = document.body.getAttribute('data-theme') === 'midnight' 
+//         ? '<i class="bx bx-moon"></i>' 
+//         : '<i class="bx bx-sun"></i>';
+// }
 
 const skillBars = document.querySelectorAll('.skill-progress');
 const animateSkills = () => {
@@ -101,24 +114,26 @@ contactForm.onsubmit = (e) => {
     contactForm.reset();
 }
 
-const filterButtons = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card');
-    
-    filterButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-        filterButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        
-        const filterValue = btn.getAttribute('data-filter');
-        
-        projectCards.forEach(card => {
-            if (filterValue === 'all' || card.classList.contains(filterValue)) {
-                card.style.display = 'block';
-                setTimeout(() => card.style.opacity = '1', 0);
-            } else {
-                card.style.opacity = '0';
-                setTimeout(() => card.style.display = 'none', 300);
-            }
-        });
+// Project Filter
+const filterButtons = document.querySelectorAll(".filter-btn");
+const projectCards = document.querySelectorAll(".project-card");
+
+filterButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    const filter = button.getAttribute("data-filter");
+
+    // Remove active class from all buttons
+    filterButtons.forEach(btn => btn.classList.remove("active"));
+    button.classList.add("active");
+
+    // Filter projects
+    projectCards.forEach(card => {
+      const category = card.getAttribute("data-category");
+      if (filter === "all" || category === filter) {
+        card.style.display = "block";
+      } else {
+        card.style.display = "none";
+      }
     });
+  });
 });
