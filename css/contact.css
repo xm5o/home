@@ -36,6 +36,10 @@
   animation: fadeIn 0.3s ease;
 }
 
+.input-group-2 span{
+  color: var(--bg-color);
+}
+
 .modal-content {
   position: relative;
   background-color: var(--second-bg-color);
