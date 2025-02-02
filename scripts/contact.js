@@ -1,34 +1,96 @@
+// Contact Form Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const successModal = document.getElementById('successModal');
+    const closeModal = document.querySelector('.close-modal');
+    const loadingSpinner = document.querySelector('.loading-spinner');
 
+    // Form submission handler
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        // Show loading state
+        submitBtn.disabled = true;
+        submitBtn.querySelector('span').style.opacity = '0.7';
+        loadingSpinner.style.display = 'inline-block';
 
+        // Get form data
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
 
-// Import the necessary classes from discord.js
-const { Client, GatewayIntentBits, Events } = require('discord.js');
-const { token } = require('./config.json'); // Create a config.json file to store your bot token
+        try {
+            // Send form data
+            const response = await fetch('https://formsubmit.co/ajax/eminem13981398@gmail.com', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
 
-// Create a new client instance
-const client = new Client({
-  intents: [
-    GatewayIntentBits.Guilds, // Enables access to guild (server) data
-    GatewayIntentBits.GuildMessages, // Enables access to message events
-    GatewayIntentBits.MessageContent, // Enables access to message content (if you want to read messages)
-  ],
+            if (response.ok) {
+                // Show success modal
+                successModal.style.display = 'block';
+                form.reset();
+            } else {
+                throw new Error('Form submission failed');
+            }
+        } catch (error) {
+            alert('Sorry, there was an error sending your message. Please try again.');
+        } finally {
+            // Reset button state
+            submitBtn.disabled = false;
+            submitBtn.querySelector('span').style.opacity = '1';
+            loadingSpinner.style.display = 'none';
+        }
+    });
+
+    // Close modal when clicking the close button
+    closeModal.addEventListener('click', function() {
+        successModal.style.display = 'none';
+    });
+
+    // Close modal when clicking outside
+    window.addEventListener('click', function(e) {
+        if (e.target === successModal) {
+            successModal.style.display = 'none';
+        }
+    });
+
+    // Form validation
+    const inputs = form.querySelectorAll('input[required], textarea[required]');
+    
+    inputs.forEach(input => {
+        input.addEventListener('invalid', function(e) {
+            e.preventDefault();
+            this.classList.add('invalid');
+            
+            // Show error message
+            let errorMessage = this.nextElementSibling;
+            if (!errorMessage || !errorMessage.classList.contains('error-message')) {
+                errorMessage = document.createElement('div');
+                errorMessage.className = 'error-message';
+                this.parentNode.insertBefore(errorMessage, this.nextSibling);
+            }
+            
+            errorMessage.textContent = this.validationMessage;
+            errorMessage.style.display = 'block';
+        });
+
+        input.addEventListener('input', function() {
+            this.classList.remove('invalid');
+            const errorMessage = this.nextElementSibling;
+            if (errorMessage && errorMessage.classList.contains('error-message')) {
+                errorMessage.style.display = 'none';
+            }
+        });
+    });
 });
 
-// When the client is ready, run this code (only once)
-client.once(Events.ClientReady, (c) => {
-  console.log(`Ready! Logged in as ${c.user.tag}`);
-});
-
-// Listen for messages
-client.on(Events.MessageCreate, (message) => {
-  // Ignore messages from bots
-  if (message.author.bot) return;
-
-  // Respond to a specific command
-  if (message.content === '!ping') {
-    message.reply('Pong!');
-  }
-});
-
-// Log in to Discord with your bot token
-client.login('MTMwMzM3NDE2MjUzMzk0MTMzMQ.GgXUT9.x5C1Vhdk7pLA9no9a4Fi-da6xeTOudMZNDa7Vk');
+// Add email validation
+function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}
