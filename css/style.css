@@ -41,14 +41,32 @@ html {
 }
 
 :root {
-  --bg-color: #e2e1e5; /* #080808 */
-  --second-bg-color: #5c5b5f; /* #0c0b0d */
-  --text-color: black; /* white */
-  --main-color: #828186; /* #544d45 */
-  --secondry-color: #6c6c6b  ;
-  /* --gradient: linear-gradient(90deg, var(--main-color), var(--secondry-color)); */
-  --gradient: var(--main-color);
-  --header: rgba(128, 128, 128, 0.3);
+  --bg-color: #0a0a0a;
+  --second-bg-color: #111111;
+  --text-color: #ffffff;
+  --main-color: #c7b697;
+  --secondary-color: #83745f;
+  --accent-color: #201d13;
+  --gradient: linear-gradient(135deg, var(--main-color), var(--secondary-color));
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --header-height: 4.5rem;
+}
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 [data-theme="midnight"] {
@@ -68,6 +86,10 @@ body{
 .header{
   position: fixed;
   width: 100%;
+  height: var(--header-height);
+  background: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   top: 0;
   left: 0;
   padding: 4rem 12%;
@@ -84,11 +106,17 @@ body{
   display: none;
 }
 .logo{
-  font-size: 3rem;
-  color: var(--text-color);
+  font-size: 2.4rem;
+  background: var(--gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  /* color: var(--text-color); */
   font-weight: 800;
   cursor: pointer;
-  transition: 0.3s ease;
+  /* transition: 0.3s ease; */
+  background-size: 200% 200%;
+  animation: gradientFlow 5s ease infinite;
 }
 .logo:hover{
   transform: scale(1.1);
@@ -271,12 +299,13 @@ section{
   overflow: hidden;
   justify-content: center;
   align-items: center;
-  background-color: var(--main-color);
+  background: rgba(255, 255, 255, 0.03);
   height: 600px;
-  border-radius: 3rem;
+  border-radius: 1.5rem;
+  padding: 2.5rem;
   cursor: pointer;
-  border: 5px solid transparent;
-  transition: 0.4s ease-in-out;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.4s ease;
   animation: fadeIn 1s ease;
   animation-fill-mode: both;
 }
@@ -290,9 +319,11 @@ section{
   transition: 0.5s;
 }
 .service-box:hover{
-  background-color: var(--second-bg-color);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
   color: var(--main-color);
-  border: 5px solid var(--main-color);
+  /* border: 5px solid var(--main-color); */
+  border-color: var(--main-color);
   transform: scale(1.03) translateY(-15px);
   box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
@@ -437,11 +468,12 @@ section{
 }
 
 .project-card {
-  background: var(--second-bg-color);
-  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.5rem;
   overflow: hidden;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: all 0.4s ease;
   border: 2px solid transparent;
   animation: fadeIn 1s ease;
   animation-fill-mode: both;
@@ -459,13 +491,18 @@ section{
 .project-img {
   position: relative;
   overflow: hidden;
-  height: 200px;
+  height: 240px;
 }
 
 .project-img img {
+  transition: transform 0.5s ease;
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.project-card:hover .project-img img {
+  transform: scale(1.1);
 }
 
 .project-overlay {
@@ -475,6 +512,7 @@ section{
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -526,7 +564,7 @@ section{
 .tech-stack span {
   padding: 5px 15px;
   background: var(--main-color);
-  color: var(--text-color);
+  color: var(--accent-color);
   border-radius: 20px;
   font-size: 1.4rem;
 }
@@ -638,16 +676,18 @@ section{
 
 .skill-bar {
   width: 100%;
-  height: 10px;
-  background: var(--second-bg-color);
-  border-radius: 5px;
-  margin: 1rem 0;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  margin: 1.5rem 0;
   overflow: hidden;
 }
 
 .skill-progress {
   height: 100%;
   background: var(--gradient);
+  background-size: 200% 200%;
+  animation: gradientFlow 5s ease infinite;
   border-radius: 5px;
   transition: width 1.5s ease-in-out;
 }
@@ -913,12 +953,27 @@ section{
 }
 
 .navbar a {
-  font-size: 1.8rem;
+  position: relative;
+  font-size: 1.6rem;
+  font-weight: 500;
   color: var(--text-color);
   margin: 1rem 0;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
   border-bottom: 2px solid transparent;
+  border-radius: 0.5rem;
   transition: all 0.3s ease;
+}
+
+.navbar a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--gradient);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
 }
 
 .navbar a:hover {
@@ -1013,4 +1068,15 @@ section{
   .desktop-language {
     display: flex;
   }
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
