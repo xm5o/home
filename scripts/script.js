@@ -20,29 +20,29 @@ navbar.querySelectorAll("a").forEach(link => {
   });
 });
 
-const scrollProgress = document.createElement('div');
-scrollProgress.className = 'scroll-progress';
-document.body.appendChild(scrollProgress);
+// const scrollProgress = document.createElement('div');
+// scrollProgress.className = 'scroll-progress';
+// document.body.appendChild(scrollProgress);
 
-window.onscroll = () => {
-    const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = (window.pageYOffset / totalHeight) * 100;
-    scrollProgress.style.transform = `scaleX(${progress}%)`;
+// window.onscroll = () => {
+//     const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+//     const progress = (window.pageYOffset / totalHeight) * 100;
+//     scrollProgress.style.transform = `scaleX(${progress}%)`;
 
-    const sections = document.querySelectorAll('section');
-    sections.forEach(sec => {
-        const top = window.scrollY;
-        const offset = sec.offsetTop - 150;
-        const height = sec.offsetHeight;
-        const id = sec.getAttribute('id');
+//     const sections = document.querySelectorAll('section');
+//     sections.forEach(sec => {
+//         const top = window.scrollY;
+//         const offset = sec.offsetTop - 150;
+//         const height = sec.offsetHeight;
+//         const id = sec.getAttribute('id');
         
-        if(top >= offset && top < offset + height) {
-            document.querySelector('.navbar a[href*=' + id + ']').classList.add('active');
-        } else {
-            document.querySelector('.navbar a[href*=' + id + ']').classList.remove('active');
-        }
-    });
-}
+//         if(top >= offset && top < offset + height) {
+//             document.querySelector('.navbar a[href*=' + id + ']').classList.add('active');
+//         } else {
+//             document.querySelector('.navbar a[href*=' + id + ']').classList.remove('active');
+//         }
+//     });
+// }
 
 // document.addEventListener('DOMContentLoaded', () => {
     // async function fetchDiscordStats() {
