@@ -118,22 +118,48 @@ contactForm.onsubmit = (e) => {
 const filterButtons = document.querySelectorAll(".filter-btn");
 const projectCards = document.querySelectorAll(".project-card");
 
-filterButtons.forEach(button => {
-  button.addEventListener("click", () => {
-    const filter = button.getAttribute("data-filter");
-
-    // Remove active class from all buttons
-    filterButtons.forEach(btn => btn.classList.remove("active"));
-    button.classList.add("active");
-
-    // Filter projects
-    projectCards.forEach(card => {
-      const category = card.getAttribute("data-category");
-      if (filter === "all" || category === filter) {
-        card.style.display = "block";
+document.querySelectorAll('.filter-btn').forEach(button => {
+  button.addEventListener('click', () => {
+    const filter = button.dataset.filter;
+    
+    document.querySelectorAll('.project-card').forEach(card => {
+      if (filter === 'all' || card.dataset.category === filter) {
+        card.style.display = 'block';
       } else {
-        card.style.display = "none";
+        card.style.display = 'none';
       }
     });
+
+    document.querySelectorAll('.filter-btn').forEach(btn => 
+      btn.classList.remove('active'));
+    button.classList.add('active');
   });
+});
+
+// document.querySelectorAll('.feature').forEach(feature => {
+//   feature.addEventListener('mouseenter', () => {
+//     feature.style.transform = 'scale(1.1)';
+//     feature.style.color = '#fad0a3';
+//   });
+  
+//   feature.addEventListener('mouseleave', () => {
+//     feature.style.transform = 'scale(1)';
+//     feature.style.color = '#bc7f4c';
+//   });
+// });
+
+// Add ripple effect to button
+document.querySelector('.invite-button').addEventListener('click', function(e) {
+  let x = e.clientX - e.target.offsetLeft;
+  let y = e.clientY - e.target.offsetTop;
+  
+  let ripple = document.createElement('span');
+  ripple.style.left = x + 'px';
+  ripple.style.top = y + 'px';
+  
+  this.appendChild(ripple);
+  
+  setTimeout(() => {
+    ripple.remove();
+  }, 1000);
 });
