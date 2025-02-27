@@ -77,14 +77,14 @@ html {
 
 :root {
   --bg-color: #0a0a0a;
-  --second-bg-color: #12080e;
+  --second-bg-color: #241c23;
   --text-color: #ffffff;
-  --main-color: #d57898;
-  --secondary-color: #3c244c;
-  --accent-color: #8f2840;
+  --main-color: #e2cfb8;
+  --secondary-color: #897060;
+  --accent-color: #5c4348;
   --selina-color: #bc7f4c;
   --selina-hover-color: #fad0a3;
-  --main-color-rgb: 246, 76, 114;
+  --main-color-rgb: 226,207,184;
   --text-color-rgb: 255, 255, 255;
   --gradient: linear-gradient(135deg, var(--main-color), var(--secondary-color));
   --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
