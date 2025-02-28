@@ -1,19 +1,15 @@
-// Mobile Menu Toggle
 const menuIcon = document.getElementById("menu-icon");
 const closeMenu = document.getElementById("close-menu");
 const navbar = document.querySelector(".navbar");
 
-// Toggle Menu
 menuIcon.addEventListener("click", () => {
   navbar.classList.add("active");
 });
 
-// Close Menu
 closeMenu.addEventListener("click", () => {
   navbar.classList.remove("active");
 });
 
-// Close Menu When a Link is Clicked
 navbar.querySelectorAll("a").forEach(link => {
   link.addEventListener("click", () => {
     navbar.classList.remove("active");
@@ -81,7 +77,6 @@ navbar.querySelectorAll("a").forEach(link => {
 // }
 
 document.addEventListener('DOMContentLoaded', function() {
-  // Initialize skill progress bars
   const skillBars = document.querySelectorAll('.skill-progress');
   skillBars.forEach(bar => {
     const value = bar.getAttribute('data-value');
@@ -90,20 +85,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 300);
   });
   
-  // Tab Navigation
   const tabButtons = document.querySelectorAll('.tab-btn');
   const tabContents = document.querySelectorAll('.tab-content');
   
   tabButtons.forEach(button => {
     button.addEventListener('click', () => {
-      // Remove active class from all buttons and contents
       tabButtons.forEach(btn => btn.classList.remove('active'));
       tabContents.forEach(content => content.classList.remove('active'));
       
-      // Add active class to clicked button
       button.classList.add('active');
       
-      // Show corresponding content
       const tabId = button.getAttribute('data-tab');
       document.getElementById(tabId + '-tab').classList.add('active');
     });
@@ -178,18 +169,18 @@ document.querySelectorAll('.filter-btn').forEach(button => {
 //   });
 // });
 
-// Add ripple effect to button
-document.querySelector('.invite-button').addEventListener('click', function(e) {
-  let x = e.clientX - e.target.offsetLeft;
-  let y = e.clientY - e.target.offsetTop;
+// ripple effect
+// document.querySelector('.invite-button').addEventListener('click', function(e) {
+//   let x = e.clientX - e.target.offsetLeft;
+//   let y = e.clientY - e.target.offsetTop;
   
-  let ripple = document.createElement('span');
-  ripple.style.left = x + 'px';
-  ripple.style.top = y + 'px';
+//   let ripple = document.createElement('span');
+//   ripple.style.left = x + 'px';
+//   ripple.style.top = y + 'px';
   
-  this.appendChild(ripple);
+//   this.appendChild(ripple);
   
-  setTimeout(() => {
-    ripple.remove();
-  }, 1000);
-});
+//   setTimeout(() => {
+//     ripple.remove();
+//   }, 1000);
+// });

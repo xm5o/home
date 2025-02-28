@@ -704,7 +704,6 @@ section {
   gap: 2rem;
 }
 
-/* Timeline for Experience and Education Tabs */
 .timeline {
   position: relative;
   max-width: 100%;
@@ -762,7 +761,6 @@ section {
   line-height: 1.6;
 }
 
-/* Responsive Design */
 @media (max-width: 991px) {
   .about-content-wrapper {
     flex-direction: column;
@@ -845,7 +843,6 @@ section {
   margin: 5rem 0;
 }
 
-/* Advanced Responsive Skills Section Design */
 .services {
   background-color: var(--bg-color);
   padding: 100px 0;
@@ -853,7 +850,6 @@ section {
   overflow: hidden;
 }
 
-/* Decorative elements */
 .services::before,
 .services::after {
   content: '';
@@ -878,7 +874,6 @@ section {
   right: -100px;
 }
 
-/* Background grid pattern */
 .services .bg-grid {
   position: absolute;
   top: 0;
@@ -957,7 +952,6 @@ section {
   display: flex;
 }
 
-/* Glass morphism effect */
 .service-box::before {
   content: '';
   position: absolute;
@@ -972,7 +966,6 @@ section {
   border-radius: 28px;
 }
 
-/* Shine effect */
 .service-box::after {
   content: '';
   position: absolute;
@@ -1007,7 +1000,6 @@ section {
   transform: rotate(30deg) translateY(0);
 }
 
-/* Staggered animation delays */
 .service-box:nth-child(1) {
   animation-delay: 0.1s;
 }
@@ -1038,7 +1030,6 @@ section {
   transition: transform 0.3s ease;
 }
 
-/* Icon styling */
 .service-info i {
   font-size: 3.8rem;
   color: var(--main-color);
@@ -1074,7 +1065,6 @@ section {
     inset 0 -5px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Title styling */
 .service-info h4 {
   font-size: 2rem;
   margin: 0 0 20px 0;
@@ -1107,7 +1097,6 @@ section {
   width: 60px;
 }
 
-/* Paragraph styling */
 .service-info p {
   font-size: 1.1rem;
   font-weight: 400;
@@ -1121,7 +1110,6 @@ section {
   color: var(--text-color);
 }
 
-/* Progress bar */
 .service-info::after {
   content: '';
   position: absolute;
@@ -1138,7 +1126,6 @@ section {
   width: 100%;
 }
 
-/* Corner accent */
 .service-box .corner-accent {
   position: absolute;
   width: 80px;
@@ -1168,7 +1155,6 @@ section {
   opacity: 1;
 }
 
-/* Keyframes for fadeIn animation */
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -1180,7 +1166,6 @@ section {
   }
 }
 
-/* Float animation for hover */
 @keyframes float {
   0% {
     transform: translateY(0px);
@@ -1193,7 +1178,6 @@ section {
   }
 }
 
-/* ===== RESPONSIVE STYLES ===== */
 /* Large desktop */
 @media (min-width: 1400px) {
   .services-container {
@@ -1353,7 +1337,6 @@ section {
   }
 }
 
-/* Dark mode improvements */
 @media (prefers-color-scheme: dark) {
   .service-box {
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
@@ -1696,7 +1679,6 @@ section {
   width: 100%;
 }
 
-/* Card hover state with staggered animation */
 .project-card .project-img,
 .project-card .project-title::after,
 .project-card .status-badge,
@@ -1716,7 +1698,6 @@ section {
   transition-delay: 150ms;
 }
 
-/* Add this shine effect to create a glossy look */
 .project-card::after {
   content: '';
   position: absolute;
@@ -2315,7 +2296,6 @@ section {
   }
 }
 
-/* style.css */
 /* Mobile Language Toggle */
 .mobile-language-toggle {
   display: none;

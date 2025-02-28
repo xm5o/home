@@ -1,4 +1,3 @@
-// Translations for different languages
 const translations = {
   en: {
     home: "Home",
@@ -84,9 +83,7 @@ const translations = {
   },
 };
 
-// Function to update the page content based on the selected language
 function updateContent(lang) {
-  // Update navigation links
   document.querySelector('a[href="#home"]').textContent = translations[lang].home;
   document.querySelector('a[href="#about"]').textContent = translations[lang].about;
   document.querySelector('a[href="#services"]').textContent = translations[lang].skills;
@@ -94,17 +91,14 @@ function updateContent(lang) {
   document.querySelector('a[href="#community"]').textContent = translations[lang].community;
   document.querySelector('a[href="#contact"]').textContent = translations[lang].contact;
 
-  // Update home section
   document.querySelector(".home-content h1").textContent = translations[lang].welcome;
   document.querySelector(".home-content h3").textContent = translations[lang].developer;
   document.querySelector(".home-content p").textContent = translations[lang].description;
   document.querySelector(".btn-group .btn").textContent = translations[lang].joinServer;
 
-  // Update about section
   document.querySelector(".about-content h2").textContent = translations[lang].aboutMe;
   document.querySelector(".about-content p").innerHTML = translations[lang].aboutText;
 
-  // Update skills section
   document.querySelector(".services h2").textContent = translations[lang].skillsHeading;
   document.querySelector(".service-box:nth-child(1) h4").textContent = translations[lang].mobileDev;
   document.querySelector(".service-box:nth-child(1) p").textContent = translations[lang].mobileDevText;
@@ -115,14 +109,12 @@ function updateContent(lang) {
   document.querySelector(".service-box:nth-child(4) h4").textContent = translations[lang].chatter;
   document.querySelector(".service-box:nth-child(4) p").textContent = translations[lang].chatterText;
 
-  // Update projects section
   document.querySelector(".projects h2").textContent = translations[lang].projectsHeading;
   document.querySelector(".project-card:nth-child(1) h3").textContent = translations[lang].project1Title;
   document.querySelector(".project-card:nth-child(1) p").textContent = translations[lang].project1Description;
   document.querySelector(".project-card:nth-child(2) h3").textContent = translations[lang].project2Title;
   document.querySelector(".project-card:nth-child(2) p").textContent = translations[lang].project2Description;
 
-  // Update community section
   document.querySelector(".discord-community h2").textContent = translations[lang].communityHeading;
   document.querySelector(".stat-card:nth-child(3) h3").textContent = translations[lang].activeDiscussions;
   document.querySelector(".stat-card:nth-child(2) h3").textContent = translations[lang].totalMembers;
@@ -143,22 +135,18 @@ function updateContent(lang) {
   document.querySelector("#desktop-language-text").textContent = lang.toUpperCase();
   document.querySelector("#mobile-language-text").textContent = lang.toUpperCase();
 
-  // Update text direction
   document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
 }
 
-// Save selected language to localStorage
 function saveLanguage(lang) {
   localStorage.setItem("selectedLanguage", lang);
 }
 
-// Load saved language from localStorage
 function loadLanguage() {
   return localStorage.getItem("selectedLanguage") || "en"; // Default to English
 }
 
-// Language toggle functionality
-let currentLang = loadLanguage(); // Load saved language
+let currentLang = loadLanguage();
 const desktopLanguageToggle = document.getElementById("desktop-language-toggle");
 const mobileLanguageToggle = document.getElementById("mobile-language-toggle");
 
@@ -174,5 +162,4 @@ mobileLanguageToggle.addEventListener("click", () => {
   navbar.classList.remove("active");
 });
 
-// Initialize with saved language
 updateContent(currentLang);
