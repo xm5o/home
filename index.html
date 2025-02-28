@@ -95,30 +95,171 @@
 
   <!-- About Section -->
   <section class="about" id="about">
-    <div class="about-img">
-      <img src="assest/image.jpg" alt="">
-    </div>
-
-    <div class="about-content">
-      <h2>About <span>Me</span></h2>
-      <p>Normal person love to code random things and make a websites and and love to play games and chill with the
-        <span>friends</span>, love to make some <span>new friends</span> and love to chat with everyone
-        <span>(maybe)</span>, Favorite game is <span>Fortnite</span>.
-      </p>
-
-      <!-- Skill Progress Bars -->
-      <div class="skill-bars">
-        <div class="skill-bar">
-          <div class="skill-progress" data-value="80"></div>
-          <span>Web Development</span>
+    <div class="about-container">
+      <div class="about-header">
+        <h2>About <span>Me</span></h2>
+        <div class="tab-navigation">
+          <button class="tab-btn active" data-tab="profile">Profile</button>
+          <button class="tab-btn" data-tab="experience">Experience</button>
+          <!-- <button class="tab-btn" data-tab="education">Education</button> -->
         </div>
-        <div class="skill-bar">
-          <div class="skill-progress" data-value="60"></div>
-          <span>Mobile App Development</span>
+      </div>
+
+      <div class="about-content-wrapper">
+        <div class="about-img-container">
+          <img src="assest/image.jpg" alt="Profile Picture">
+          <div class="experience-badge">
+            <span class="years">3+</span>
+            <span class="text">Years<br>Coding</span>
+          </div>
         </div>
-        <div class="skill-bar">
-          <div class="skill-progress" data-value="70"></div>
-          <span>Game Development</span>
+
+        <div class="about-content-tabs">
+          <!-- Profile Tab -->
+          <div class="tab-content active" id="profile-tab">
+            <div class="about-text">
+              <p>Normal person love to code random things and make websites and love to play games and chill with
+                <span>friends</span>. Always looking to make some <span>new friends</span> and love to chat with
+                everyone
+                <span>(maybe)</span>. Favorite game is <span>Fortnite and Overwatch</span>.
+              </p>
+              <p>I specialize in creating interactive web experiences, mobile applications, and game development
+                projects with a focus on user engagement and clean code.</p>
+            </div>
+
+            <div class="personal-info">
+              <div class="info-item">
+                <span class="label">Name:</span>
+                <span class="value">- X D -</span>
+              </div>
+              <div class="info-item">
+                <span class="label">Age:</span>
+                <span class="value">??</span>
+              </div>
+              <div class="info-item">
+                <span class="label">Pronouns:</span>
+                <span class="value">He/Him</span>
+              </div>
+              <div class="info-item">
+                <span class="label">Location:</span>
+                <span class="value">Earth</span>
+              </div>
+              <div class="info-item">
+                <span class="label">Freelance:</span>
+                <span class="value not-available">Not available</span>
+              </div>
+            </div>
+
+            <!-- Skill Progress Bars -->
+            <div class="skill-section">
+              <h3>Technical Skills</h3>
+              <div class="skill-bars">
+                <div class="skill-bar">
+                  <div class="skill-info">
+                    <span>Web Development</span>
+                    <span class="percent">85%</span>
+                  </div>
+                  <div class="skill-progress-bg">
+                    <div class="skill-progress" data-value="85"></div>
+                  </div>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-info">
+                    <span>Mobile App Development</span>
+                    <span class="percent">15%</span>
+                  </div>
+                  <div class="skill-progress-bg">
+                    <div class="skill-progress" data-value="15"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tech-stack">
+              <h3>Technologies I Work With</h3>
+              <div class="tech-icons">
+                <div class="tech-icon">
+                  <i class="fab fa-html5"></i>
+                  <span>HTML5</span>
+                </div>
+                <div class="tech-icon">
+                  <i class="fab fa-css3-alt"></i>
+                  <span>CSS3</span>
+                </div>
+                <div class="tech-icon">
+                  <i class="fab fa-js"></i>
+                  <span>JavaScript</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="cta-buttons">
+              <a href="#contact" class="btn">Get In Touch</a>
+            </div>
+          </div>
+
+          <!-- Experience Tab -->
+          <div class="tab-content" id="experience-tab">
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">Present</div>
+                <div class="timeline-content">
+                  <h3>Discord Bot Developer</h3>
+                  <p>Created and maintained "Selina" Discord bot with moderation tools, fun commands, and server
+                    management features</p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2024 - Present</div>
+                <div class="timeline-content">
+                  <h3>FNF Modcharter</h3>
+                  <p>Designed and developed custom charts and game mechanics for Friday Night Funkin' mods including
+                    "Psycho Funkin"</p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2023 - Present</div>
+                <div class="timeline-content">
+                  <h3>Web Developer</h3>
+                  <p>Created various web projects including Fortnite Hub, providing users with game information, stats,
+                    and updates</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Education Tab -->
+          <!-- <div class="tab-content" id="education-tab">
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2022 - 2024</div>
+                <div class="timeline-content">
+                  <h3>Self-taught Developer</h3>
+                  <p>Continuously learning through online courses, tutorials, and hands-on project development</p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2023</div>
+                <div class="timeline-content">
+                  <h3>Mobile App Development</h3>
+                  <p>Completed comprehensive online courses on mobile app development fundamentals</p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2021</div>
+                <div class="timeline-content">
+                  <h3>Web Development Bootcamp</h3>
+                  <p>Intensive training in HTML, CSS, JavaScript, and responsive web design principles</p>
+                </div>
+              </div>
+            </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -126,42 +267,46 @@
 
   <!-- Services Section -->
   <section class="services" id="services">
-  <h2 class="heading">My Skills</h2>
+    <h2 class="heading">My Skills</h2>
 
-  <div class="services-container">
-    <div class="service-box">
-      <div class="service-info">
-        <i class="bx bxs-devices"></i>
-        <h4>Mobile App Development</h4>
-        <p>Beginning my journey in mobile app development. Creating small applications while learning the fundamentals and required programming languages for professional development.</p>
+    <div class="services-container">
+      <div class="service-box">
+        <div class="service-info">
+          <i class="bx bxs-devices"></i>
+          <h4>Mobile App Development</h4>
+          <p>Beginning my journey in mobile app development. Creating small applications while learning the fundamentals
+            and required programming languages for professional development.</p>
+        </div>
+      </div>
+
+      <div class="service-box">
+        <div class="service-info">
+          <i class="bx bx-code"></i>
+          <h4>Coding & Modcharting</h4>
+          <p>Experienced coder for websites and skilled modcharter for Friday Night Funkin' (FNF). Available to
+            collaborate on your mod projects - contact me via Discord or through the form below.</p>
+        </div>
+      </div>
+
+      <div class="service-box">
+        <div class="service-info">
+          <i class="bx bx-game"></i>
+          <h4>Gaming</h4>
+          <p>Passionate gamer who enjoys competitive play, achieving high rankings, and having fun with friends. Always
+            looking for new challenges and gaming experiences.</p>
+        </div>
+      </div>
+
+      <div class="service-box">
+        <div class="service-info">
+          <i class="bx bx-chat"></i>
+          <h4>Communication</h4>
+          <p>Enjoy connecting with others in communities and public servers. Open to making new friends and building
+            relationships - feel free to reach out anytime!</p>
+        </div>
       </div>
     </div>
-
-    <div class="service-box">
-      <div class="service-info">
-        <i class="bx bx-code"></i>
-        <h4>Coding & Modcharting</h4>
-        <p>Experienced coder for websites and skilled modcharter for Friday Night Funkin' (FNF). Available to collaborate on your mod projects - contact me via Discord or through the form below.</p>
-      </div>
-    </div>
-
-    <div class="service-box">
-      <div class="service-info">
-        <i class="bx bx-game"></i>
-        <h4>Gaming</h4>
-        <p>Passionate gamer who enjoys competitive play, achieving high rankings, and having fun with friends. Always looking for new challenges and gaming experiences.</p>
-      </div>
-    </div>
-
-    <div class="service-box">
-      <div class="service-info">
-        <i class="bx bx-chat"></i>
-        <h4>Communication</h4>
-        <p>Enjoy connecting with others in communities and public servers. Open to making new friends and building relationships - feel free to reach out anytime!</p>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
   <!-- Projects Section -->
   <section class="projects" id="projects">
@@ -391,12 +536,12 @@
         <div class="stat-card">
           <i class="bx bx-group"></i>
           <h3>Total Members</h3>
-          <p>50</p>
+          <p>53</p>
         </div>
         <div class="stat-card">
           <i class="bx bx-chat"></i>
           <h3>Active Discussions</h3>
-          <p>973</p>
+          <p>1243</p>
         </div>
         <div class="stat-card">
           <i class="bx bx-joystick-alt"></i>
@@ -406,7 +551,7 @@
         <div class="stat-card">
           <i class="bx bx-trending-up"></i>
           <h3>Weekly Growth</h3>
-          <p>1%</p>
+          <p>2.4%</p>
         </div>
         <div class="stat-card">
           <i class="bx bx-info-circle"></i>
@@ -428,30 +573,93 @@
   <section class="contact" id="contact">
     <h2 class="heading">Contact <span>Me</span></h2>
 
-    <form action="https://formsubmit.co/eminem13981398@gmail.com" method="POST" id="contactForm">
-      <input type="text" name="_honey" style="display: none;">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="https://yourdomain.com/thanks.html">
+    <div class="contact-container">
+      <!-- Contact Info -->
+      <div class="contact-info">
+        <!-- <div class="info-item">
+          <i class='bx bx-map'></i>
+          <div>
+            <h3>Location</h3>
+            <p>Your City, Country</p>
+          </div>
+        </div> -->
 
-      <div class="input-group">
-        <div class="input-box">
-          <input type="text" name="name" placeholder="Name" required>
-          <input type="email" name="email" placeholder="Your email" required>
+        <div class="info-item">
+          <i class='bx bx-envelope'></i>
+          <div>
+            <h3>Email</h3>
+            <p>eminem13981398@gmail.com</p>
+          </div>
         </div>
 
-        <div class="input-box">
-          <input type="text" name="subject" placeholder="Subject" required>
+        <!-- <div class="info-item">
+          <i class='bx bx-phone'></i>
+          <div>
+            <h3>Phone</h3>
+            <p>+123 456 7890</p>
+          </div>
+        </div> -->
+
+        <div class="social-links">
+          <a href="https://instagram.com/xm5o_" class="social-icon"><i class='bx bxl-instagram'></i></a>
+          <a href="https://discord.com/users/1282747277206884436" class="social-icon"><i class='bx bxl-discord-alt'></i></a>
+          <a href="https://x.com/voixj1" class="social-icon"><i class='bx bxl-twitter'></i></a>
         </div>
       </div>
 
-      <div class="input-group-2">
-        <textarea name="message" cols="30" rows="10" placeholder="Your message" required></textarea>
-        <button type="submit" class="btn" id="submitBtn">
-          <span>Send Message</span>
-          <div class="loading-spinner" style="display: none;"></div>
-        </button>
-      </div>
-    </form>
+      <!-- Contact Form -->
+      <form action="https://formsubmit.co/eminem13981398@gmail.com" method="POST" id="contactForm">
+        <input type="text" name="_honey" style="display: none;">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="thanks.html">
+
+        <div class="input-group">
+          <div class="input-box">
+            <div class="form-control">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" placeholder="John Doe" required>
+              <small class="error-message"></small>
+            </div>
+
+            <div class="form-control">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="example@domain.com" required>
+              <small class="error-message"></small>
+            </div>
+          </div>
+
+          <div class="input-box">
+            <div class="form-control">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" placeholder="Project Inquiry" required>
+              <small class="error-message"></small>
+            </div>
+
+            <div class="form-control">
+              <label for="phone">Phone (optional)</label>
+              <input type="tel" id="phone" name="phone" placeholder="+1 234 567 8900">
+            </div>
+          </div>
+        </div>
+
+        <div class="input-group-2">
+          <div class="form-control">
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message" cols="30" rows="10" placeholder="Type your message here..."
+              required></textarea>
+            <small class="error-message"></small>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn" id="submitBtn">
+              <span>Send Message</span>
+              <i class='bx bx-send'></i>
+              <div class="loading-spinner"></div>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
 
     <!-- Success Message Modal -->
     <div id="successModal" class="modal">
@@ -460,6 +668,19 @@
         <i class='bx bx-check-circle success-icon'></i>
         <h3>Thank You!</h3>
         <p>Your message has been sent successfully.</p>
+        <p class="modal-info">I'll get back to you as soon as possible!</p>
+        <button class="btn modal-btn">OK</button>
+      </div>
+    </div>
+
+    <!-- Error Message Modal -->
+    <div id="errorModal" class="modal">
+      <div class="modal-content error">
+        <span class="close-modal">&times;</span>
+        <i class='bx bx-error-circle error-icon'></i>
+        <h3>Oops!</h3>
+        <p>Something went wrong. Please try again later.</p>
+        <button class="btn modal-btn">OK</button>
       </div>
     </div>
   </section>

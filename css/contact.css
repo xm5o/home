@@ -1,87 +1,139 @@
-/* Add these styles to your existing CSS */
+.contact {
+  background-color: var(--second-bg-color);
+  padding: 5rem 9% 3rem;
+}
+
+.contact h2 {
+  margin-bottom: 3rem;
+  color: var(--text-color);
+  text-align: center;
+}
+
+.contact-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Contact Info Styles */
+.contact-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding: 2rem;
+  background-color: var(--bg-color);
+  border-radius: 2rem;
+  border: 2px solid var(--main-color);
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.info-item i {
+  font-size: 2.5rem;
+  color: var(--main-color);
+  min-width: 2.5rem;
+}
+
+.info-item h3 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+.info-item p {
+  font-size: 1.6rem;
+  color: var(--text-color-light);
+}
+
+.social-links {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.5rem;
+  height: 4.5rem;
+  background-color: var(--bg-color);
+  border-radius: 50%;
+  border: 2px solid var(--main-color);
+  font-size: 2rem;
+  color: var(--main-color);
+  transition: 0.3s;
+}
+
+.social-icon:hover {
+  background-color: var(--main-color);
+  color: var(--bg-color);
+  transform: translateY(-5px);
+}
 
 /* Form Styles */
-.input-group input:focus,
-.input-group-2 textarea:focus {
-  border-color: var(--main-color);
-  box-shadow: 0 0 15px rgba(190, 171, 158, 0.3);
-}
-
-/* Loading Spinner */
-.loading-spinner {
-  width: 20px;
-  height: 20px;
-  border: 3px solid var(--bg-color);
-  border-top: 3px solid transparent;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin-left: 10px;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/* Modal Styles */
-.modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-  animation: fadeIn 0.3s ease;
-}
-
-.input-group-2 span{
-  color: var(--bg-color);
-}
-
-.modal-content {
-  position: relative;
-  background-color: var(--second-bg-color);
-  margin: 15% auto;
-  padding: 40px;
+.contact form {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding: 3rem;
+  background-color: var(--bg-color);
+  border-radius: 2rem;
   border: 2px solid var(--main-color);
-  border-radius: 15px;
-  width: 80%;
-  max-width: 500px;
-  text-align: center;
-  animation: slideIn 0.3s ease;
 }
 
-.close-modal {
-  position: absolute;
-  right: 20px;
-  top: 10px;
-  font-size: 28px;
-  cursor: pointer;
-  color: var(--main-color);
+.input-group {
+  display: flex;
+  gap: 2rem;
+  width: 100%;
 }
 
-.success-icon {
-  font-size: 50px;
-  color: var(--main-color);
-  margin-bottom: 20px;
+.input-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
-.modal h3 {
-  font-size: 24px;
-  margin-bottom: 10px;
+.form-control {
+  position: relative;
+  margin-bottom: 1rem;
 }
 
-.modal p {
-  font-size: 16px;
+.form-control label {
+  display: block;
+  font-size: 1.6rem;
   color: var(--text-color);
+  margin-bottom: 0.8rem;
+  text-align: left;
 }
 
-/* Form validation styles */
-.input-group input:invalid,
-.input-group-2 textarea:invalid {
-  border-color: #ff6b6b;
+.contact form .form-control input,
+.contact form .form-control textarea {
+  width: 100%;
+  padding: 1.5rem 2rem;
+  font-size: 1.6rem;
+  color: var(--text-color);
+  background-color: var(--second-bg-color);
+  border-radius: 1rem;
+  border: 2px solid transparent;
+  transition: 0.3s;
+  resize: none;
+}
+
+.contact form .form-control input:focus,
+.contact form .form-control textarea:focus {
+  border-color: var(--main-color);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
 }
 
 .error-message {
@@ -89,15 +141,162 @@
   font-size: 1.4rem;
   margin-top: 0.5rem;
   display: none;
+  text-align: left;
 }
 
-/* Button state styles */
-.btn:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
+.input-group-2 {
+  width: 100%;
 }
 
-.btn span {
-  display: inline-block;
-  vertical-align: middle;
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2rem;
+}
+
+/* Loading spinner */
+.loading-spinner {
+  display: none;
+  width: 2rem;
+  height: 2rem;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+  position: absolute;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal.show {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+}
+
+.modal-content {
+  background-color: var(--bg-color);
+  padding: 3rem;
+  border-radius: 2rem;
+  border: 2px solid var(--main-color);
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+  transform: scale(0.8);
+  transition: transform 0.3s ease;
+}
+
+.modal.show .modal-content {
+  transform: scale(1);
+}
+
+.modal-content.error {
+  border-color: #ff6b6b;
+}
+
+.close-modal {
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  font-size: 2.5rem;
+  cursor: pointer;
+  color: var(--text-color-light);
+  transition: 0.3s;
+}
+
+.close-modal:hover {
+  color: var(--main-color);
+}
+
+.success-icon, .error-icon {
+  font-size: 5rem;
+  color: var(--main-color);
+  margin-bottom: 1.5rem;
+}
+
+.error-icon {
+  color: #ff6b6b;
+}
+
+.modal-content h3 {
+  font-size: 2.5rem;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+}
+
+.modal-content p {
+  font-size: 1.6rem;
+  color: var(--text-color-light);
+  margin-bottom: 1.5rem;
+}
+
+.modal-info {
+  font-size: 1.4rem;
+  color: var(--text-color-light);
+  font-style: italic;
+}
+
+.modal-btn {
+  margin-top: 2rem;
+  padding: 1rem 3rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 991px) {
+  .contact-container {
+    flex-direction: column;
+  }
+  
+  .contact-info, .contact form {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .input-group {
+    flex-direction: column;
+  }
+  
+  .contact form {
+    padding: 2rem;
+  }
+  
+  .contact h2 {
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .contact {
+    padding: 5rem 5% 3rem;
+  }
+  
+  .form-actions {
+    justify-content: center;
+  }
+  
+  .social-links {
+    justify-content: center;
+  }
 }

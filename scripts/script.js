@@ -80,6 +80,36 @@ navbar.querySelectorAll("a").forEach(link => {
 //         : '<i class="bx bx-sun"></i>';
 // }
 
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize skill progress bars
+  const skillBars = document.querySelectorAll('.skill-progress');
+  skillBars.forEach(bar => {
+    const value = bar.getAttribute('data-value');
+    setTimeout(() => {
+      bar.style.width = value + '%';
+    }, 300);
+  });
+  
+  // Tab Navigation
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const tabContents = document.querySelectorAll('.tab-content');
+  
+  tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Remove active class from all buttons and contents
+      tabButtons.forEach(btn => btn.classList.remove('active'));
+      tabContents.forEach(content => content.classList.remove('active'));
+      
+      // Add active class to clicked button
+      button.classList.add('active');
+      
+      // Show corresponding content
+      const tabId = button.getAttribute('data-tab');
+      document.getElementById(tabId + '-tab').classList.add('active');
+    });
+  });
+});
+
 const skillBars = document.querySelectorAll('.skill-progress');
 const animateSkills = () => {
     skillBars.forEach(bar => {
