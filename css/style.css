@@ -1658,6 +1658,7 @@ section {
   font-size: 15px;
   border-radius: 30px;
   padding: 14px 24px;
+  margin-bottom: 8px;
   width: 100%;
   font-weight: 700;
   cursor: pointer;
