@@ -123,7 +123,8 @@
                 everyone
                 <span>(maybe)</span>. Favorite game is <span>Fortnite and Overwatch</span>.
               </p>
-              <p>I specialize in creating interactive web experiences, mobile applications projects with a focus on user engagement and clean code.</p>
+              <p>I specialize in creating interactive web experiences, mobile applications projects with a focus on user
+                engagement and clean code.</p>
             </div>
 
             <div class="personal-info">
@@ -156,19 +157,19 @@
                 <div class="skill-bar">
                   <div class="skill-info">
                     <span>Web Development</span>
-                    <span class="percent">85%</span>
+                    <span class="percent">65%</span>
                   </div>
                   <div class="skill-progress-bg">
-                    <div class="skill-progress" data-value="85"></div>
+                    <div class="skill-progress" data-value="65"></div>
                   </div>
                 </div>
                 <div class="skill-bar">
                   <div class="skill-info">
-                    <span>Mobile App Development</span>
-                    <span class="percent">15%</span>
+                    <span>Gaming</span>
+                    <span class="percent">35%</span>
                   </div>
                   <div class="skill-progress-bg">
-                    <div class="skill-progress" data-value="15"></div>
+                    <div class="skill-progress" data-value="35"></div>
                   </div>
                 </div>
               </div>
@@ -269,14 +270,14 @@
     <h2 class="heading">My Skills</h2>
 
     <div class="services-container">
-      <div class="service-box">
+      <!-- <div class="service-box">
         <div class="service-info">
           <i class="bx bxs-devices"></i>
           <h4>Mobile App Development</h4>
           <p>Beginning my journey in mobile app development. Creating small applications while learning the fundamentals
             and required programming languages for professional development.</p>
         </div>
-      </div>
+      </div> -->
 
       <div class="service-box">
         <div class="service-info">
@@ -341,7 +342,8 @@
           </div>
 
           <a href="https://xm5o.github.io/selina/" class="add-button" target="_blank">Visit Website</a>
-          <a href="https://discord.com/oauth2/authorize?client_id=1303374162533941331&permissions=8&integration_type=0&scope=bot" class="add-button" target="_blank">Invite to Server</a>
+          <a href="https://discord.com/oauth2/authorize?client_id=1303374162533941331&permissions=8&integration_type=0&scope=bot"
+            class="add-button" target="_blank">Invite to Server</a>
         </div>
       </div>
 
@@ -419,9 +421,9 @@
             </div>
           </div> -->
 
-          <!-- <a href="#" class="add-button" style="background: red; color: var(--text-color); cursor: not-allowed;">Coming Soon</a> -->
-        </div>
-      </div>
+      <!-- <a href="#" class="add-button" style="background: red; color: var(--text-color); cursor: not-allowed;">Coming Soon</a> -->
+    </div>
+    </div>
     </div>
     <!-- <div class="projects-filter">
         <button class="filter-btn active" data-filter="all">All</button>
@@ -524,7 +526,10 @@
 
   <!-- Community Hub Section -->
   <section class="discord-community" id="community">
-    <h2 class="heading">Community <span>Hub</span></h2>
+    <div class="community-header">
+      <h2 class="heading">Community <span>Hub</span></h2>
+      <p class="community-tagline">Join our growing community of gamers and friends</p>
+    </div>
 
     <div class="community-container">
       <div class="community-stats">
@@ -532,39 +537,150 @@
           <i class="bx bx-crown"></i>
           <h3>Server Owner</h3>
           <p>- X Đ -</p>
+          <div class="stat-badge online">Online</div>
         </div>
         <div class="stat-card">
           <i class="bx bx-group"></i>
           <h3>Total Members</h3>
-          <p>53</p>
+          <p id="memberCount">53</p>
+          <div class="stat-progress">
+            <div class="progress-bar" style="width: 53%;"></div>
+            <span>Goal: 100</span>
+          </div>
         </div>
         <div class="stat-card">
           <i class="bx bx-chat"></i>
           <h3>Active Discussions</h3>
-          <p>1243</p>
+          <p id="discussionCount">1243</p>
+          <div class="stat-badge hot">Active</div>
         </div>
         <div class="stat-card">
           <i class="bx bx-joystick-alt"></i>
           <h3>Gaming supported</h3>
           <p>Yes</p>
+          <div class="game-icons">
+            <i class="bx bxl-steam" title="Steam"></i>
+            <i class="bx bxl-discord-alt" title="Discord Gaming"></i>
+            <i class="bx bxs-joystick" title="Console Gaming"></i>
+          </div>
         </div>
         <div class="stat-card">
           <i class="bx bx-trending-up"></i>
           <h3>Weekly Growth</h3>
-          <p>2.4%</p>
+          <p id="growthRate">2.4%</p>
+          <div class="stat-trend">
+            <canvas id="growthChart"></canvas>
+          </div>
         </div>
         <div class="stat-card">
           <i class="bx bx-info-circle"></i>
           <h3>Server about</h3>
           <p>Just chatting, Gaming</p>
+          <div class="server-tags">
+            <span class="tag">Friendly</span>
+            <span class="tag">Active</span>
+            <span class="tag">Casual</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="community-features">
+        <div class="feature">
+          <i class="bx bx-shield"></i>
+          <h4>Safe Community</h4>
+          <p>Active moderation and respectful environment</p>
+        </div>
+        <div class="feature">
+          <i class="bx bx-calendar-event"></i>
+          <h4>Weekly Events</h4>
+          <p>Game nights, tournaments, and hangouts</p>
+        </div>
+        <div class="feature">
+          <i class="bx bx-user-voice"></i>
+          <h4>Voice Channels</h4>
+          <p>High-quality audio for gaming sessions</p>
+        </div>
+      </div>
+
+      <div class="community-preview">
+        <div class="preview-header">
+          <div class="preview-title">Chat Preview</div>
+          <div class="preview-status">
+            <!-- <span class="status-dot"></span>
+            <span class="status-text">5 online now</span> -->
+          </div>
+        </div>
+        <div class="chat-messages" id="chatPreview">
+          <div class="message">
+            <div class="message-avatar" style="background-color: #5865F2">XD</div>
+            <div class="message-content">
+              <div class="message-author">エックスディー</div>
+              <div class="message-text">Welcome to our community! Don't forget to check out our game night on Friday.
+              </div>
+              <div class="message-time">2:45 PM</div>
+            </div>
+          </div>
+          <div class="message">
+            <div class="message-avatar" style="background-color: #43B581">S</div>
+            <div class="message-content">
+              <div class="message-author">Sans</div>
+              <div class="message-text">I'll be there! Anyone want to team up?</div>
+              <div class="message-time">2:48 PM</div>
+            </div>
+          </div>
+          <div class="message">
+            <div class="message-avatar" style="background-color: #FAA61A">J</div>
+            <div class="message-content">
+              <div class="message-author">Jam</div>
+              <div class="message-text">Count me in! 🎮</div>
+              <div class="message-time">2:49 PM</div>
+            </div>
+          </div>
+          <div class="message typing">
+            <div class="message-avatar" style="background-color: #EB459E">K</div>
+            <div class="message-content">
+              <div class="typing-indicator">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="server-activity">
+        <h3 class="activity-title">Server Activity</h3>
+        <div class="activity-chart-container">
+          <canvas id="activityChart"></canvas>
+        </div>
+        <div class="activity-legend">
+          <div class="legend-item">
+            <span class="legend-color" style="background-color: rgba(88, 101, 242, 0.7)"></span>
+            <span class="legend-text">Messages</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-color" style="background-color: rgba(235, 69, 158, 0.7)"></span>
+            <span class="legend-text">Voice</span>
+          </div>
         </div>
       </div>
 
       <div class="community-join">
-        <a href="https://discord.gg/F8ekFRzRaN" target="_blank" class="discord-join-btn">
+        <a href="https://discord.gg/F8ekFRzRaN" target="_blank" class="discord-join-btn pulse-animation">
           <i class="bx bxl-discord-alt"></i>
           Join Our Discord
         </a>
+        <!-- <div class="join-stats">
+          <div class="join-stat">
+            <span class="join-count">12</span>
+            <span class="join-label">Joined today</span>
+          </div>
+          <div class="join-stat">
+            <span class="join-count">5</span>
+            <span class="join-label">Online now</span>
+          </div>
+        </div> -->
       </div>
     </div>
   </section>
@@ -602,7 +718,8 @@
 
         <div class="social-links">
           <a href="https://instagram.com/xm5o_" class="social-icon"><i class='bx bxl-instagram'></i></a>
-          <a href="https://discord.com/users/1282747277206884436" class="social-icon"><i class='bx bxl-discord-alt'></i></a>
+          <a href="https://discord.com/users/1282747277206884436" class="social-icon"><i
+              class='bx bxl-discord-alt'></i></a>
           <a href="https://x.com/voixj1" class="social-icon"><i class='bx bxl-twitter'></i></a>
         </div>
       </div>
