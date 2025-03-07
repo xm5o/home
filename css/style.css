@@ -1661,67 +1661,6 @@ section {
   margin: 2rem 0;
 }
 
-.feature {
-  background-color: var(--bg-color);
-  border-radius: 1.5rem;
-  padding: 3rem 2rem;
-  text-align: center;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  position: relative;
-  overflow: hidden;
-}
-
-.feature::before {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at center, rgba(88, 101, 242, 0.1), transparent 70%);
-  top: 0;
-  left: 0;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.feature:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-}
-
-.feature:hover::before {
-  opacity: 1;
-}
-
-.feature i {
-  font-size: 4.5rem;
-  color: var(--discord-color);
-  margin-bottom: 2rem;
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-.feature:hover i {
-  transform: translateY(-5px);
-  color: var(--main-color);
-}
-
-.feature h4 {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-  color: var(--text-color);
-  position: relative;
-}
-
-.feature p {
-  font-size: 1.5rem;
-  color: var(--text-color);
-  opacity: 0.8;
-  line-height: 1.6;
-  position: relative;
-}
-
 .community-preview {
   width: 100%;
   background-color: var(--bg-color);
