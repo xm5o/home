@@ -237,7 +237,7 @@ document.querySelectorAll('.filter-btn').forEach(button => {
     ctx.beginPath();
     
     const points = [
-      {x: 0, y: height * 0.95},
+      {x: 2, y: height * 0.95},
       {x: width * 0.2, y: height * 0.5},
       {x: width * 0.4, y: height * 0.6},
       {x: width * 0.6, y: height * 0.4},
@@ -316,24 +316,24 @@ document.querySelectorAll('.filter-btn').forEach(button => {
     
     // Message activity data (random)
     const messageData = [
-      height * 0.7,
-      height * 0.8,
-      height * 0.8,
-      height * 0.7,
+      height * 0.2,
+      height * 0.0,
+      height * 0.2,
+      height * 0.1,
       height * 0.4,
-      height * 0.4,
+      height * 0.5,
       height * 0.5
     ];
     
     // Voice activity data (random)
     const voiceData = [
-      height * 0.3,
-      height * 0.2,
-      height * 0.2,
-      height * 0.1,
-      height * 0.1,
-      height * 0.1,
-      height * 0.1
+      height * 0,
+      height * 0,
+      height * 0,
+      height * 0,
+      height * 0,
+      height * 0,
+      height * 0
     ];
     
     // Draw message activity
