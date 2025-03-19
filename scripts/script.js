@@ -237,11 +237,11 @@ document.querySelectorAll('.filter-btn').forEach(button => {
     ctx.beginPath();
     
     const points = [
-      {x: 2, y: height * 0.95},
-      {x: width * 0.2, y: height * 0.5},
-      {x: width * 0.4, y: height * 0.6},
-      {x: width * 0.6, y: height * 0.4},
-      {x: width * 0.8, y: height * 0.3},
+      {x: 2, y: height * 1.05},
+      {x: width * 0.3, y: height * 0.6},
+      {x: width * 0.5, y: height * 0.7},
+      {x: width * 0.7, y: height * 0.5},
+      {x: width * 0.9, y: height * 0.4},
       {x: width, y: height * 0.2}
     ];
     
@@ -305,7 +305,7 @@ document.querySelectorAll('.filter-btn').forEach(button => {
     }
     
     // Days labels
-    const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
     ctx.font = '10px Arial';
     ctx.textAlign = 'center';
