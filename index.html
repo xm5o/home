@@ -42,7 +42,7 @@
       <a href="#about">About</a>
       <a href="#services">Skills</a>
       <a href="#projects">Projects</a>
-      <a href="#community">Community</a>
+      <!-- <a href="#community">Community</a> -->
       <a href="#contact">Contact</a>
 
       <!-- <div class="mobile-language-toggle">
@@ -60,36 +60,56 @@
   <!-- Home Section -->
   <section class="home" id="home">
     <div class="home-content">
-      <h1>It's <span>- X D -</span></h1>
-      <h3>I'm a <span>Web Developer</span></h3>
-      <p>He/Him | Normal person love to code random things and developing projects</p>
+      <div class="hero-text">
+        <h1 class="gradient-heading">It's <span>- X D -</span></h1>
+        <div class="animated-titles">
+          <!-- <h3 class="typewriter">I'm a <span class="role-switch">Web Developer</span></h3> -->
+          <h3 class="typewriter">I'm a <span class="role-switch animated-role">Web Developer</span></h3>
+          <p class="tagline">He/Him | Creative developer building digital experiences</p>
+        </div>
 
-      <div class="social-icons">
-        <a href="https://youtube.com/@voixj" target="_blank">
-          <i class="bx bxl-youtube"></i>
-        </a>
-        <a href="https://instagram.com/xm5o_" target="_blank">
-          <i class="bx bxl-instagram"></i>
-        </a>
-        <a href="https://discord.com/users/1282747277206884436" target="_blank">
-          <i class="bx bxl-discord-alt"></i>
-        </a>
-        <a href="https://www.tiktok.com/@xm5o_" target="_blank">
-          <i class="bx bxl-tiktok"></i>
-        </a>
-        <a href="https://x.com/voixj1" target="_blank">
-          <i class="bx bxl-twitter"></i>
-        </a>
-      </div>
+        <div class="social-links">
+          <a href="https://youtube.com/@voixj" target="_blank" aria-label="YouTube" class="social-btn">
+            <i class="bx bxl-youtube"></i>
+            <span class="hover-bg"></span>
+          </a>
+          <a href="https://instagram.com/xm5o_" target="_blank" aria-label="Instagram" class="social-btn">
+            <i class="bx bxl-instagram"></i>
+            <span class="hover-bg"></span>
+          </a>
+          <a href="https://discord.com/users/1282747277206884436" target="_blank" aria-label="Discord"
+            class="social-btn">
+            <i class="bx bxl-discord-alt"></i>
+            <span class="hover-bg"></span>
+          </a>
+          <a href="https://www.tiktok.com/@xm5o_" target="_blank" aria-label="TikTok" class="social-btn">
+            <i class="bx bxl-tiktok"></i>
+            <span class="hover-bg"></span>
+          </a>
+          <a href="https://x.com/voixj1" target="_blank" aria-label="Twitter" class="social-btn">
+            <i class="bx bxl-twitter"></i>
+            <span class="hover-bg"></span>
+          </a>
+        </div>
 
-      <div class="btn-group">
-        <a href="https://discord.gg/F8ekFRzRaN" class="btn" target="_blank">My Discord Server</a>
-        <a href="#projects" class="btn">See My work</a>
+        <div class="cta-group">
+          <a href="https://discord.gg/WBQssXDfKJ" class="cta-btn discord-cta" target="_blank">
+            <i class="bx bxs-door-open"></i>
+            Join Community
+          </a>
+          <a href="#projects" class="cta-btn projects-cta">
+            <i class="bx bx-code-alt"></i>
+            View Projects
+          </a>
+        </div>
       </div>
     </div>
 
-    <div class="home-img">
-      <img src="assets/image.jpg" alt="Profile" loading="lazy">
+    <div class="hero-image">
+      <div class="image-wrapper">
+        <img src="assets/image.jpg" alt="Profile" loading="lazy" class="profile-img">
+        <div class="glow-effect"></div>
+      </div>
     </div>
   </section>
 
@@ -278,7 +298,7 @@
     <div class="section-header">
       <h2 class="heading" data-text="Skills">My Skills</h2>
     </div>
-    
+
 
     <div class="services-container">
       <div class="service-box">
@@ -339,8 +359,7 @@
 
       <div class="projects-grid">
         <!-- Selina Discord Bot -->
-        <!--
-        <div class="project-card" data-category="app">
+        <!-- <div class="project-card" data-category="app">
           <div class="project-img-container">
             <div class="project-img" style="background-image: url('./assets/selina.jpg');"></div>
             <div class="status-badge">Early access</div>
@@ -391,9 +410,7 @@
               </a>
             </div>
           </div>
-        </div>
-
-        -->
+        </div> -->
 
         <!-- Psycho Funkin -->
         <div class="project-card" data-category="game">
@@ -554,9 +571,59 @@
     </div>
   </section> -->
 
-  <section>
-    <iframe src="https://discord.com/widget?id=1312621353811050536&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
-  </section>
+  <!-- <section class="discord-widget">
+    <div class="widget-container">
+      <div class="custom-widget">
+        <div class="server-header">
+          <div class="server-icon-container">
+            <img src="" alt="Server Icon" class="server-icon" id="serverIcon">
+            <div class="boost-level" id="boostLevel">Level 0</div>
+          </div>
+          <div class="server-meta">
+            <h2 class="server-name" id="serverName">Loading Server...</h2>
+            <div class="server-status" id="serverStatus">
+              <span class="status-dot"></span>
+              <span class="status-text">Connecting...</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="server-stats">
+          <div class="stat-item online">
+            <i class="fas fa-signal"></i>
+            <div class="stat-content">
+              <span class="stat-value" id="onlineCount">0</span>
+              <span class="stat-label">Online</span>
+            </div>
+          </div>
+          <div class="stat-item members">
+            <i class="fas fa-users"></i>
+            <div class="stat-content">
+              <span class="stat-value" id="memberCount">0</span>
+              <span class="stat-label">Members</span>
+            </div>
+          </div>
+          <div class="stat-item channels">
+            <i class="fas fa-hashtag"></i>
+            <div class="stat-content">
+              <span class="stat-value" id="channelCount">0</span>
+              <span class="stat-label">Channels</span>
+            </div>
+          </div>
+        </div>
+
+        <a href="#" class="join-button" target="_blank" id="joinButton">
+          <i class="fab fa-discord"></i>
+          Join Server
+        </a>
+      </div>
+
+      <iframe class="discord-frame" src="https://discord.com/widget?id=1312621353811050536&theme=dark"
+        title="Discord Server Preview"
+        sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
+      </iframe>
+    </div>
+  </section> -->
 
   <!-- Contact Section -->
   <section class="contact" id="contact">
@@ -679,7 +746,7 @@
 
   <!-- Footer -->
   <footer class="footer">
-    <div class="social-icons">
+    <!-- <div class="social-icons">
       <a href="https://youtube.com/voixj" target="_blank">
         <i class="bx bxl-youtube"></i>
       </a>
@@ -695,10 +762,10 @@
       <a href="https://www.twitch.tv/xm5o_" target="_blank">
         <i class="bx bxl-twitch"></i>
       </a>
-    </div>
+    </div> -->
 
     <ul class="list">
-      <li><a href="#">FAQ</a></li>
+      <li><a href="#">Home</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#services">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
