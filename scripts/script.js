@@ -86,75 +86,75 @@ document.addEventListener('DOMContentLoaded', () => {
   let isDeleting = false;
 
   function typeEffect() {
-      const currentText = roles[currentRole];
-      
-      if (!isDeleting) {
-          roleElement.textContent = currentText.slice(0, charIndex++);
-          if (charIndex > currentText.length) {
-              isDeleting = true;
-              setTimeout(typeEffect, 2000);
-              return;
-          }
-      } else {
-          roleElement.textContent = currentText.slice(0, charIndex--);
-          if (charIndex === 0) {
-              isDeleting = false;
-              currentRole = (currentRole + 1) % roles.length;
-          }
-      }
+    const currentText = roles[currentRole];
 
-      setTimeout(typeEffect, isDeleting ? 50 : 150);
+    if (!isDeleting) {
+      roleElement.textContent = currentText.slice(0, charIndex++);
+      if (charIndex > currentText.length) {
+        isDeleting = true;
+        setTimeout(typeEffect, 2000);
+        return;
+      }
+    } else {
+      roleElement.textContent = currentText.slice(0, charIndex--);
+      if (charIndex === 0) {
+        isDeleting = false;
+        currentRole = (currentRole + 1) % roles.length;
+      }
+    }
+
+    setTimeout(typeEffect, isDeleting ? 50 : 150);
   }
   typeEffect();
 
   // Profile Image Hover Effect
   const profileImg = document.querySelector('.profile-img');
   profileImg.addEventListener('mousemove', (e) => {
-      const rect = profileImg.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      profileImg.style.transform = `
+    const rect = profileImg.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    profileImg.style.transform = `
           perspective(1000px)
-          rotateX(${(y - rect.height/2) / 8}deg)
-          rotateY(${-(x - rect.width/2) / 8}deg)
+          rotateX(${(y - rect.height / 2) / 8}deg)
+          rotateY(${-(x - rect.width / 2) / 8}deg)
       `;
   });
 
   profileImg.addEventListener('mouseleave', () => {
-      profileImg.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+    profileImg.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
   });
 
   // Social Links Particle Effect
   const socialLinks = document.querySelectorAll('.social-btn');
   socialLinks.forEach(link => {
-      link.addEventListener('mousemove', (e) => {
-          const particles = document.createElement('div');
-          particles.className = 'particle';
-          particles.style.left = `${e.offsetX}px`;
-          particles.style.top = `${e.offsetY}px`;
-          link.appendChild(particles);
-          
-          setTimeout(() => particles.remove(), 1000);
-      });
+    link.addEventListener('mousemove', (e) => {
+      const particles = document.createElement('div');
+      particles.className = 'particle';
+      particles.style.left = `${e.offsetX}px`;
+      particles.style.top = `${e.offsetY}px`;
+      link.appendChild(particles);
+
+      setTimeout(() => particles.remove(), 1000);
+    });
   });
 
   // Smooth Scroll to Projects
   document.querySelector('.projects-cta').addEventListener('click', (e) => {
-      e.preventDefault();
-      const projectsSection = document.querySelector('#projects');
-      projectsSection.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-      });
+    e.preventDefault();
+    const projectsSection = document.querySelector('#projects');
+    projectsSection.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
   });
 
   // Loading Animation Observer
   const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-          if (entry.isIntersecting) {
-              entry.target.classList.add('animate');
-          }
-      });
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate');
+      }
+    });
   }, { threshold: 0.1 });
 
   document.querySelectorAll('.home-content > *').forEach(el => observer.observe(el));
@@ -163,59 +163,59 @@ document.addEventListener('DOMContentLoaded', () => {
 // Background Particles
 class ParticleCanvas {
   constructor() {
-      this.canvas = document.createElement('canvas');
-      this.ctx = this.canvas.getContext('2d');
-      this.particles = [];
-      
-      this.init();
+    this.canvas = document.createElement('canvas');
+    this.ctx = this.canvas.getContext('2d');
+    this.particles = [];
+
+    this.init();
   }
 
   init() {
-      this.canvas.style.position = 'fixed';
-      this.canvas.style.top = '0';
-      this.canvas.style.left = '0';
-      this.canvas.style.zIndex = '-1';
-      document.body.appendChild(this.canvas);
-      
-      this.resize();
-      window.addEventListener('resize', this.resize.bind(this));
-      
-      for (let i = 0; i < 100; i++) {
-          this.particles.push({
-              x: Math.random() * this.width,
-              y: Math.random() * this.height,
-              radius: Math.random() * 2,
-              dx: (Math.random() - 0.5) * 0.5,
-              dy: (Math.random() - 0.5) * 0.5
-          });
-      }
-      
-      this.animate();
+    this.canvas.style.position = 'fixed';
+    this.canvas.style.top = '0';
+    this.canvas.style.left = '0';
+    this.canvas.style.zIndex = '-1';
+    document.body.appendChild(this.canvas);
+
+    this.resize();
+    window.addEventListener('resize', this.resize.bind(this));
+
+    for (let i = 0; i < 100; i++) {
+      this.particles.push({
+        x: Math.random() * this.width,
+        y: Math.random() * this.height,
+        radius: Math.random() * 2,
+        dx: (Math.random() - 0.5) * 0.5,
+        dy: (Math.random() - 0.5) * 0.5
+      });
+    }
+
+    this.animate();
   }
 
   resize() {
-      this.width = this.canvas.width = window.innerWidth;
-      this.height = this.canvas.height = window.innerHeight;
+    this.width = this.canvas.width = window.innerWidth;
+    this.height = this.canvas.height = window.innerHeight;
   }
 
   animate() {
-      this.ctx.clearRect(0, 0, this.width, this.height);
-      
-      this.particles.forEach(particle => {
-          this.ctx.beginPath();
-          this.ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-          this.ctx.fillStyle = `rgba(${window.getComputedStyle(document.documentElement)
-              .getPropertyValue('--main-color-rgb')}, 0.2)`;
-          this.ctx.fill();
-          
-          particle.x += particle.dx;
-          particle.y += particle.dy;
-          
-          if (particle.x < 0 || particle.x > this.width) particle.dx *= -1;
-          if (particle.y < 0 || particle.y > this.height) particle.dy *= -1;
-      });
-      
-      requestAnimationFrame(this.animate.bind(this));
+    this.ctx.clearRect(0, 0, this.width, this.height);
+
+    this.particles.forEach(particle => {
+      this.ctx.beginPath();
+      this.ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+      this.ctx.fillStyle = `rgba(${window.getComputedStyle(document.documentElement)
+        .getPropertyValue('--main-color-rgb')}, 0.2)`;
+      this.ctx.fill();
+
+      particle.x += particle.dx;
+      particle.y += particle.dy;
+
+      if (particle.x < 0 || particle.x > this.width) particle.dx *= -1;
+      if (particle.y < 0 || particle.y > this.height) particle.dy *= -1;
+    });
+
+    requestAnimationFrame(this.animate.bind(this));
   }
 }
 
@@ -267,19 +267,6 @@ const observer = new IntersectionObserver((entries) => {
 });
 
 document.querySelectorAll('.service-box, .skill-bar, .about-content').forEach(el => observer.observe(el));
-
-const contactForm = document.querySelector('.contact form');
-contactForm.onsubmit = (e) => {
-  e.preventDefault();
-
-  const successMsg = document.createElement('div');
-  successMsg.className = 'success-message';
-  successMsg.textContent = 'Message sent successfully!';
-  contactForm.appendChild(successMsg);
-
-  setTimeout(() => successMsg.remove(), 3000);
-  contactForm.reset();
-}
 
 document.addEventListener('DOMContentLoaded', function () {
   // Project filtering functionality
@@ -515,3 +502,92 @@ document.addEventListener('DOMContentLoaded', () => {
 // document.getElementById('serverIcon').addEventListener('mouseout', function () {
 //   this.style.transform = 'none';
 // });
+
+// Add interactive effects and animations
+document.addEventListener('DOMContentLoaded', function () {
+  // Animate elements on scroll
+  const animateOnScroll = () => {
+    const elements = document.querySelectorAll('.contact-card, .primary-contact');
+
+    elements.forEach(element => {
+      const elementTop = element.getBoundingClientRect().top;
+      const elementVisible = 150;
+
+      if (elementTop < window.innerHeight - elementVisible) {
+        element.style.opacity = '1';
+        element.style.transform = 'translateY(0)';
+      }
+    });
+  };
+
+  // Initialize elements
+  const elements = document.querySelectorAll('.contact-card, .primary-contact');
+  elements.forEach((element, index) => {
+    element.style.opacity = '0';
+    element.style.transform = 'translateY(30px)';
+    element.style.transition = `all 0.6s ease ${index * 0.1}s`;
+  });
+
+  // Add scroll listener
+  window.addEventListener('scroll', animateOnScroll);
+  animateOnScroll(); // Check on load
+
+  // Add click tracking
+  const discordBtn = document.querySelector('.discord-btn');
+  const socialLinks = document.querySelectorAll('.social-icon-link');
+
+  discordBtn.addEventListener('click', function () {
+    console.log('Discord contact initiated');
+  });
+
+  // Add hover effects to feature items
+  const featureItems = document.querySelectorAll('.feature-item');
+  featureItems.forEach(item => {
+    item.addEventListener('mouseenter', function () {
+      this.style.transform = 'translateY(-5px) scale(1.02)';
+    });
+
+    item.addEventListener('mouseleave', function () {
+      this.style.transform = 'translateY(0) scale(1)';
+    });
+  });
+
+  // Add particle effect on Discord button click
+  discordBtn.addEventListener('click', function (e) {
+    const rect = this.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const particle = document.createElement('div');
+    particle.style.cssText = `
+                    position: absolute;
+                    left: ${x}px;
+                    top: ${y}px;
+                    width: 6px;
+                    height: 6px;
+                    background: white;
+                    border-radius: 50%;
+                    pointer-events: none;
+                    animation: particle-float 1s forwards;
+                `;
+
+    this.appendChild(particle);
+    setTimeout(() => particle.remove(), 1000);
+  });
+
+  // Add CSS for particle animation
+  const style = document.createElement('style');
+  style.textContent = `
+                @keyframes particle-float {
+                    0% {
+                        transform: scale(1);
+                        opacity: 1;
+                    }
+                    100% {
+                        transform: translateY(-20px) scale(0);
+                        opacity: 0;
+                    }
+                }
+            `;
+  document.head.appendChild(style);
+});

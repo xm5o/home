@@ -76,15 +76,15 @@ html {
 }
 
 :root {
-  --bg-color: #0a0a0a;
-  --second-bg-color: #13110f;
+  --bg-color: #060606;
+  --second-bg-color: #232423;
   --text-color: #ffffff;
-  --main-color: #cdc1af;
-  --secondary-color: #716b60;
-  --accent-color: #716b60;
+  --main-color: #908f8f;
+  --secondary-color: #606060;
+  --accent-color: #a49c9e;
   --selina-color: #bc7f4c;
   --selina-hover-color: #fad0a3;
-  --main-color-rgb: 205,193,175;
+  --main-color-rgb: 144, 143, 143;
   --text-color-rgb: 255, 255, 255;
   --gradient: linear-gradient(135deg, var(--main-color), var(--secondary-color));
   --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -544,6 +544,162 @@ section {
   100% {
     transform: translateY(-20px) scale(0);
     opacity: 0
+  }
+}
+
+/* Visitor Counter Styles */
+.visitor-counter {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  background: rgba(var(--main-color-rgb), 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(var(--main-color-rgb), 0.3);
+  border-radius: 15px;
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  animation: slideInUp 1s ease-out;
+}
+
+.visitor-counter i {
+  font-size: 2.4rem;
+  color: var(--main-color);
+  /* animation: pulse 2s infinite; */
+}
+
+.counter-content h4 {
+  font-size: 1.4rem;
+  color: var(--text-color);
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+}
+
+.counter-number {
+  font-size: 2rem;
+  font-weight: 800;
+  background: var(--gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-family: 'Courier New', monospace;
+}
+
+.counter-stats {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  color: rgba(var(--text-color-rgb), 0.7);
+}
+
+.stat-item i {
+  font-size: 1.3rem;
+  color: var(--main-color);
+  animation: none;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes countUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.counter-number.animate {
+  animation: countUp 0.8s ease-out;
+}
+
+/* Database Status Indicator */
+.db-status {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #43B581;
+  box-shadow: 0 0 8px #43B581;
+  animation: blink 2s infinite;
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.db-status.error {
+  background: #ED4245;
+  box-shadow: 0 0 8px #ED4245;
+}
+
+@media (max-width: 768px) {
+  .home {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 12rem 6% 6rem;
+  }
+
+  .image-wrapper {
+    width: min(60vw, 300px);
+    margin-top: 4rem;
+  }
+
+  .visitor-counter {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    margin: 3rem auto 0;
+    max-width: 300px;
+  }
+
+  .counter-stats {
+    flex-direction: column;
+    gap: 0.8rem;
   }
 }
 
@@ -3478,69 +3634,4 @@ section {
 .animate-on-scroll.visible {
   opacity: 1;
   transform: translateY(0);
-}
-
-.faq-container {
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
-}
-
-.faq-item {
-  border-bottom: 1px solid #eee;
-}
-
-.faq-item:last-child {
-  border-bottom: none;
-}
-
-.faq-question {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.2rem 1.5rem;
-  cursor: pointer;
-  font-weight: 500;
-  color: #333;
-  transition: background-color 0.3s;
-}
-
-.faq-question:hover {
-  background-color: #f5f8ff;
-}
-
-.faq-question::after {
-  content: '+';
-  font-size: 1.5rem;
-  color: #555;
-  transition: transform 0.3s ease;
-}
-
-.faq-item.active .faq-question::after {
-  transform: rotate(45deg);
-}
-
-.faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease, padding 0.4s ease;
-  color: #666;
-  line-height: 1.6;
-}
-
-.faq-item.active .faq-answer {
-  max-height: 300px;
-  padding: 0 1.5rem 1.2rem;
-}
-
-@media (max-width: 600px) {
-  .faq-question {
-    padding: 1rem;
-    font-size: 0.95rem;
-  }
-
-  .faq-item.active .faq-answer {
-    padding: 0 1rem 1rem;
-  }
 }

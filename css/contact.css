@@ -1,302 +1,667 @@
-.contact {
-  background-color: var(--second-bg-color);
-  padding: 5rem 9% 3rem;
+:root {
+  --discord-color: #5865F2;
+  --discord-hover: #4752C4;
+  --discord-light: rgba(88, 101, 242, 0.2);
+  --success-color: #43B581;
+  --warning-color: #FAA61A;
+  --danger-color: #ED4245;
 }
 
-.contact h2 {
-  margin-bottom: 3rem;
-  color: var(--text-color);
+/* Animations */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes shimmer {
+
+  0%,
+  100% {
+    transform: translateX(-100%);
+  }
+
+  50% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Contact Section */
+.contact {
+  background-color: var(--second-bg-color);
+  padding: 10rem 12%;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact::before {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: var(--main-color);
+  opacity: 0.05;
+  top: -150px;
+  left: -150px;
+  z-index: 0;
+}
+
+.contact::after {
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: var(--discord-color);
+  opacity: 0.08;
+  bottom: -100px;
+  right: -100px;
+  z-index: 0;
+}
+
+.section-header {
   text-align: center;
+  margin-bottom: 5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.heading {
+  font-size: 5rem;
+  margin-bottom: 1.5rem;
+  display: inline-block;
+  background: linear-gradient(45deg, var(--text-color), var(--main-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  position: relative;
+  font-weight: 800;
+}
+
+.heading span {
+  background: linear-gradient(45deg, var(--main-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.heading::after {
+  content: "";
+  position: absolute;
+  width: 80px;
+  height: 4px;
+  background: var(--main-color);
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.contact-subtitle {
+  font-size: 1.8rem;
+  color: rgba(var(--text-color-rgb), 0.8);
+  margin-top: 1rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .contact-container {
-  display: flex;
-  justify-content: space-between;
-  gap: 3rem;
-  max-width: 1200px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 5rem;
+  max-width: 1400px;
   margin: 0 auto;
-}
-
-/* Contact Info Styles */
-.contact-info {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-  padding: 2rem;
-  background-color: var(--bg-color);
-  border-radius: 2rem;
-  border: 2px solid var(--main-color);
-}
-
-.info-item {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-.info-item i {
-  font-size: 2.5rem;
-  color: var(--main-color);
-  min-width: 2.5rem;
-}
-
-.info-item h3 {
-  font-size: 1.8rem;
-  font-weight: 600;
-  color: var(--text-color);
-  margin-bottom: 0.5rem;
-}
-
-.info-item p {
-  font-size: 1.6rem;
-  color: var(--text-color-light);
-}
-
-.social-links {
-  display: flex;
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.social-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 4.5rem;
-  height: 4.5rem;
-  background-color: var(--bg-color);
-  border-radius: 50%;
-  border: 2px solid var(--main-color);
-  font-size: 2rem;
-  color: var(--main-color);
-  transition: 0.3s;
-}
-
-.social-icon:hover {
-  background-color: var(--main-color);
-  color: var(--bg-color);
-  transform: translateY(-5px);
-}
-
-/* Form Styles */
-.contact form {
-  flex: 2;
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-  padding: 3rem;
-  background-color: var(--bg-color);
-  border-radius: 2rem;
-  border: 2px solid var(--main-color);
-}
-
-.input-group {
-  display: flex;
-  gap: 2rem;
-  width: 100%;
-}
-
-.input-box {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.form-control {
   position: relative;
-  margin-bottom: 1rem;
+  z-index: 1;
 }
 
-.form-control label {
-  display: block;
-  font-size: 1.6rem;
-  color: var(--text-color);
-  margin-bottom: 0.8rem;
-  text-align: left;
+/* Primary Discord Section */
+.primary-contact {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 2rem;
+  padding: 4rem;
+  border: 2px solid rgba(var(--main-color-rgb), 0.2);
+  position: relative;
+  overflow: hidden;
+  animation: slideUpFade 0.8s ease;
+  backdrop-filter: blur(10px);
 }
 
-.contact form .form-control input,
-.contact form .form-control textarea {
-  width: 100%;
-  padding: 1.5rem 2rem;
-  font-size: 1.6rem;
-  color: var(--text-color);
-  background-color: var(--second-bg-color);
-  border-radius: 1rem;
-  border: 2px solid transparent;
-  transition: 0.3s;
-  resize: none;
-}
-
-.contact form .form-control input:focus,
-.contact form .form-control textarea:focus {
-  border-color: var(--main-color);
-  box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
-}
-
-.error-message {
-  color: #ff6b6b;
-  font-size: 1.4rem;
-  margin-top: 0.5rem;
-  display: none;
-  text-align: left;
-}
-
-.input-group-2 {
-  width: 100%;
-}
-
-.form-actions {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 2rem;
-}
-
-/* Loading spinner */
-.loading-spinner {
-  display: none;
-  width: 2rem;
-  height: 2rem;
-  border: 3px solid rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
-  border-top-color: #fff;
-  animation: spin 1s ease-in-out infinite;
+.primary-contact::before {
+  content: '';
   position: absolute;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Modal Styles */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
   top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(5px);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg,
+      rgba(var(--discord-color), 0.1),
+      rgba(var(--main-color-rgb), 0.05),
+      transparent);
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.6s ease;
+  border-radius: 2rem;
 }
 
-.modal.show {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.primary-contact:hover::before {
   opacity: 1;
 }
 
-.modal-content {
-  background-color: var(--bg-color);
-  padding: 3rem;
-  border-radius: 2rem;
-  border: 2px solid var(--main-color);
-  max-width: 500px;
-  width: 90%;
-  text-align: center;
-  position: relative;
-  transform: scale(0.8);
-  transition: transform 0.3s ease;
-}
-
-.modal.show .modal-content {
-  transform: scale(1);
-}
-
-.modal-content.error {
-  border-color: #ff6b6b;
-}
-
-.close-modal {
+.primary-contact::after {
+  content: '';
   position: absolute;
-  top: 1.5rem;
-  right: 2rem;
-  font-size: 2.5rem;
-  cursor: pointer;
-  color: var(--text-color-light);
-  transition: 0.3s;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg,
+      transparent,
+      rgba(255, 255, 255, 0.03),
+      transparent);
+  transform: rotate(45deg);
+  animation: shimmer 4s infinite;
+  pointer-events: none;
 }
 
-.close-modal:hover {
-  color: var(--main-color);
+.contact-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 2;
 }
 
-.success-icon, .error-icon {
+.discord-icon-main {
   font-size: 5rem;
-  color: var(--main-color);
+  color: var(--discord-color);
   margin-bottom: 1.5rem;
+  display: block;
+  animation: float 3s ease-in-out infinite;
 }
 
-.error-icon {
-  color: #ff6b6b;
-}
-
-.modal-content h3 {
-  font-size: 2.5rem;
-  color: var(--text-color);
+.primary-title {
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(45deg, var(--discord-color), var(--main-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
   margin-bottom: 1rem;
 }
 
-.modal-content p {
-  font-size: 1.6rem;
-  color: var(--text-color-light);
-  margin-bottom: 1.5rem;
+.primary-subtitle {
+  font-size: 1.8rem;
+  color: rgba(var(--text-color-rgb), 0.8);
+  margin-bottom: 2rem;
 }
 
-.modal-info {
+.discord-info-card {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  margin-bottom: 3rem;
+  border: 1px solid rgba(var(--discord-color), 0.2);
+  position: relative;
+  z-index: 2;
+}
+
+.discord-username {
+  font-size: 2rem;
+  color: var(--discord-color);
+  font-weight: 700;
+  /* margin-bottom: 1rem; */
+  text-align: center;
+}
+
+.discord-id {
   font-size: 1.4rem;
-  color: var(--text-color-light);
-  font-style: italic;
+  color: rgba(var(--text-color-rgb), 0.7);
+  font-family: 'Courier New', monospace;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 0.8rem 1.5rem;
+  border-radius: 0.8rem;
+  display: inline-block;
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.modal-btn {
-  margin-top: 2rem;
-  padding: 1rem 3rem;
+.discord-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 2;
 }
 
-/* Responsive Styles */
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+  border: 1px solid rgba(var(--main-color-rgb), 0.1);
+  transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+  transform: translateY(-3px);
+  background: rgba(var(--main-color-rgb), 0.1);
+  border-color: var(--main-color);
+}
+
+.feature-item i {
+  font-size: 2rem;
+  color: var(--main-color);
+  min-width: 2rem;
+}
+
+.feature-text {
+  font-size: 1.4rem;
+  color: var(--text-color);
+}
+
+.discord-cta {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.discord-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 3rem;
+  background: linear-gradient(45deg, var(--discord-color), var(--discord-hover));
+  color: white;
+  border-radius: 1.2rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(var(--discord-color), 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.discord-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.discord-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(var(--discord-color), 0.4);
+}
+
+.discord-btn:hover::before {
+  left: 100%;
+}
+
+.discord-btn i {
+  font-size: 2rem;
+}
+
+/* Secondary Contact Options */
+.secondary-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.contact-card {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  border: 2px solid rgba(var(--main-color-rgb), 0.2);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.contact-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--gradient);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--main-color);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.contact-card:hover::before {
+  transform: scaleX(1);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.card-icon {
+  font-size: 2.5rem;
+  color: var(--main-color);
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(var(--main-color-rgb), 0.1);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  /* transform: translateX(-50%); */
+}
+
+.contact-card:hover .card-icon {
+  background: var(--main-color);
+  color: var(--bg-color);
+  transform: scale(1.1);
+}
+
+.card-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.social-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+  border: 1px solid rgba(var(--main-color-rgb), 0.1);
+  transition: all 0.3s ease;
+}
+
+.social-item:hover {
+  transform: translateY(-3px);
+  background: var(--main-color);
+  border-color: var(--main-color);
+}
+
+.social-item:hover .social-icon-link {
+  color: var(--bg-color);
+}
+
+.social-item:hover .social-label {
+  color: var(--bg-color);
+}
+
+.social-icon-link {
+  font-size: 2.5rem;
+  color: var(--main-color);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.social-label {
+  font-size: 1.3rem;
+  color: rgba(var(--text-color-rgb), 0.8);
+  font-weight: 500;
+}
+
+.email-section {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(var(--main-color-rgb), 0.2);
+}
+
+.email-text {
+  font-size: 1.5rem;
+  color: rgba(var(--text-color-rgb), 0.7);
+  margin-bottom: 1rem;
+}
+
+.email-link {
+  color: var(--main-color);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.6rem;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.email-link:hover {
+  color: var(--discord-color);
+}
+
+.email-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -3px;
+  left: 0;
+  background: var(--main-color);
+  transition: width 0.3s ease;
+}
+
+.email-link:hover::after {
+  width: 100%;
+}
+
+.response-notice {
+  background: linear-gradient(135deg,
+      rgba(var(--success-color), 0.1),
+      rgba(var(--main-color-rgb), 0.05));
+  border: 1px solid rgba(var(--success-color), 0.2);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.response-notice::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--success-color), var(--main-color));
+}
+
+.notice-icon {
+  font-size: 3rem;
+  color: var(--success-color);
+  margin-bottom: 1rem;
+  display: block;
+  animation: pulse 2s infinite;
+}
+
+.notice-text {
+  color: var(--text-color);
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .contact {
+    padding: 8rem 8%;
+  }
+
+  .contact-container {
+    gap: 4rem;
+  }
+}
+
 @media (max-width: 991px) {
   .contact-container {
-    flex-direction: column;
+    grid-template-columns: 1fr;
+    gap: 3rem;
   }
-  
-  .contact-info, .contact form {
-    width: 100%;
+
+  .heading {
+    font-size: 4rem;
+  }
+
+  .primary-contact {
+    padding: 3rem;
   }
 }
 
 @media (max-width: 768px) {
-  .input-group {
-    flex-direction: column;
+  .contact {
+    padding: 6rem 5%;
   }
-  
-  .contact form {
-    padding: 2rem;
+
+  .heading {
+    font-size: 3.5rem;
   }
-  
-  .contact h2 {
-    margin-bottom: 2rem;
+
+  .primary-title {
+    font-size: 2.5rem;
+  }
+
+  .primary-subtitle {
+    font-size: 1.6rem;
+  }
+
+  .discord-features {
+    grid-template-columns: 1fr;
+  }
+
+  .social-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .discord-btn {
+    padding: 1.2rem 2.5rem;
+    font-size: 1.6rem;
   }
 }
 
-@media (max-width: 450px) {
-  .contact {
-    padding: 5rem 5% 3rem;
+@media (max-width: 480px) {
+  .heading {
+    font-size: 3rem;
   }
-  
-  .form-actions {
-    justify-content: center;
+
+  .primary-contact {
+    padding: 2rem;
   }
-  
-  .social-links {
-    justify-content: center;
+
+  .contact-card {
+    padding: 2rem;
+  }
+
+  .social-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .discord-btn {
+    padding: 1rem 2rem;
+    font-size: 1.4rem;
+  }
+}
+
+/* Accessibility */
+.discord-btn:focus,
+.social-icon-link:focus,
+.email-link:focus {
+  outline: 2px solid var(--main-color);
+  outline-offset: 2px;
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
