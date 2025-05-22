@@ -3,54 +3,608 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Page Not Found</title>
+    <title>404 - Lost in the Void</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-bg: #000000;
+            --surface-1: rgba(8, 8, 8, 0.95);
+            --surface-2: rgba(16, 16, 16, 0.8);
+            --text-primary: #ffffff;
+            --text-secondary: #666666;
+            --accent: rgba(255, 255, 255, 0.02);
+            --glow: rgba(255, 255, 255, 0.05);
+            --border: rgba(32, 32, 32, 0.5);
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI Variable', 'Segoe UI', system-ui, sans-serif;
+            background: var(--primary-bg);
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-            text-align: center;
+            color: var(--text-primary);
+            overflow: hidden;
+            position: relative;
+            cursor: default;
+            font-optical-sizing: auto;
+            font-synthesis: none;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
+
+        /* Ultra-sophisticated background system */
+        .bg-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .bg-layer::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(1200px ellipse at var(--cursor-x, 50%) var(--cursor-y, 50%), 
+                    rgba(4, 4, 4, 0.6) 0%, 
+                    transparent 60%),
+                conic-gradient(from 0deg at 25% 25%, 
+                    transparent 0deg, 
+                    rgba(2, 2, 2, 0.4) 45deg, 
+                    transparent 90deg),
+                radial-gradient(circle at 75% 75%, 
+                    rgba(6, 6, 6, 0.3) 0%, 
+                    transparent 50%);
+            animation: backgroundFlow 25s ease-in-out infinite;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes backgroundFlow {
+            0%, 100% { 
+                opacity: 0.4;
+                filter: blur(0px);
+            }
+            25% { 
+                opacity: 0.7;
+                filter: blur(1px);
+            }
+            50% { 
+                opacity: 0.5;
+                filter: blur(0.5px);
+            }
+            75% { 
+                opacity: 0.8;
+                filter: blur(1.5px);
+            }
+        }
+
+        /* Advanced grain/noise system */
+        .bg-layer::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                repeating-conic-gradient(from 0deg at 1px 1px, 
+                    transparent 0deg 87deg, 
+                    rgba(255,255,255,0.003) 87deg 90deg),
+                repeating-linear-gradient(0deg, 
+                    transparent 0px 2px, 
+                    rgba(255,255,255,0.001) 2px 4px);
+            background-size: 32px 32px, 1px 1px;
+            animation: grainFlow 12s linear infinite;
+            mix-blend-mode: overlay;
+        }
+
+        @keyframes grainFlow {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(-1px, 1px) rotate(0.1deg); }
+            50% { transform: translate(1px, -1px) rotate(-0.1deg); }
+            75% { transform: translate(-1px, -1px) rotate(0.05deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
+        }
+
+        /* Floating particles system */
+        .particles {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.015);
+            border-radius: 50%;
+            animation: particleFloat 20s linear infinite;
+        }
+
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 25s; }
+        .particle:nth-child(2) { left: 20%; animation-delay: -5s; animation-duration: 30s; }
+        .particle:nth-child(3) { left: 30%; animation-delay: -10s; animation-duration: 20s; }
+        .particle:nth-child(4) { left: 40%; animation-delay: -15s; animation-duration: 35s; }
+        .particle:nth-child(5) { left: 50%; animation-delay: -20s; animation-duration: 25s; }
+        .particle:nth-child(6) { left: 60%; animation-delay: -25s; animation-duration: 30s; }
+        .particle:nth-child(7) { left: 70%; animation-delay: -30s; animation-duration: 22s; }
+        .particle:nth-child(8) { left: 80%; animation-delay: -35s; animation-duration: 28s; }
+        .particle:nth-child(9) { left: 90%; animation-delay: -40s; animation-duration: 32s; }
+
+        @keyframes particleFloat {
+            0% { 
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+                transform: translateY(90vh) scale(1);
+            }
+            90% {
+                opacity: 1;
+                transform: translateY(10vh) scale(1);
+            }
+            100% { 
+                transform: translateY(-10vh) scale(0);
+                opacity: 0;
+            }
+        }
+
+        /* Main container with enhanced entrance */
         .error-container {
-            background-color: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            max-width: 700px;
+            width: 95%;
+            padding: 0 24px;
+            animation: containerEntrance 2s cubic-bezier(0.2, 0, 0.2, 1);
         }
+
+        @keyframes containerEntrance {
+            0% {
+                opacity: 0;
+                transform: translateY(80px) scale(0.85);
+                filter: blur(20px) brightness(0.5);
+            }
+            40% {
+                opacity: 0.6;
+                transform: translateY(30px) scale(0.92);
+                filter: blur(8px) brightness(0.7);
+            }
+            70% {
+                opacity: 0.9;
+                transform: translateY(10px) scale(0.98);
+                filter: blur(2px) brightness(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                filter: blur(0) brightness(1);
+            }
+        }
+
+        /* Ultra-refined 404 number */
         .error-code {
-            font-size: 100px;
-            color: #ff6b6b;
-            margin-bottom: 20px;
+            font-size: clamp(160px, 30vw, 360px);
+            font-weight: 950;
+            color: var(--text-primary);
+            margin-bottom: 40px;
+            letter-spacing: -0.12em;
+            line-height: 0.75;
+            position: relative;
+            font-variant-numeric: tabular-nums;
+            text-shadow: 0 0 100px rgba(255, 255, 255, 0.02);
+            animation: codePresence 5s ease-in-out infinite alternate;
         }
-        .error-message {
-            font-size: 24px;
-            color: #333;
-            margin-bottom: 20px;
+
+        @keyframes codePresence {
+            0% { 
+                opacity: 0.88;
+                text-shadow: 0 0 100px rgba(255, 255, 255, 0.02);
+                transform: scale(1) rotateX(0deg);
+            }
+            100% { 
+                opacity: 1;
+                text-shadow: 0 0 140px rgba(255, 255, 255, 0.06);
+                transform: scale(1.008) rotateX(0.2deg);
+            }
         }
-        .back-link {
-            display: inline-block;
-            background-color: #007bff;
-            color: white;
-            padding: 10px 20px;
+
+        /* Layered depth effect for 404 */
+        .error-code::before,
+        .error-code::after {
+            content: '404';
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            animation: layerFloat 8s ease-in-out infinite;
+        }
+
+        .error-code::before {
+            color: rgba(255, 255, 255, 0.008);
+            transform: scale(1.02);
+            animation-delay: -1s;
+        }
+
+        .error-code::after {
+            color: rgba(255, 255, 255, 0.004);
+            transform: scale(1.04);
+            animation-delay: -2s;
+        }
+
+        @keyframes layerFloat {
+            0%, 100% { 
+                transform: translate(0, 0) scale(1.02) rotateZ(0deg); 
+                opacity: 0.6;
+            }
+            25% { 
+                transform: translate(1px, -1px) scale(1.025) rotateZ(0.1deg); 
+                opacity: 0.8;
+            }
+            50% { 
+                transform: translate(-1px, 1px) scale(1.015) rotateZ(-0.1deg); 
+                opacity: 0.4;
+            }
+            75% { 
+                transform: translate(1px, 1px) scale(1.03) rotateZ(0.05deg); 
+                opacity: 0.7;
+            }
+        }
+
+        /* Enhanced typography */
+        .error-title {
+            font-size: clamp(36px, 7vw, 56px);
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 24px;
+            letter-spacing: -0.04em;
+            line-height: 1.05;
+            opacity: 0.96;
+            animation: titleReveal 1.5s cubic-bezier(0.2, 0, 0.2, 1) 0.4s both;
+            font-feature-settings: 'kern' 1, 'liga' 1;
+        }
+
+        @keyframes titleReveal {
+            0% {
+                opacity: 0;
+                transform: translateY(30px) rotateX(15deg);
+                filter: blur(5px);
+            }
+            100% {
+                opacity: 0.96;
+                transform: translateY(0) rotateX(0deg);
+                filter: blur(0);
+            }
+        }
+
+        .error-subtitle {
+            font-size: clamp(18px, 3vw, 22px);
+            color: var(--text-secondary);
+            margin-bottom: 64px;
+            line-height: 1.65;
+            font-weight: 450;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.92;
+            animation: subtitleReveal 1.5s cubic-bezier(0.2, 0, 0.2, 1) 0.7s both;
+            font-feature-settings: 'kern' 1;
+        }
+
+        @keyframes subtitleReveal {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+                filter: blur(3px);
+            }
+            100% {
+                opacity: 0.92;
+                transform: translateY(0);
+                filter: blur(0);
+            }
+        }
+
+        /* Premium button design */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            background: var(--surface-1);
+            backdrop-filter: blur(40px) saturate(1.2);
+            color: var(--text-primary);
+            padding: 20px 40px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
             text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
+            font-weight: 650;
+            font-size: 17px;
+            min-width: 180px;
+            position: relative;
+            overflow: hidden;
+            animation: buttonReveal 1.5s cubic-bezier(0.2, 0, 0.2, 1) 1s both;
+            box-shadow: 
+                0 12px 40px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.02);
+            transition: all 0.5s cubic-bezier(0.2, 0, 0.2, 1);
+            font-feature-settings: 'kern' 1;
         }
-        .back-link:hover {
-            background-color: #0056b3;
+
+        @keyframes buttonReveal {
+            0% {
+                opacity: 0;
+                transform: translateY(15px) scale(0.95);
+                filter: blur(2px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                filter: blur(0);
+            }
+        }
+
+        /* Advanced button interactions */
+        .back-button::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, 
+                transparent 0%, 
+                rgba(255, 255, 255, 0.03) 45%, 
+                rgba(255, 255, 255, 0.06) 50%,
+                rgba(255, 255, 255, 0.03) 55%,
+                transparent 100%);
+            transform: translateX(-100%);
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .back-button::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--surface-2);
+            opacity: 0;
+            transition: opacity 0.5s cubic-bezier(0.2, 0, 0.2, 1);
+        }
+
+        .back-button:hover::before {
+            transform: translateX(100%);
+        }
+
+        .back-button:hover::after {
+            opacity: 1;
+        }
+
+        .back-button:hover {
+            transform: translateY(-4px) scale(1.02);
+            border-color: rgba(48, 48, 48, 0.8);
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.04);
+        }
+
+        .back-button:active {
+            transform: translateY(-2px) scale(1.01);
+            box-shadow: 
+                0 8px 30px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.02);
+            transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .arrow-icon {
+            width: 22px;
+            height: 22px;
+            stroke-width: 2.8;
+            transition: transform 0.5s cubic-bezier(0.2, 0, 0.2, 1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .back-button:hover .arrow-icon {
+            transform: translateX(-6px) scale(1.1);
+        }
+
+        /* Responsive refinements */
+        @media (max-width: 768px) {
+            .error-container {
+                padding: 0 20px;
+            }
+            
+            .error-subtitle {
+                font-size: 19px;
+                margin-bottom: 56px;
+                max-width: 380px;
+            }
+            
+            .back-button {
+                padding: 18px 36px;
+                font-size: 16px;
+                min-width: 160px;
+                gap: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .error-container {
+                padding: 0 16px;
+            }
+            
+            .error-subtitle {
+                font-size: 17px;
+                margin-bottom: 48px;
+                line-height: 1.6;
+            }
+            
+            .back-button {
+                padding: 16px 32px;
+                font-size: 15px;
+                gap: 10px;
+            }
+            
+            .arrow-icon {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        /* Enhanced accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        @media (prefers-contrast: high) {
+            :root {
+                --text-primary: #ffffff;
+                --text-secondary: #cccccc;
+                --border: rgba(128, 128, 128, 0.8);
+            }
+            
+            .back-button {
+                border-width: 2px;
+                background: #1a1a1a;
+            }
+        }
+
+        /* Focus states */
+        .back-button:focus-visible {
+            outline: 2px solid rgba(255, 255, 255, 0.6);
+            outline-offset: 4px;
         }
     </style>
 </head>
 <body>
-    <div class="error-container">
-        <div class="error-code">404</div>
-        <div class="error-message">Oops! Page Not Found</div>
-        <p>The page you are looking for might have been removed or is temporarily unavailable.</p>
-        <a href="index.html" class="back-link">Go to Homepage</a>
+    <div class="bg-layer"></div>
+    
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
     </div>
+
+    <main class="error-container">
+        <div class="error-code" aria-label="404 Error">404</div>
+        <h1 class="error-title">Lost in the Void</h1>
+        <p class="error-subtitle">
+            This page has drifted beyond the digital horizon. Let's navigate you back to familiar territory.
+        </p>
+        
+        <a href="javascript:history.back()" 
+           class="back-button" 
+           role="button"
+           aria-label="Go back to previous page">
+            <svg class="arrow-icon" 
+                 fill="none" 
+                 stroke="currentColor" 
+                 viewBox="0 0 24 24"
+                 aria-hidden="true">
+                <path stroke-linecap="round" 
+                      stroke-linejoin="round" 
+                      d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+            </svg>
+            <span>Go Back</span>
+        </a>
+    </main>
+
+    <script>
+        // Ultra-smooth cursor tracking
+        let cursorX = 50;
+        let cursorY = 50;
+        let targetX = 50;
+        let targetY = 50;
+
+        function updateCursor() {
+            cursorX += (targetX - cursorX) * 0.1;
+            cursorY += (targetY - cursorY) * 0.1;
+            
+            document.documentElement.style.setProperty('--cursor-x', cursorX + '%');
+            document.documentElement.style.setProperty('--cursor-y', cursorY + '%');
+            
+            requestAnimationFrame(updateCursor);
+        }
+
+        document.addEventListener('mousemove', (e) => {
+            targetX = (e.clientX / window.innerWidth) * 100;
+            targetY = (e.clientY / window.innerHeight) * 100;
+        });
+
+        updateCursor();
+
+        // Enhanced keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            const button = document.querySelector('.back-button');
+            
+            switch(e.key) {
+                case 'Enter':
+                case ' ':
+                    if (document.activeElement === button) {
+                        e.preventDefault();
+                        button.click();
+                    }
+                    break;
+                case 'Escape':
+                case 'Backspace':
+                    if (e.target === document.body) {
+                        e.preventDefault();
+                        history.back();
+                    }
+                    break;
+                case 'Tab':
+                    if (!document.activeElement.classList.contains('back-button')) {
+                        button.focus();
+                    }
+                    break;
+            }
+        });
+
+        // Preload optimization
+        window.addEventListener('load', () => {
+            document.body.style.visibility = 'visible';
+            
+            // Add subtle page transition
+            document.body.style.transition = 'opacity 0.3s ease-out';
+            document.body.style.opacity = '1';
+        });
+
+        // Performance monitoring
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(() => {
+                // Optimize animations based on device performance
+                const isLowEnd = navigator.hardwareConcurrency < 4;
+                if (isLowEnd) {
+                    document.body.classList.add('reduced-effects');
+                }
+            });
+        }
+
+        // Error handling
+        window.addEventListener('error', (e) => {
+            console.warn('404 page: Non-critical error occurred');
+        });
+    </script>
 </body>
 </html>
