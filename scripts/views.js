@@ -7,7 +7,6 @@ const firebaseConfig = {
   appId: "1:204951222864:web:f8c2fb4e00f39896636f55"
 };
 
-// Multiple IP services for reliability
 const IP_SERVICES = [
   'https://ipapi.co/json/',
   'https://api.ipify.org?format=json',
@@ -40,16 +39,12 @@ class UniqueVisitorTracker {
       this.geoDocRef = firestoreModule.doc(this.db, 'geo_stats', 'countries');
       this.ipDocRef = firestoreModule.collection(this.db, 'unique_visitors');
 
-      // Generate device fingerprint for extra uniqueness
       this.deviceFingerprint = this.generateDeviceFingerprint();
       
-      // Load cached view count from localStorage
       this.loadCachedViewCount();
       
-      // Get user IP and process visit
       await this.processUniqueVisit();
       
-      // Start real-time updates
       this.startRealTimeUpdates();
       
     } catch (error) {
@@ -59,7 +54,6 @@ class UniqueVisitorTracker {
   }
 
   generateDeviceFingerprint() {
-    // Create a unique device fingerprint using browser characteristics
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
     ctx.textBaseline = 'top';
@@ -76,19 +70,17 @@ class UniqueVisitorTracker {
       navigator.deviceMemory || 'unknown'
     ].join('|');
     
-    // Create a hash from the fingerprint
     let hash = 0;
     for (let i = 0; i < fingerprint.length; i++) {
       const char = fingerprint.charCodeAt(i);
       hash = ((hash << 5) - hash) + char;
-      hash = hash & hash; // Convert to 32-bit integer
+      hash = hash & hash;
     }
     
     return Math.abs(hash).toString(36);
   }
 
   async getUserIP() {
-    // Try multiple IP services
     for (const service of IP_SERVICES) {
       try {
         const response = await fetch(service, { 
@@ -99,7 +91,6 @@ class UniqueVisitorTracker {
         if (!response.ok) continue;
         const data = await response.json();
         
-        // Extract IP from different service formats
         if (service.includes('ipapi.co')) {
           return {
             ip: data.ip,
@@ -121,7 +112,6 @@ class UniqueVisitorTracker {
       }
     }
     
-    // Fallback to device fingerprint if all IP services fail
     return { 
       ip: `fingerprint_${this.deviceFingerprint}`, 
       country: 'Unknown', 
@@ -133,7 +123,6 @@ class UniqueVisitorTracker {
 
   async checkIfIPExists(ip, fingerprint) {
     try {
-      // Check both IP and device fingerprint for uniqueness
       const ipQuery = this.firestore.query(
         this.ipDocRef,
         this.firestore.where('ip', '==', ip)
@@ -183,7 +172,6 @@ class UniqueVisitorTracker {
         timestamp: now
       };
       
-      // Create a unique document ID combining IP and fingerprint
       const docId = `${ipData.ip}_${this.deviceFingerprint}`.replace(/[^a-zA-Z0-9]/g, '_');
       const docRef = this.firestore.doc(this.ipDocRef, docId);
       
@@ -197,19 +185,16 @@ class UniqueVisitorTracker {
 
   async processUniqueVisit() {
     try {
-      // Get user IP and location data
       const ipData = await this.getUserIP();
       this.userIP = ipData.ip;
       
       // console.log('🔍 Checking IP:', this.userIP, 'Fingerprint:', this.deviceFingerprint);
       
-      // Check if this IP/device already exists
       const existsData = await this.checkIfIPExists(this.userIP, this.deviceFingerprint);
       
       if (existsData.exists) {
         // console.log('🔄 Returning visitor detected - not incrementing count');
         
-        // Update last visit time for existing visitor
         try {
           const docId = `${this.userIP}_${this.deviceFingerprint}`.replace(/[^a-zA-Z0-9]/g, '_');
           const docRef = this.firestore.doc(this.ipDocRef, docId);
@@ -221,19 +206,15 @@ class UniqueVisitorTracker {
           console.warn('Could not update last visit:', updateError);
         }
         
-        // Show existing visitor info
         this.showVisitorStatus('returning', existsData.lastVisit);
         
       } else {
         // console.log('🆕 New unique visitor - incrementing count');
         
-        // Save new unique visitor
         await this.saveUniqueVisitor(ipData);
         
-        // Increment visitor count
         await this.incrementVisitorCount(ipData);
         
-        // Show new visitor info
         this.showVisitorStatus('new');
       }
       
@@ -247,7 +228,6 @@ class UniqueVisitorTracker {
     const today = new Date().toISOString().split('T')[0];
     
     try {
-      // Update main visitor stats
       const visitorDoc = await this.firestore.getDoc(this.visitorDocRef);
       
       if (visitorDoc.exists()) {
@@ -258,7 +238,7 @@ class UniqueVisitorTracker {
             timestamp: new Date().toISOString(),
             country: ipData.country,
             city: ipData.city,
-            ip: this.userIP.substring(0, 8) + '...' // Partially hide IP for privacy
+            ip: this.userIP.substring(0, 8) + '...'
           },
           lastUpdate: new Date().toISOString()
         });
@@ -277,7 +257,6 @@ class UniqueVisitorTracker {
         });
       }
 
-      // Update geographic statistics
       await this.updateGeoStats(ipData, today);
       
     } catch (error) {
@@ -335,14 +314,13 @@ class UniqueVisitorTracker {
       
       if (cachedCount && cachedTime) {
         const cacheAge = Date.now() - parseInt(cachedTime);
-        const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
+        const CACHE_DURATION = 5 * 60 * 1000;
         
         if (cacheAge < CACHE_DURATION) {
-          // Use cached count while loading real data
           const counterElement = document.getElementById('visitorCount');
           if (counterElement) {
             counterElement.textContent = parseInt(cachedCount).toLocaleString();
-            counterElement.style.opacity = '0.7'; // Show it's cached
+            counterElement.style.opacity = '0.7';
           }
           // console.log('📱 Loaded cached view count:', cachedCount);
         }
@@ -369,7 +347,6 @@ class UniqueVisitorTracker {
         this.updateLastVisitorInfo(data.lastVisitor);
         this.updateTodayStats(data.daily);
         
-        // Cache the current count
         this.saveCachedViewCount(data.totalViews);
       }
     }, (error) => {
@@ -388,7 +365,6 @@ class UniqueVisitorTracker {
     const counterElement = document.getElementById('visitorCount');
     if (!counterElement) return;
 
-    // Remove cache opacity
     counterElement.style.opacity = '1';
     
     const startNumber = parseInt(counterElement.textContent.replace(/,/g, '')) || 0;
@@ -507,7 +483,6 @@ class UniqueVisitorTracker {
   }
 }
 
-// Initialize when page loads
 document.addEventListener('DOMContentLoaded', () => {
   new UniqueVisitorTracker();
 });

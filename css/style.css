@@ -482,6 +482,7 @@ section {
   font-size: 1.6rem;
   display: flex;
   align-items: center;
+  text-align: center;
   gap: 0.8rem;
   transition: all 0.3s ease;
 
@@ -3292,41 +3293,189 @@ section {
   }
 }
 
+/* Enhanced Footer Styles */
 .footer {
-  background-color: var(--bg-color);
-  padding: 50px 0;
+  background: var(--bg-color);
+  padding: 4rem 0 2rem;
+  position: relative;
+  z-index: 10;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.footer .social-icons {
-  justify-content: center;
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  text-align: center;
+  gap: 3rem;
 }
 
-.footer ul {
-  text-align: center;
-  font-size: 1.8rem;
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1rem;
 }
 
-.footer ul li {
-  display: inline-block;
-  margin-left: 20px;
+.social-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--main-color);
+  font-size: 24px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.footer ul li a {
+.social-icons a:hover {
+  background: var(--main-color);
   color: var(--text-color);
-  border-bottom: 3px solid transparent;
-  transition: 0.3s ease;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(var(--main-color-rgb), 0.3);
 }
 
-.footer ul li a:hover {
-  border-bottom: 3px solid var(--main-color);
+.social-icons a:nth-child(1):hover {
+  background: #ff0000;
 }
 
-.footer .copyright {
+/* YouTube */
+.social-icons a:nth-child(2):hover {
+  background: #e1306c;
+}
+
+/* Instagram */
+.social-icons a:nth-child(3):hover {
+  background: #7289da;
+}
+
+/* Discord */
+.social-icons a:nth-child(4):hover {
+  background: #1da1f2;
+}
+
+/* Twitter */
+.social-icons a:nth-child(5):hover {
+  background: #9146ff;
+}
+
+/* Twitch */
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 3rem;
+  list-style: none;
+  margin-bottom: 2rem;
+}
+
+.footer-nav li a {
+  font-size: 1.8rem;
+  color: var(--text-color);
+  position: relative;
+  padding: 0.5rem 0;
+  transition: color 0.3s ease;
+}
+
+.footer-nav li a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--main-color);
+  transition: width 0.3s ease;
+}
+
+.footer-nav li a:hover {
+  color: var(--main-color);
+}
+
+.footer-nav li a:hover::after {
+  width: 100%;
+}
+
+.copyright {
+  font-size: 1.4rem;
+  color: rgba(var(--text-color-rgb), 0.7);
   text-align: center;
-  margin-top: 40px;
-  font-size: 16px;
+  position: relative;
+  padding-top: 2rem;
+  width: 100%;
+}
+
+.copyright::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 500px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(var(--main-color-rgb), 0.3), transparent);
+}
+
+.copyright span {
+  color: var(--main-color);
+  font-weight: 600;
+}
+
+/* Wave effect at top of footer */
+.footer::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='rgba(35, 36, 35, 1)' fill-opacity='1' d='M0,160L48,181.3C96,203,192,245,288,261.3C384,277,480,267,576,240C672,213,768,171,864,165.3C960,160,1056,192,1152,197.3C1248,203,1344,181,1392,170.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .footer-nav {
+    gap: 2rem;
+  }
+
+  .social-icons {
+    gap: 1.5rem;
+  }
+
+  .social-icons a {
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+  }
+
+  .footer-nav li a {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-nav {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .social-icons {
+    gap: 1rem;
+  }
+
+  .copyright {
+    font-size: 1.3rem;
+  }
 }
 
 .scroll-progress {

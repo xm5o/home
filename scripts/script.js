@@ -79,7 +79,7 @@ navbar.querySelectorAll("a").forEach(link => {
 // Home Section Interactions
 document.addEventListener('DOMContentLoaded', () => {
   // Dynamic Typing Effect
-  const roles = ["Web Developer", "FnF Charts and Coder", "Gamer", "Bot Designer"];
+  const roles = ["Web Developer", "Gamer", "Bot Designer", "FnF Charts and Coder", "Fnf modcharts"];
   const roleElement = document.querySelector('.animated-role');
   let currentRole = 0;
   let charIndex = 0;
