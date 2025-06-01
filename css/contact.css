@@ -1,99 +1,667 @@
-/* Add these styles to your existing CSS */
-
-/* Form Styles */
-.input-group input:focus,
-.input-group-2 textarea:focus {
-  border-color: var(--main-color);
-  box-shadow: 0 0 15px rgba(190, 171, 158, 0.3);
+:root {
+  --discord-color: #5865F2;
+  --discord-hover: #4752C4;
+  --discord-light: rgba(88, 101, 242, 0.2);
+  --success-color: #43B581;
+  --warning-color: #FAA61A;
+  --danger-color: #ED4245;
 }
 
-/* Loading Spinner */
-.loading-spinner {
-  width: 20px;
-  height: 20px;
-  border: 3px solid var(--bg-color);
-  border-top: 3px solid transparent;
+/* Animations */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes shimmer {
+
+  0%,
+  100% {
+    transform: translateX(-100%);
+  }
+
+  50% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Contact Section */
+.contact {
+  background-color: var(--main-bg);
+  padding: 10rem 12%;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact::before {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
   border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin-left: 10px;
+  background: var(--main-color);
+  opacity: 0.05;
+  top: -150px;
+  left: -150px;
+  z-index: 0;
 }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+.contact::after {
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: var(--discord-color);
+  opacity: 0.08;
+  bottom: -100px;
+  right: -100px;
+  z-index: 0;
 }
 
-/* Modal Styles */
-.modal {
-  display: none;
-  position: fixed;
+.section-header {
+  text-align: center;
+  margin-bottom: 5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.heading {
+  font-size: 5rem;
+  margin-bottom: 1.5rem;
+  display: inline-block;
+  background: linear-gradient(45deg, var(--text-color), var(--main-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  position: relative;
+  font-weight: 800;
+}
+
+.heading span {
+  background: linear-gradient(45deg, var(--main-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.heading::after {
+  content: "";
+  position: absolute;
+  width: 80px;
+  height: 4px;
+  background: var(--main-color);
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.contact-subtitle {
+  font-size: 1.8rem;
+  color: rgba(var(--text-color-rgb), 0.8);
+  margin-top: 1rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-container {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Primary Discord Section */
+.primary-contact {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 2rem;
+  padding: 4rem;
+  border: 2px solid rgba(var(--main-color-rgb), 0.2);
+  position: relative;
+  overflow: hidden;
+  animation: slideUpFade 0.8s ease;
+  backdrop-filter: blur(10px);
+}
+
+.primary-contact::before {
+  content: '';
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-  animation: fadeIn 0.3s ease;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg,
+      rgba(var(--discord-color), 0.1),
+      rgba(var(--main-color-rgb), 0.05),
+      transparent);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  border-radius: 2rem;
 }
 
-.modal-content {
-  position: relative;
-  background-color: var(--second-bg-color);
-  margin: 15% auto;
-  padding: 40px;
-  border: 2px solid var(--main-color);
-  border-radius: 15px;
-  width: 80%;
-  max-width: 500px;
-  text-align: center;
-  animation: slideIn 0.3s ease;
+.primary-contact:hover::before {
+  opacity: 1;
 }
 
-.close-modal {
+.primary-contact::after {
+  content: '';
   position: absolute;
-  right: 20px;
-  top: 10px;
-  font-size: 28px;
-  cursor: pointer;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg,
+      transparent,
+      rgba(255, 255, 255, 0.03),
+      transparent);
+  transform: rotate(45deg);
+  animation: shimmer 4s infinite;
+  pointer-events: none;
+}
+
+.contact-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 2;
+}
+
+.discord-icon-main {
+  font-size: 5rem;
+  color: var(--discord-color);
+  margin-bottom: 1.5rem;
+  display: block;
+  animation: float 3s ease-in-out infinite;
+}
+
+.primary-title {
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(45deg, var(--discord-color), var(--main-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 1rem;
+}
+
+.primary-subtitle {
+  font-size: 1.8rem;
+  color: rgba(var(--text-color-rgb), 0.8);
+  margin-bottom: 2rem;
+}
+
+.discord-info-card {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  margin-bottom: 3rem;
+  border: 1px solid rgba(var(--discord-color), 0.2);
+  position: relative;
+  z-index: 2;
+}
+
+.discord-username {
+  font-size: 2rem;
+  color: var(--discord-color);
+  font-weight: 700;
+  /* margin-bottom: 1rem; */
+  text-align: center;
+}
+
+.discord-id {
+  font-size: 1.4rem;
+  color: rgba(var(--text-color-rgb), 0.7);
+  font-family: 'Courier New', monospace;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 0.8rem 1.5rem;
+  border-radius: 0.8rem;
+  display: inline-block;
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.discord-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 2;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+  border: 1px solid rgba(var(--main-color-rgb), 0.1);
+  transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+  transform: translateY(-3px);
+  background: rgba(var(--main-color-rgb), 0.1);
+  border-color: var(--main-color);
+}
+
+.feature-item i {
+  font-size: 2rem;
   color: var(--main-color);
+  min-width: 2rem;
 }
 
-.success-icon {
-  font-size: 50px;
-  color: var(--main-color);
-  margin-bottom: 20px;
-}
-
-.modal h3 {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-.modal p {
-  font-size: 16px;
+.feature-text {
+  font-size: 1.4rem;
   color: var(--text-color);
 }
 
-/* Form validation styles */
-.input-group input:invalid,
-.input-group-2 textarea:invalid {
-  border-color: #ff6b6b;
+.discord-cta {
+  text-align: center;
+  position: relative;
+  z-index: 2;
 }
 
-.error-message {
-  color: #ff6b6b;
-  font-size: 1.4rem;
-  margin-top: 0.5rem;
-  display: none;
+.discord-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 3rem;
+  background: linear-gradient(45deg, var(--discord-color), var(--discord-hover));
+  color: white;
+  border-radius: 1.2rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(var(--discord-color), 0.3);
+  position: relative;
+  overflow: hidden;
 }
 
-/* Button state styles */
-.btn:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
+.discord-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
 }
 
-.btn span {
-  display: inline-block;
-  vertical-align: middle;
+.discord-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(var(--discord-color), 0.4);
+}
+
+.discord-btn:hover::before {
+  left: 100%;
+}
+
+.discord-btn i {
+  font-size: 2rem;
+}
+
+/* Secondary Contact Options */
+.secondary-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.contact-card {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  border: 2px solid rgba(var(--main-color-rgb), 0.2);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.contact-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--gradient);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--main-color);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.contact-card:hover::before {
+  transform: scaleX(1);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.card-icon {
+  font-size: 2.5rem;
+  color: var(--main-color);
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(var(--main-color-rgb), 0.1);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  /* transform: translateX(-50%); */
+}
+
+.contact-card:hover .card-icon {
+  background: var(--main-color);
+  color: var(--bg-color);
+  transform: scale(1.1);
+}
+
+.card-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.social-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+  border: 1px solid rgba(var(--main-color-rgb), 0.1);
+  transition: all 0.3s ease;
+}
+
+.social-item:hover {
+  transform: translateY(-3px);
+  background: var(--main-color);
+  border-color: var(--main-color);
+}
+
+.social-item:hover .social-icon-link {
+  color: var(--bg-color);
+}
+
+.social-item:hover .social-label {
+  color: var(--bg-color);
+}
+
+.social-icon-link {
+  font-size: 2.5rem;
+  color: var(--main-color);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.social-label {
+  font-size: 1.3rem;
+  color: rgba(var(--text-color-rgb), 0.8);
+  font-weight: 500;
+}
+
+.email-section {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(var(--main-color-rgb), 0.2);
+}
+
+.email-text {
+  font-size: 1.5rem;
+  color: rgba(var(--text-color-rgb), 0.7);
+  margin-bottom: 1rem;
+}
+
+.email-link {
+  color: var(--main-color);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.6rem;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.email-link:hover {
+  color: var(--discord-color);
+}
+
+.email-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -3px;
+  left: 0;
+  background: var(--main-color);
+  transition: width 0.3s ease;
+}
+
+.email-link:hover::after {
+  width: 100%;
+}
+
+.response-notice {
+  background: linear-gradient(135deg,
+      rgba(var(--success-color), 0.1),
+      rgba(var(--main-color-rgb), 0.05));
+  border: 1px solid rgba(var(--success-color), 0.2);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.response-notice::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--success-color), var(--main-color));
+}
+
+.notice-icon {
+  font-size: 3rem;
+  color: var(--success-color);
+  margin-bottom: 1rem;
+  display: block;
+  animation: pulse 2s infinite;
+}
+
+.notice-text {
+  color: var(--text-color);
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .contact {
+    padding: 8rem 8%;
+  }
+
+  .contact-container {
+    gap: 4rem;
+  }
+}
+
+@media (max-width: 991px) {
+  .contact-container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .heading {
+    font-size: 4rem;
+  }
+
+  .primary-contact {
+    padding: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact {
+    padding: 6rem 5%;
+  }
+
+  .heading {
+    font-size: 3.5rem;
+  }
+
+  .primary-title {
+    font-size: 2.5rem;
+  }
+
+  .primary-subtitle {
+    font-size: 1.6rem;
+  }
+
+  .discord-features {
+    grid-template-columns: 1fr;
+  }
+
+  .social-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .discord-btn {
+    padding: 1.2rem 2.5rem;
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .heading {
+    font-size: 3rem;
+  }
+
+  .primary-contact {
+    padding: 2rem;
+  }
+
+  .contact-card {
+    padding: 2rem;
+  }
+
+  .social-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .discord-btn {
+    padding: 1rem 2rem;
+    font-size: 1.4rem;
+  }
+}
+
+/* Accessibility */
+.discord-btn:focus,
+.social-icon-link:focus,
+.email-link:focus {
+  outline: 2px solid var(--main-color);
+  outline-offset: 2px;
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
