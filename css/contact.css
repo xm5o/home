@@ -86,7 +86,7 @@
 
 /* Contact Section */
 .contact {
-  background-color: var(--second-bg-color);
+  background-color: var(--main-bg);
   padding: 10rem 12%;
   position: relative;
   overflow: hidden;

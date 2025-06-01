@@ -6,7 +6,8 @@
   border: none;
   outline: none;
   scroll-behavior: smooth;
-  font-family: "Poppins", sans-serif;
+  /* font-family: "Poppins", sans-serif; */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   transition: all 0.2s ease-in-out;
 }
 
@@ -77,14 +78,14 @@ html {
 
 :root {
   --bg-color: #060606;
-  --second-bg-color: #232423;
+  --second-bg-color: #060606;
   --text-color: #ffffff;
-  --main-color: #908f8f;
-  --secondary-color: #606060;
-  --accent-color: #a49c9e;
+  --main-color: #35312a;
+  --secondary-color: #544d45;
+  --accent-color: #53,49,42;
   --selina-color: #bc7f4c;
   --selina-hover-color: #fad0a3;
-  --main-color-rgb: 144, 143, 143;
+  --main-color-rgb: 84, 77, 69;
   --text-color-rgb: 255, 255, 255;
   --gradient: linear-gradient(135deg, var(--main-color), var(--secondary-color));
   --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -2106,6 +2107,32 @@ section {
   overflow: hidden;
 }
 
+.projects::before {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: var(--main-color);
+  opacity: 0.05;
+  top: -150px;
+  left: -150px;
+  z-index: 0;
+}
+
+.projects::after {
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: var(--main-color);
+  opacity: 0.05;
+  bottom: -100px;
+  right: -100px;
+  z-index: 0;
+}
+
 .section-header {
   text-align: center;
   margin-bottom: 40px;
@@ -2164,6 +2191,7 @@ section {
 
 /* Projects Section Styling */
 .projects {
+  background: var(--second-bg-color);
   padding: 80px 0;
   position: relative;
   overflow: hidden;
@@ -3295,7 +3323,7 @@ section {
 
 /* Enhanced Footer Styles */
 .footer {
-  background: var(--bg-color);
+  background: var(--second-bg-color);
   padding: 4rem 0 2rem;
   position: relative;
   z-index: 10;
