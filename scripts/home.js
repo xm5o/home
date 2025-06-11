@@ -1,7 +1,7 @@
 // home.js
 document.addEventListener('DOMContentLoaded', () => {
   // Dynamic Typing Effect
-  const roles = ["Web Developer", "Gamer", "Bot Designer", "FnF Charts and Coder", "Fnf modcharts"];
+  const roles = ["Web Developer", "Gamer", "Bot Designer", "FnF Charter and Coder", "Fnf modcharter"];
   const roleElement = document.querySelector('.animated-role');
   let currentRole = 0;
   let charIndex = 0;

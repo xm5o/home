@@ -166,11 +166,11 @@
       </div>
 
       <!-- Visitor Counter -->
-      <div class="visitor-counter">
+      <div class="visitor-counter" style="width: 150px;">
         <div class="db-status" id="dbStatus"></div>
         <i class="bx bx-show-alt"></i>
         <div class="counter-content">
-          <h4>Website Views</h4>
+          <h4>Views</h4>
           <div class="counter-number" id="visitorCount">0</div>
           <div class="counter-stats" style="display: none">
             <div class="stat-item">
@@ -186,158 +186,169 @@
       </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about" id="about">
-      <div class="about-container">
-        <div class="about-header">
-          <h2>About <span>Me</span></h2>
-          <div class="tab-navigation">
-            <button class="tab-btn active" data-tab="profile">Profile</button>
-            <button class="tab-btn" data-tab="experience">Experience</button>
-            <!-- <button class="tab-btn" data-tab="education">Education</button> -->
-          </div>
-        </div>
+    <!-- Loading Indicator -->
+    <div id="loadingIndicator" class="loading-indicator">
+      <div class="spinner">
+        <div class="spinner-inner"></div>
+      </div>
+      <p>Please wait...</p>
+      <div class="progress-bar">
+        <div class="progress"></div>
+      </div>
+    </div>
 
-        <div class="about-content-wrapper">
-          <div class="about-img-container">
-            <img src="assets/old/image4.jpg" alt="Profile Picture" />
-            <div class="experience-badge">
-              <span class="years">3+</span>
-              <span class="text">Years<br />Coding</span>
+    <div id="mainContent" style="display: none">
+      <!-- About Section -->
+      <section class="about" id="about">
+        <div class="about-container">
+          <div class="about-header">
+            <h2>About <span>Me</span></h2>
+            <div class="tab-navigation">
+              <button class="tab-btn active" data-tab="profile">Profile</button>
+              <button class="tab-btn" data-tab="experience">Experience</button>
+              <!-- <button class="tab-btn" data-tab="education">Education</button> -->
             </div>
           </div>
 
-          <div class="about-content-tabs">
-            <!-- Profile Tab -->
-            <div class="tab-content active" id="profile-tab">
-              <div class="about-text">
-                <p>
-                  Normal person love to code random things and make websites and
-                  love to play games and chill with <span>friends</span>. Always
-                  looking to make some <span>new friends</span> and love to chat
-                  with everyone <span>(maybe)</span>. Favorite game is
-                  <span>Fortnite and Overwatch</span>.
-                </p>
-                <p>
-                  I specialize in creating interactive web experiences, mobile
-                  applications projects with a focus on user engagement and
-                  clean code.
-                </p>
-              </div>
-
-              <div class="personal-info">
-                <div class="info-item">
-                  <span class="label">Name:</span>
-                  <span class="value">- X D -</span>
-                </div>
-                <div class="info-item">
-                  <span class="label">Age:</span>
-                  <span class="value">??</span>
-                </div>
-                <div class="info-item">
-                  <span class="label">Pronouns:</span>
-                  <span class="value">He/Him</span>
-                </div>
-                <div class="info-item">
-                  <span class="label">Location:</span>
-                  <span class="value">Earth</span>
-                </div>
-                <div class="info-item">
-                  <span class="label">Freelance:</span>
-                  <span class="value available">Available</span>
-                </div>
-              </div>
-
-              <!-- Skill Progress Bars -->
-              <div class="skill-section">
-                <h3>Technical Skills</h3>
-                <div class="skill-bars">
-                  <div class="skill-bar">
-                    <div class="skill-info">
-                      <span>Coding</span>
-                      <span class="percent">45%</span>
-                    </div>
-                    <div class="skill-progress-bg">
-                      <div class="skill-progress" data-value="45"></div>
-                    </div>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-info">
-                      <span>Gaming</span>
-                      <span class="percent">55%</span>
-                    </div>
-                    <div class="skill-progress-bg">
-                      <div class="skill-progress" data-value="55"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="tech-stack">
-                <h3>Technologies I Work With</h3>
-                <div class="tech-icons">
-                  <div class="tech-icon">
-                    <i class="fab fa-html5"></i>
-                    <span>HTML5</span>
-                  </div>
-                  <div class="tech-icon">
-                    <i class="fab fa-css3-alt"></i>
-                    <span>CSS3</span>
-                  </div>
-                  <div class="tech-icon">
-                    <i class="fab fa-js"></i>
-                    <span>JavaScript</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="cta-buttons">
-                <a href="#contact" class="btn">Get In Touch</a>
+          <div class="about-content-wrapper">
+            <div class="about-img-container">
+              <img src="assets/old/image4.jpg" alt="Profile Picture" />
+              <div class="experience-badge">
+                <span class="years">3+</span>
+                <span class="text">Years<br />Coding</span>
               </div>
             </div>
 
-            <!-- Experience Tab -->
-            <div class="tab-content" id="experience-tab">
-              <div class="timeline">
-                <div class="timeline-item">
-                  <div class="timeline-dot"></div>
-                  <div class="timeline-date">Present</div>
-                  <div class="timeline-content">
-                    <h3>Discord Bot Developer</h3>
-                    <p>
-                      Created and maintained "Selina" Discord bot with
-                      moderation tools, fun commands, and server management
-                      features
-                    </p>
+            <div class="about-content-tabs">
+              <!-- Profile Tab -->
+              <div class="tab-content active" id="profile-tab">
+                <div class="about-text">
+                  <p>
+                    Normal person love to code random things and make websites
+                    and love to play games and chill with <span>friends</span>.
+                    Always looking to make some <span>new friends</span> and
+                    love to chat with everyone <span>(maybe)</span>. Favorite
+                    game is <span>Fortnite</span> and <span>Overwatch</span>.
+                  </p>
+                  <!-- <p>
+                    I specialize in creating interactive web experiences, mobile
+                    applications projects with a focus on user engagement and
+                    clean code.
+                  </p> -->
+                </div>
+
+                <div class="personal-info">
+                  <div class="info-item">
+                    <span class="label">Name:</span>
+                    <span class="value">- X D -</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="label">Age:</span>
+                    <span class="value">??</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="label">Pronouns:</span>
+                    <span class="value">He/Him</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="label">Location:</span>
+                    <span class="value">Earth</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="label">Freelance:</span>
+                    <span class="value available">Available</span>
                   </div>
                 </div>
-                <div class="timeline-item">
-                  <div class="timeline-dot"></div>
-                  <div class="timeline-date">2024 - Present</div>
-                  <div class="timeline-content">
-                    <h3>FNF Modcharter</h3>
-                    <p>
-                      Designed and developed custom charts and game mechanics
-                      for Friday Night Funkin' mods including "Psycho Funkin"
-                    </p>
+
+                <!-- Skill Progress Bars -->
+                <div class="skill-section">
+                  <h3>Technical Skills</h3>
+                  <div class="skill-bars">
+                    <div class="skill-bar">
+                      <div class="skill-info">
+                        <span>Coding</span>
+                        <span class="percent">45%</span>
+                      </div>
+                      <div class="skill-progress-bg">
+                        <div class="skill-progress" data-value="45"></div>
+                      </div>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-info">
+                        <span>Gaming</span>
+                        <span class="percent">55%</span>
+                      </div>
+                      <div class="skill-progress-bg">
+                        <div class="skill-progress" data-value="55"></div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div class="timeline-item">
-                  <div class="timeline-dot"></div>
-                  <div class="timeline-date">2023 - Present</div>
-                  <div class="timeline-content">
-                    <h3>Web Developer</h3>
-                    <p>
-                      Created various web projects including Fortnite Hub,
-                      providing users with game information, stats, and updates
-                    </p>
+
+                <div class="tech-stack">
+                  <h3>Technologies I Work With</h3>
+                  <div class="tech-icons">
+                    <div class="tech-icon">
+                      <i class="fab fa-html5"></i>
+                      <span>HTML5</span>
+                    </div>
+                    <div class="tech-icon">
+                      <i class="fab fa-css3-alt"></i>
+                      <span>CSS3</span>
+                    </div>
+                    <div class="tech-icon">
+                      <i class="fab fa-js"></i>
+                      <span>JavaScript</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="cta-buttons">
+                  <a href="#contact" class="btn">Get In Touch</a>
+                </div>
+              </div>
+
+              <!-- Experience Tab -->
+              <div class="tab-content" id="experience-tab">
+                <div class="timeline">
+                  <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Present</div>
+                    <div class="timeline-content">
+                      <h3>Discord Bot Developer</h3>
+                      <p>
+                        Created and maintained "Selina" Discord bot with
+                        moderation tools, fun commands, and server management
+                        features
+                      </p>
+                    </div>
+                  </div>
+                  <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2024 - Present</div>
+                    <div class="timeline-content">
+                      <h3>FNF Modcharter</h3>
+                      <p>
+                        Designed and developed custom charts and game mechanics
+                        for Friday Night Funkin' mods including "Psycho Funkin"
+                      </p>
+                    </div>
+                  </div>
+                  <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2023 - Present</div>
+                    <div class="timeline-content">
+                      <h3>Web Developer</h3>
+                      <p>
+                        Created various web projects.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <!-- Education Tab -->
-            <!-- <div class="tab-content" id="education-tab">
+              <!-- Education Tab -->
+              <!-- <div class="tab-content" id="education-tab">
             <div class="timeline">
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
@@ -365,95 +376,95 @@
               </div>
             </div>
           </div> -->
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Services Section -->
-    <section class="services" id="services">
-      <div class="bg-grid"></div>
-      <div class="particles">
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-      </div>
-
-      <div class="section-header">
-        <h2 class="heading" data-text="Skills">My Skills</h2>
-      </div>
-
-      <div class="services-container">
-        <div class="service-box">
-          <div class="service-info">
-            <i class="bx bx-code"></i>
-            <h4>Coding & Modcharting</h4>
-            <p>
-              Experienced coder for websites and skilled modcharter for Friday
-              Night Funkin' (FNF). Available to collaborate on your mod projects
-              - contact me via Discord or through the form below.
-            </p>
-          </div>
-          <div class="corner-accent"></div>
+      <!-- Services Section -->
+      <section class="services" id="services">
+        <div class="bg-grid"></div>
+        <div class="particles">
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
         </div>
 
-        <div class="service-box">
-          <div class="service-info">
-            <i class="bx bx-game"></i>
-            <h4>Gaming</h4>
-            <p>
-              Passionate gamer who enjoys competitive play, achieving high
-              rankings, and having fun with friends. Always looking for new
-              challenges and gaming experiences.
-            </p>
-          </div>
-          <div class="corner-accent"></div>
-        </div>
-
-        <div class="service-box">
-          <div class="service-info">
-            <i class="bx bx-chat"></i>
-            <h4>Communication</h4>
-            <p>
-              Enjoy connecting with others in communities and public servers.
-              Open to making new friends and building relationships - feel free
-              to reach out anytime!
-            </p>
-          </div>
-          <div class="corner-accent"></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="projects" id="projects">
-      <div class="container">
         <div class="section-header">
-          <h2 class="heading">My <span>Projects</span></h2>
-          <p class="section-subtitle">
-            Check out what I've been working on recently
-          </p>
+          <h2 class="heading" data-text="Skills">My Skills</h2>
         </div>
 
-        <div class="projects-filter">
-          <button class="filter-btn active" data-filter="all">
-            All Projects
-          </button>
-          <button class="filter-btn" data-filter="app">Apps</button>
-          <button class="filter-btn" data-filter="game">Games</button>
-          <button class="filter-btn" data-filter="web">Web</button>
-        </div>
+        <div class="services-container">
+          <div class="service-box">
+            <div class="service-info">
+              <i class="bx bx-code"></i>
+              <h4>Coding & Modcharting</h4>
+              <p>
+                Experienced coder for websites and skilled modcharter for Friday
+                Night Funkin' (FNF). Available to collaborate on your mod
+                projects - contact me via Discord or through the form below.
+              </p>
+            </div>
+            <div class="corner-accent"></div>
+          </div>
 
-        <div class="projects-grid">
-          <!-- Selina Discord Bot -->
-          <div class="project-card" data-category="app">
-            <div class="project-img-container">
-              <div
-                class="project-img"
-                style="background-image: url('./assets/selina.jpg')"
-              ></div>
-              <!-- <div class="status-badge">Early access</div> -->
-              <!-- <div class="project-overlay">
+          <div class="service-box">
+            <div class="service-info">
+              <i class="bx bx-game"></i>
+              <h4>Gaming</h4>
+              <p>
+                Passionate gamer who enjoys competitive play, achieving high
+                rankings, and having fun with friends. Always looking for new
+                challenges and gaming experiences.
+              </p>
+            </div>
+            <div class="corner-accent"></div>
+          </div>
+
+          <div class="service-box">
+            <div class="service-info">
+              <i class="bx bx-chat"></i>
+              <h4>Communication</h4>
+              <p>
+                Enjoy connecting with others in communities and public servers.
+                Open to making new friends and building relationships - feel
+                free to reach out anytime!
+              </p>
+            </div>
+            <div class="corner-accent"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="projects" id="projects">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="heading">My <span>Projects</span></h2>
+            <p class="section-subtitle">
+              Check out what I've been working on recently
+            </p>
+          </div>
+
+          <div class="projects-filter">
+            <button class="filter-btn active" data-filter="all">
+              All Projects
+            </button>
+            <button class="filter-btn" data-filter="app">Apps</button>
+            <button class="filter-btn" data-filter="game">Games</button>
+            <button class="filter-btn" data-filter="web">Web</button>
+          </div>
+
+          <div class="projects-grid">
+            <!-- Selina Discord Bot -->
+            <div class="project-card" data-category="app">
+              <div class="project-img-container">
+                <div
+                  class="project-img"
+                  style="background-image: url('./assets/selina.jpg')"
+                ></div>
+                <!-- <div class="status-badge">Early access</div> -->
+                <!-- <div class="project-overlay">
                 <div class="project-quick-actions">
                   <a href="https://xm5o.github.io/selina/" class="quick-action-btn" target="_blank"
                   aria-label="Visit Website">
@@ -469,145 +480,145 @@
                   </a>
                 </div>
               </div> -->
-            </div>
-            <div class="project-content">
-              <h3 class="project-title">Selina Discord Bot</h3>
-              <p class="project-description">
-                Your perfect server companion with powerful moderation tools,
-                fun commands, and 24/7 reliability. Make your Discord server
-                amazing!
-              </p>
-
-              <div class="project-features">
-                <div class="feature">
-                  <i class="fas fa-shield-alt"></i> Moderation
-                </div>
-                <div class="feature">
-                  <i class="fas fa-gamepad"></i> Fun Games
-                </div>
-                <div class="feature">
-                  <i class="fas fa-user-plus"></i> Welcome
-                </div>
-                <div class="feature">
-                  <i class="fas fa-chart-line"></i> Levels
-                </div>
-                <div class="feature"><i class="fas fa-map"></i> Fortnite</div>
               </div>
+              <div class="project-content">
+                <h3 class="project-title">Selina Discord Bot</h3>
+                <p class="project-description">
+                  Your perfect server companion with powerful moderation tools,
+                  fun commands, and 24/7 reliability. Make your Discord server
+                  amazing!
+                </p>
 
-              <div class="project-actions">
-                <a class="add-button disabled">
-                  <i class="fas fa-hourglass-half"></i> Coming Soon
-                </a>
+                <div class="project-features">
+                  <div class="feature">
+                    <i class="fas fa-shield-alt"></i> Moderation
+                  </div>
+                  <div class="feature">
+                    <i class="fas fa-gamepad"></i> Fun Games
+                  </div>
+                  <div class="feature">
+                    <i class="fas fa-user-plus"></i> Welcome
+                  </div>
+                  <div class="feature">
+                    <i class="fas fa-chart-line"></i> Levels
+                  </div>
+                  <div class="feature"><i class="fas fa-map"></i> Fortnite</div>
+                </div>
+
+                <div class="project-actions">
+                  <a class="add-button disabled">
+                    <i class="fas fa-hourglass-half"></i> Coming Soon
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
 
-          <!-- Psycho Funkin -->
-          <div class="project-card" data-category="game">
-            <div class="project-img-container">
-              <div
-                class="project-img"
-                style="background-image: url('./assets/psycho.jpg')"
-              ></div>
-              <div class="status-badge">DEMO Version</div>
-              <div class="project-overlay">
-                <div class="project-quick-actions">
+            <!-- Psycho Funkin -->
+            <div class="project-card" data-category="game">
+              <div class="project-img-container">
+                <div
+                  class="project-img"
+                  style="background-image: url('./assets/psycho.jpg')"
+                ></div>
+                <div class="status-badge">DEMO Version</div>
+                <div class="project-overlay">
+                  <div class="project-quick-actions">
+                    <a
+                      href="https://gamejolt.com/games/psycho-bros/960818"
+                      class="quick-action-btn"
+                      target="_blank"
+                      aria-label="Play Game"
+                    >
+                      <i class="fas fa-gamepad"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Psycho Funkin</h3>
+                <p class="project-description">
+                  An exciting Friday Night Funkin' mod featuring unique
+                  characters, challenging gameplay and original music tracks.
+                </p>
+
+                <div class="project-features">
+                  <div class="feature">
+                    <i class="fas fa-music"></i> Psycho Songs
+                  </div>
+                  <div class="feature">
+                    <i class="fas fa-users"></i> Psycho Characters
+                  </div>
+                  <div class="feature">
+                    <i class="fas fa-star"></i> Psycho Gameplay
+                  </div>
+                </div>
+
+                <div class="project-actions">
                   <a
                     href="https://gamejolt.com/games/psycho-bros/960818"
-                    class="quick-action-btn"
+                    class="add-button primary"
                     target="_blank"
-                    aria-label="Play Game"
                   >
-                    <i class="fas fa-gamepad"></i>
+                    <i class="fas fa-gamepad"></i> Play Now
                   </a>
                 </div>
               </div>
             </div>
-            <div class="project-content">
-              <h3 class="project-title">Psycho Funkin</h3>
-              <p class="project-description">
-                An exciting Friday Night Funkin' mod featuring unique
-                characters, challenging gameplay and original music tracks.
-              </p>
 
-              <div class="project-features">
-                <div class="feature">
-                  <i class="fas fa-music"></i> Psycho Songs
-                </div>
-                <div class="feature">
-                  <i class="fas fa-users"></i> Psycho Characters
-                </div>
-                <div class="feature">
-                  <i class="fas fa-star"></i> Psycho Gameplay
+            <!-- Fortnite Hub -->
+            <div class="project-card" data-category="web">
+              <div class="project-img-container">
+                <div
+                  class="project-img"
+                  style="background-image: url('./assets/fnhub.png')"
+                ></div>
+                <div class="status-badge">Updated Daily</div>
+                <div class="project-overlay">
+                  <div class="project-quick-actions">
+                    <a
+                      href="https://xm5o.github.io/fortnite/"
+                      class="quick-action-btn"
+                      target="_blank"
+                      aria-label="Visit Website"
+                    >
+                      <i class="fas fa-external-link-alt"></i>
+                    </a>
+                  </div>
                 </div>
               </div>
+              <div class="project-content">
+                <h3 class="project-title">Fortnite Hub</h3>
+                <p class="project-description">
+                  Your one-stop destination for everything Fortnite, including
+                  guides, news, stats tracking and item shop updates.
+                </p>
 
-              <div class="project-actions">
-                <a
-                  href="https://gamejolt.com/games/psycho-bros/960818"
-                  class="add-button primary"
-                  target="_blank"
-                >
-                  <i class="fas fa-gamepad"></i> Play Now
-                </a>
-              </div>
-            </div>
-          </div>
+                <div class="project-features">
+                  <div class="feature">
+                    <i class="fas fa-tshirt"></i> Skins & Cosmetics
+                  </div>
+                  <div class="feature">
+                    <i class="fas fa-map"></i> Map Updates
+                  </div>
+                  <div class="feature">
+                    <i class="fas fa-calendar-alt"></i> Tournaments
+                  </div>
+                </div>
 
-          <!-- Fortnite Hub -->
-          <div class="project-card" data-category="web">
-            <div class="project-img-container">
-              <div
-                class="project-img"
-                style="background-image: url('./assets/fnhub.png')"
-              ></div>
-              <div class="status-badge">Updated Daily</div>
-              <div class="project-overlay">
-                <div class="project-quick-actions">
+                <div class="project-actions">
                   <a
                     href="https://xm5o.github.io/fortnite/"
-                    class="quick-action-btn"
+                    class="add-button primary"
                     target="_blank"
-                    aria-label="Visit Website"
                   >
-                    <i class="fas fa-external-link-alt"></i>
+                    <i class="fas fa-external-link-alt"></i> Visit Website
                   </a>
                 </div>
               </div>
             </div>
-            <div class="project-content">
-              <h3 class="project-title">Fortnite Hub</h3>
-              <p class="project-description">
-                Your one-stop destination for everything Fortnite, including
-                guides, news, stats tracking and item shop updates.
-              </p>
 
-              <div class="project-features">
-                <div class="feature">
-                  <i class="fas fa-tshirt"></i> Skins & Cosmetics
-                </div>
-                <div class="feature">
-                  <i class="fas fa-map"></i> Map Updates
-                </div>
-                <div class="feature">
-                  <i class="fas fa-calendar-alt"></i> Tournaments
-                </div>
-              </div>
-
-              <div class="project-actions">
-                <a
-                  href="https://xm5o.github.io/fortnite/"
-                  class="add-button primary"
-                  target="_blank"
-                >
-                  <i class="fas fa-external-link-alt"></i> Visit Website
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Fortnite Leaks -->
-          <!-- <div class="project-card" data-category="app">
+            <!-- Fortnite Leaks -->
+            <!-- <div class="project-card" data-category="app">
           <div class="project-img-container">
             <div class="project-img" style="background-image: url('./assets/fortnite.JPG');"></div>
             <div class="status-badge coming-soon">Coming Soon</div>
@@ -643,11 +654,11 @@
             </div>
           </div>
         </div> -->
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- <section>
+      <!-- <section>
     <div class="container">
       <h1>Frequently Asked Questions</h1>
       
@@ -687,7 +698,7 @@
     </div>
   </section> -->
 
-    <!-- <section class="discord-widget">
+      <!-- <section class="discord-widget">
     <div class="widget-container">
       <div class="custom-widget">
         <div class="server-header">
@@ -741,190 +752,191 @@
     </div>
   </section> -->
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-      <div class="section-header">
-        <h2 class="heading">Contact <span>Me</span></h2>
-        <p class="contact-subtitle">
-          Ready to collaborate? Let's connect and build something amazing
-          together!
-        </p>
-      </div>
-
-      <div class="contact-container">
-        <!-- Primary Discord Contact -->
-        <div class="primary-contact">
-          <div class="contact-header">
-            <i class="bx bxl-discord-alt discord-icon-main"></i>
-            <h3 class="primary-title">Let's Connect on Discord!</h3>
-            <p class="primary-subtitle">
-              The fastest and most efficient way to reach me
-            </p>
-          </div>
-
-          <div class="discord-info-card">
-            <div class="discord-username">@trr0</div>
-            <!-- <div class="discord-id">ID: 1282747277206884436</div> -->
-          </div>
-
-          <div class="discord-features">
-            <div class="feature-item">
-              <i class="bx bx-time-five"></i>
-              <span class="feature-text">Quick responses</span>
-            </div>
-            <div class="feature-item">
-              <i class="bx bx-chat"></i>
-              <span class="feature-text">Real-time communication</span>
-            </div>
-            <div class="feature-item">
-              <i class="bx bx-devices"></i>
-              <span class="feature-text">Available on all devices</span>
-            </div>
-            <div class="feature-item">
-              <i class="bx bx-group"></i>
-              <span class="feature-text">Direct collaboration</span>
-            </div>
-          </div>
-
-          <div class="discord-cta">
-            <a
-              href="https://discord.com/users/1282747277206884436"
-              class="discord-btn"
-              target="_blank"
-            >
-              <i class="bx bxl-discord-alt"></i>
-              Message Me on Discord
-            </a>
-          </div>
+      <!-- Contact Section -->
+      <section class="contact" id="contact">
+        <div class="section-header">
+          <h2 class="heading">Contact <span>Me</span></h2>
+          <p class="contact-subtitle">
+            Ready to collaborate? Let's connect and build something amazing
+            together!
+          </p>
         </div>
 
-        <!-- Secondary Contact Options -->
-        <div class="secondary-contact">
-          <div class="contact-card">
-            <div class="card-header">
-              <!-- <i class="bx bx-rocket card-icon"></i> -->
-              <h3 class="card-title">Why Discord First?</h3>
+        <div class="contact-container">
+          <!-- Primary Discord Contact -->
+          <div class="primary-contact">
+            <div class="contact-header">
+              <i class="bx bxl-discord-alt discord-icon-main"></i>
+              <h3 class="primary-title">Let's Connect on Discord!</h3>
+              <p class="primary-subtitle">
+                The fastest and most efficient way to reach me
+              </p>
             </div>
+
+            <div class="discord-info-card">
+              <div class="discord-username">@trr0</div>
+              <!-- <div class="discord-id">ID: 1282747277206884436</div> -->
+            </div>
+
             <div class="discord-features">
               <div class="feature-item">
-                <!-- <i class="bx bx-zap"></i> -->
-                <span class="feature-text">Instant notifications</span>
+                <i class="bx bx-time-five"></i>
+                <span class="feature-text">Quick responses</span>
               </div>
               <div class="feature-item">
-                <!-- <i class="bx bx-share-alt"></i> -->
-                <span class="feature-text">Easy file sharing</span>
+                <i class="bx bx-chat"></i>
+                <span class="feature-text">Real-time communication</span>
               </div>
               <div class="feature-item">
-                <!-- <i class="bx bx-video"></i> -->
-                <span class="feature-text">Voice & video calls</span>
+                <i class="bx bx-devices"></i>
+                <span class="feature-text">Available on all devices</span>
               </div>
               <div class="feature-item">
-                <!-- <i class="bx bx-shield-check"></i> -->
-                <span class="feature-text">Secure platform</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="contact-card">
-            <div class="card-header">
-              <!-- <i class="bx bx-world card-icon"></i> -->
-              <h3 class="card-title">Alternative Platforms</h3>
-            </div>
-
-            <div class="social-grid">
-              <div class="social-item">
-                <a
-                  href="https://instagram.com/xm5o_"
-                  class="social-icon-link"
-                  target="_blank"
-                >
-                  <i class="bx bxl-instagram"></i>
-                </a>
-                <span class="social-label">Instagram</span>
-              </div>
-
-              <div class="social-item">
-                <a
-                  href="https://x.com/voixj1"
-                  class="social-icon-link"
-                  target="_blank"
-                >
-                  <i class="bx bxl-twitter"></i>
-                </a>
-                <span class="social-label">Twitter/X</span>
+                <i class="bx bx-group"></i>
+                <span class="feature-text">Direct collaboration</span>
               </div>
             </div>
 
-            <div class="email-section">
-              <p class="email-text">For formal business inquiries:</p>
+            <div class="discord-cta">
               <a
-                href="mailto:immortal.web.dev.contact@gmail.com"
-                class="email-link"
+                href="https://discord.com/users/1282747277206884436"
+                class="discord-btn"
+                target="_blank"
               >
-                immortal.web.dev.contact@gmail.com
+                <i class="bx bxl-discord-alt"></i>
+                Message Me on Discord
               </a>
             </div>
           </div>
 
-          <div class="response-notice">
-            <i class="bx bx-time-five notice-icon"></i>
-            <p class="notice-text">
-              <strong>Response Time:</strong> Usually within 1-6 hours on
-              Discord during active hours (faster than email!)
-            </p>
+          <!-- Secondary Contact Options -->
+          <div class="secondary-contact">
+            <div class="contact-card">
+              <div class="card-header">
+                <!-- <i class="bx bx-rocket card-icon"></i> -->
+                <h3 class="card-title">Why Discord First?</h3>
+              </div>
+              <div class="discord-features">
+                <div class="feature-item">
+                  <!-- <i class="bx bx-zap"></i> -->
+                  <span class="feature-text">Instant notifications</span>
+                </div>
+                <div class="feature-item">
+                  <!-- <i class="bx bx-share-alt"></i> -->
+                  <span class="feature-text">Easy file sharing</span>
+                </div>
+                <div class="feature-item">
+                  <!-- <i class="bx bx-video"></i> -->
+                  <span class="feature-text">Voice & video calls</span>
+                </div>
+                <div class="feature-item">
+                  <!-- <i class="bx bx-shield-check"></i> -->
+                  <span class="feature-text">Secure platform</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-card">
+              <div class="card-header">
+                <!-- <i class="bx bx-world card-icon"></i> -->
+                <h3 class="card-title">Alternative Platforms</h3>
+              </div>
+
+              <div class="social-grid">
+                <div class="social-item">
+                  <a
+                    href="https://instagram.com/xm5o_"
+                    class="social-icon-link"
+                    target="_blank"
+                  >
+                    <i class="bx bxl-instagram"></i>
+                  </a>
+                  <span class="social-label">Instagram</span>
+                </div>
+
+                <div class="social-item">
+                  <a
+                    href="https://x.com/voixj1"
+                    class="social-icon-link"
+                    target="_blank"
+                  >
+                    <i class="bx bxl-twitter"></i>
+                  </a>
+                  <span class="social-label">Twitter/X</span>
+                </div>
+              </div>
+
+              <div class="email-section">
+                <p class="email-text">For formal business inquiries:</p>
+                <a
+                  href="mailto:immortal.web.dev.contact@gmail.com"
+                  class="email-link"
+                >
+                  immortal.web.dev.contact@gmail.com
+                </a>
+              </div>
+            </div>
+
+            <div class="response-notice">
+              <i class="bx bx-time-five notice-icon"></i>
+              <p class="notice-text">
+                <strong>Response Time:</strong> Usually within 1-6 hours on
+                Discord during active hours (faster than email!)
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="footer-container">
-        <div class="social-icons">
-          <a
-            href="https://youtube.com/voixj"
-            target="_blank"
-            aria-label="YouTube"
-          >
-            <i class="bx bxl-youtube"></i>
-          </a>
-          <a
-            href="https://instagram.com/voixj"
-            target="_blank"
-            aria-label="Instagram"
-          >
-            <i class="bx bxl-instagram"></i>
-          </a>
-          <a
-            href="https://discord.com/users/1282747277206884436"
-            target="_blank"
-            aria-label="Discord"
-          >
-            <i class="bx bxl-discord-alt"></i>
-          </a>
-          <a href="https://x.com/voixj1" target="_blank" aria-label="Twitter">
-            <i class="bx bxl-twitter"></i>
-          </a>
-          <a
-            href="https://www.twitch.tv/xm5o_"
-            target="_blank"
-            aria-label="Twitch"
-          >
-            <i class="bx bxl-twitch"></i>
-          </a>
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="footer-container">
+          <div class="social-icons">
+            <a
+              href="https://youtube.com/voixj"
+              target="_blank"
+              aria-label="YouTube"
+            >
+              <i class="bx bxl-youtube"></i>
+            </a>
+            <a
+              href="https://instagram.com/voixj"
+              target="_blank"
+              aria-label="Instagram"
+            >
+              <i class="bx bxl-instagram"></i>
+            </a>
+            <a
+              href="https://discord.com/users/1282747277206884436"
+              target="_blank"
+              aria-label="Discord"
+            >
+              <i class="bx bxl-discord-alt"></i>
+            </a>
+            <a href="https://x.com/voixj1" target="_blank" aria-label="Twitter">
+              <i class="bx bxl-twitter"></i>
+            </a>
+            <a
+              href="https://www.twitch.tv/xm5o_"
+              target="_blank"
+              aria-label="Twitch"
+            >
+              <i class="bx bxl-twitch"></i>
+            </a>
+          </div>
+
+          <ul class="footer-nav">
+            <li><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+
+          <p class="copyright">© <span>- X D- </span> | All Rights Reserved</p>
         </div>
-
-        <ul class="footer-nav">
-          <li><a href="#">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-
-        <p class="copyright">© <span>- X D- </span> | All Rights Reserved</p>
-      </div>
-    </footer>
+      </footer>
+    </div>
 
     <script src="scripts/utils.js"></script>
     <script src="scripts/navbar.js"></script>

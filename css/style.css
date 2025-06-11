@@ -82,7 +82,7 @@ html {
   --text-color: #ffffff;
   --main-color: #544d45;
   --secondary-color: #35312a;
-  --accent-color: #53,49,42;
+  --accent-color: #bc7f4c;
   --selina-color: #bc7f4c;
   --selina-hover-color: #fad0a3;
   --main-color-rgb: 84, 77, 69;
@@ -430,6 +430,9 @@ section {
 }
 
 @media (max-width: 768px) {
+  .header{
+    background: var(--bg-color);
+  }
   .home {
     grid-template-columns: 1fr;
     text-align: center;
@@ -703,6 +706,95 @@ section {
     flex-direction: column;
     gap: 0.8rem;
   }
+}
+
+.loading-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  background: var(--bg-color);
+  position: relative;
+  z-index: 1000;
+}
+
+.loading-indicator p {
+  font-size: 1.8rem;
+  color: var(--main-color);
+  margin-top: 2rem;
+  text-align: center;
+  max-width: 400px;
+}
+
+.spinner {
+  width: 80px;
+  height: 80px;
+  position: relative;
+}
+
+.spinner-inner {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 5px solid transparent;
+  border-top: 5px solid var(--main-color);
+  border-radius: 50%;
+  animation: spin 1.5s linear infinite;
+}
+
+.spinner-inner::before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  border: 5px solid transparent;
+  border-top: 5px solid rgba(var(--main-color-rgb), 0.7);
+  border-radius: 50%;
+  animation: spin 2s linear infinite reverse;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.progress-bar {
+  width: 300px;
+  height: 8px;
+  background: rgba(var(--main-color-rgb), 0.1);
+  border-radius: 4px;
+  margin-top: 2rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress {
+  width: 0%;
+  height: 100%;
+  background: var(--main-color);
+  border-radius: 4px;
+  animation: progress-pulse 2s infinite;
+  transition: width 0.5s ease;
+}
+
+@keyframes progress-pulse {
+  0% { opacity: 0.8; }
+  50% { opacity: 1; }
+  100% { opacity: 0.8; }
+}
+
+/* Add to existing animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease forwards;
 }
 
 .about {

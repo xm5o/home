@@ -25,6 +25,11 @@ class UniqueVisitorTracker {
     this.userIP = null;
     this.deviceFingerprint = null;
     this.initializeFirebase();
+
+    this.hasShownContent = false;
+    this.progressBar = document.querySelector('.progress');
+    this.loadingIndicator = document.getElementById('loadingIndicator');
+    this.mainContent = document.getElementById('mainContent');
   }
 
   async initializeFirebase() {
@@ -39,6 +44,13 @@ class UniqueVisitorTracker {
       this.geoDocRef = firestoreModule.doc(this.db, 'geo_stats', 'countries');
       this.ipDocRef = firestoreModule.collection(this.db, 'unique_visitors');
 
+      if (this.loadingIndicator) {
+        this.loadingIndicator.style.display = 'flex';
+      }
+      
+      // Update progress bar
+      this.updateProgress(20);
+
       this.deviceFingerprint = this.generateDeviceFingerprint();
       
       this.loadCachedViewCount();
@@ -50,6 +62,35 @@ class UniqueVisitorTracker {
     } catch (error) {
       console.error('Firebase initialization failed:', error);
       this.showErrorMessage();
+    }
+  }
+
+  updateProgress(percentage) {
+    if (this.progressBar) {
+      this.progressBar.style.width = `${percentage}%`;
+    }
+  }
+
+  showMainContent() {
+    if (this.hasShownContent) return;
+    this.hasShownContent = true;
+    
+    // Hide loading indicator
+    if (this.loadingIndicator) {
+      this.loadingIndicator.style.display = 'none';
+    }
+    
+    // Show main content
+    if (this.mainContent) {
+      this.mainContent.style.display = 'block';
+      
+      // Add animations to sections
+      const sections = this.mainContent.querySelectorAll('section');
+      sections.forEach((section, index) => {
+        setTimeout(() => {
+          section.classList.add('fade-in');
+        }, 200 * index);
+      });
     }
   }
 
@@ -342,6 +383,10 @@ class UniqueVisitorTracker {
   startRealTimeUpdates() {
     this.firestore.onSnapshot(this.visitorDocRef, (doc) => {
       if (doc.exists()) {
+        if (!this.hasShownContent) {
+          this.showMainContent();
+        }
+
         const data = doc.data();
         this.animateCounter(data.totalViews);
         this.updateLastVisitorInfo(data.lastVisitor);
@@ -351,6 +396,7 @@ class UniqueVisitorTracker {
       }
     }, (error) => {
       console.error('Real-time listener error:', error);
+      this.showMainContent();
     });
 
     this.firestore.onSnapshot(this.geoDocRef, (doc) => {
