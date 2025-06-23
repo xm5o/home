@@ -136,11 +136,7 @@
             </a>
           </div>
           <div class="cta-group">
-            <a
-              href="https://discord.gg/WBQssXDfKJ"
-              class="cta-btn discord-cta"
-              target="_blank"
-            >
+            <a class="cta-btn discord-cta" target="_blank">
               <i class="bx bxs-door-open"></i>
               Join Community
             </a>
@@ -156,7 +152,7 @@
         <div class="image-wrapper">
           <!-- <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Ccircle cx='200' cy='200' r='180' fill='%23908f8f' opacity='0.3'/%3E%3Ctext x='200' y='220' text-anchor='middle' font-size='40' fill='%23ffffff' font-family='Arial'%3EProfile%3C/text%3E%3C/svg%3E" alt="Profile" loading="lazy" class="profile-img" /> -->
           <img
-            src="assets/old/image4.jpg"
+            src="assets/image.jpg"
             alt="Profile"
             loading="lazy"
             class="profile-img"
@@ -166,7 +162,7 @@
       </div>
 
       <!-- Visitor Counter -->
-      <div class="visitor-counter" style="width: 150px;">
+      <div class="visitor-counter" style="width: 150px">
         <div class="db-status" id="dbStatus"></div>
         <i class="bx bx-show-alt"></i>
         <div class="counter-content">
@@ -185,6 +181,54 @@
         </div>
       </div>
     </section>
+
+    <!-- Enhanced Discord Server Modal -->
+    <div id="discordModal" class="discord-modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+
+        <!-- Server Banner with optional background image and floating animations -->
+        <div id="serverBanner" class="server-banner">
+          <img
+            id="serverIcon"
+            src="assets/image.jpg"
+            alt="Server Icon"
+            class="server-icon"
+          />
+        </div>
+
+        <div class="server-info">
+          <h3 id="serverName">- X D - Community</h3>
+          <p id="serverDescription">
+            Join our creative developer community where we share knowledge,
+            collaborate on projects, and grow together as developers.
+          </p>
+
+          <div class="server-stats">
+            <div class="stat">
+              <i class="bx bxs-user"></i>
+              <div class="stat-number" id="memberCount">0</div>
+              <div class="stat-label">Members</div>
+            </div>
+            <div class="stat">
+              <i class="bx bxs-user-check"></i>
+              <div class="stat-number" id="onlineCount">0</div>
+              <div class="stat-label">Online</div>
+            </div>
+          </div>
+
+          <a
+            id="joinButton"
+            href="https://discord.gg/WBQssXDfKJ"
+            target="_blank"
+            class="join-btn"
+          >
+            <i class="bx bxl-discord-alt"></i>
+            Join Server
+          </a>
+        </div>
+      </div>
+    </div>
 
     <!-- Loading Indicator -->
     <div id="loadingIndicator" class="loading-indicator">
@@ -212,7 +256,7 @@
 
           <div class="about-content-wrapper">
             <div class="about-img-container">
-              <img src="assets/old/image4.jpg" alt="Profile Picture" />
+              <img src="assets/image.jpg" alt="Profile Picture" />
               <div class="experience-badge">
                 <span class="years">3+</span>
                 <span class="text">Years<br />Coding</span>
@@ -339,9 +383,7 @@
                     <div class="timeline-date">2023 - Present</div>
                     <div class="timeline-content">
                       <h3>Web Developer</h3>
-                      <p>
-                        Created various web projects.
-                      </p>
+                      <p>Created various web projects.</p>
                     </div>
                   </div>
                 </div>
@@ -942,6 +984,7 @@
     <script src="scripts/navbar.js"></script>
     <!-- <script src="scripts/particles.js"></script> -->
     <script src="scripts/home.js"></script>
+    <script src="scripts/discord-modal.js"></script>
     <script src="scripts/skills.js"></script>
     <script src="scripts/projects.js"></script>
     <script src="scripts/faq.js"></script>

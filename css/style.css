@@ -78,14 +78,14 @@ html {
 
 :root {
   --bg-color: #060606;
-  --second-bg-color: #060606;
+  --second-bg-color: #151515;
   --text-color: #ffffff;
-  --main-color: #544d45;
-  --secondary-color: #35312a;
+  --main-color: #3c3c3c;
+  --secondary-color: #333433;
   --accent-color: #bc7f4c;
   --selina-color: #bc7f4c;
   --selina-hover-color: #fad0a3;
-  --main-color-rgb: 84, 77, 69;
+  --main-color-rgb: 60,60,60;
   --text-color-rgb: 255, 255, 255;
   --gradient: linear-gradient(135deg, var(--main-color), var(--secondary-color));
   --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -321,6 +321,7 @@ section {
   align-items: center;
   gap: 0.8rem;
   transition: all 0.3s ease;
+  cursor: pointer;
 
   i {
     font-size: 1.8rem;
@@ -3903,4 +3904,411 @@ section {
 .animate-on-scroll.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/** Enhanced Discord Server Modal **/
+.discord-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(15px);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.discord-modal.active {
+  display: flex;
+  opacity: 1;
+  animation: modalFadeIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes modalFadeIn {
+  from { 
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
+  to { 
+    opacity: 1;
+    backdrop-filter: blur(15px);
+  }
+}
+
+.modal-content {
+  background: var(--second-bg-color);
+  border-radius: 24px;
+  overflow: hidden;
+  width: min(95%, 650px); /* Increased width for desktop */
+  max-height: 90vh;
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  transform: translateY(30px) scale(0.95);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.discord-modal.active .modal-content {
+  transform: translateY(0) scale(1);
+}
+
+.server-banner {
+  height: 220px; /* Increased height */
+  background: linear-gradient(135deg, var(--main-color), var(--secondary-color));
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 50px;
+  transition: all 0.3s ease;
+}
+
+.server-banner.has-banner {
+  background-blend-mode: overlay;
+}
+
+.server-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, 
+    rgba(0, 0, 0, 0.1) 0%, 
+    rgba(0, 0, 0, 0.6) 100%);
+  z-index: 1;
+}
+
+.server-icon {
+  width: 120px; /* Increased size */
+  height: 120px;
+  border-radius: 50%;
+  border: 6px solid var(--second-bg-color);
+  object-fit: cover;
+  position: absolute;
+  bottom: -60px;
+  box-shadow: 
+    0 15px 40px rgba(0, 0, 0, 0.4),
+    0 0 0 2px rgba(255, 255, 255, 0.1);
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.server-icon:hover {
+  transform: scale(1.05);
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.5),
+    0 0 0 2px var(--main-color);
+}
+
+.server-info {
+  padding: 80px 40px 40px; /* Increased padding */
+  text-align: center;
+}
+
+.server-info h3 {
+  font-size: 2.8rem; /* Increased font size */
+  margin-bottom: 1.2rem;
+  color: var(--text-color);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, var(--text-color), rgba(255, 255, 255, 0.8));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.server-info p {
+  font-size: 1.7rem; /* Increased font size */
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.server-stats {
+  display: flex;
+  justify-content: center;
+  gap: 4rem; /* Increased gap */
+  margin: 3rem 0;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.7rem; /* Increased font size */
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.stat:hover {
+  transform: translateY(-2px);
+}
+
+.stat i {
+  font-size: 2.8rem; /* Increased icon size */
+  color: var(--main-color);
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: rgba(var(--main-color-rgb), 0.1);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.stat:hover i {
+  background: rgba(var(--main-color-rgb), 0.2);
+  transform: scale(1.1);
+}
+
+.stat-number {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: 1.4rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.join-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.2rem;
+  background: linear-gradient(135deg, #5865f2, #4752c4);
+  color: white;
+  padding: 1.6rem 3rem; /* Increased padding */
+  border-radius: 16px;
+  font-size: 1.9rem; /* Increased font size */
+  font-weight: 700;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  margin-top: 1.5rem;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(88, 101, 242, 0.3);
+}
+
+.join-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.join-btn:hover::before {
+  left: 100%;
+}
+
+.join-btn:hover {
+  background: linear-gradient(135deg, #4752c4, #3c4aae);
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 15px 35px rgba(88, 101, 242, 0.4);
+}
+
+.join-btn:active {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.join-btn i {
+  font-size: 2.2rem;
+  transition: all 0.3s ease;
+}
+
+.join-btn:hover i {
+  transform: scale(1.2);
+}
+
+.close-modal {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 2.8rem;
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+  width: 50px; /* Increased size */
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.close-modal:hover {
+  color: var(--main-color);
+  background: rgba(0, 0, 0, 0.6);
+  transform: rotate(90deg) scale(1.1);
+  border-color: var(--main-color);
+}
+
+/* Loading animation */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.loading {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Enhanced Mobile Responsiveness */
+@media (max-width: 768px) {
+  .modal-content {
+    width: min(95%, 450px);
+    margin: 20px;
+  }
+
+  .server-banner {
+    height: 180px;
+  }
+
+  .server-icon {
+    width: 100px;
+    height: 100px;
+    bottom: -50px;
+  }
+
+  .server-info {
+    padding: 70px 25px 30px;
+  }
+
+  .server-info h3 {
+    font-size: 2.4rem;
+  }
+
+  .server-info p {
+    font-size: 1.5rem;
+  }
+
+  .server-stats {
+    gap: 2.5rem;
+    padding: 1.5rem;
+  }
+
+  .stat {
+    font-size: 1.5rem;
+  }
+
+  .stat i {
+    font-size: 2.4rem;
+    width: 50px;
+    height: 50px;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+  }
+
+  .stat-label {
+    font-size: 1.2rem;
+  }
+
+  .join-btn {
+    padding: 1.4rem 2.5rem;
+    font-size: 1.7rem;
+  }
+
+  .close-modal {
+    width: 45px;
+    height: 45px;
+    top: 15px;
+    right: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+    width: 95%;
+    margin: 10px;
+  }
+
+  .server-stats {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .stat {
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .stat i {
+    margin-bottom: 0;
+  }
+}
+
+/* Desktop enhancements */
+@media (min-width: 1200px) {
+  .modal-content {
+    width: min(90%, 750px); /* Even larger on big screens */
+  }
+
+  .server-banner {
+    height: 250px;
+  }
+
+  .server-icon {
+    width: 140px;
+    height: 140px;
+    bottom: -70px;
+  }
+
+  .server-info {
+    padding: 90px 50px 50px;
+  }
+
+  .server-info h3 {
+    font-size: 3.2rem;
+  }
+
+  .server-info p {
+    font-size: 1.8rem;
+  }
+
+  .server-stats {
+    gap: 5rem;
+  }
+
+  .join-btn {
+    padding: 1.8rem 3.5rem;
+    font-size: 2rem;
+  }
 }
