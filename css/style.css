@@ -85,7 +85,7 @@ html {
   --accent-color: #bc7f4c;
   --selina-color: #bc7f4c;
   --selina-hover-color: #fad0a3;
-  --main-color-rgb: 60,60,60;
+  --main-color-rgb: 60, 60, 60;
   --text-color-rgb: 255, 255, 255;
   --gradient: linear-gradient(135deg, var(--main-color), var(--secondary-color));
   --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -323,31 +323,40 @@ section {
   transition: all 0.3s ease;
   cursor: pointer;
 
-  i {
-    font-size: 1.8rem;
-  }
+  background: var(--secondary-color);
+  color: white;
+  box-shadow: 0 4px 20px rgba(var(--discord-color-rgb), 0.3);
+}
 
-  &.discord-cta {
-    background: linear-gradient(45deg, var(--discord-color), #7983f5);
-    color: white;
-    box-shadow: 0 4px 20px rgba(var(--discord-color-rgb), 0.3);
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(var(--discord-color-rgb), 0.4);
+}
 
-    &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 25px rgba(var(--discord-color-rgb), 0.4);
-    }
-  }
+.cta-btn i {
+  font-size: 1.8rem;
+}
 
-  &.projects-cta {
-    background: rgba(var(--main-color-rgb), 0.1);
-    color: var(--main-color);
-    border: 2px solid rgba(var(--main-color-rgb), 0.3);
+.discord-cta {
+  background: linear-gradient(45deg, var(--discord-color), #7983f5);
+  color: white;
+  box-shadow: 0 4px 20px rgba(var(--discord-color-rgb), 0.3);
+}
 
-    &:hover {
-      background: rgba(var(--main-color-rgb), 0.2);
-      transform: translateY(-2px);
-    }
-  }
+.discord-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(var(--discord-color-rgb), 0.4);
+}
+
+.projects-cta {
+  background: rgba(var(--main-color-rgb), 0.1);
+  color: var(--main-color);
+  border: 2px solid rgba(var(--main-color-rgb), 0.3);
+}
+
+.projects-cta:hover {
+  background: rgba(var(--main-color-rgb), 0.2);
+  transform: translateY(-2px);
 }
 
 .hero-image {
@@ -431,9 +440,10 @@ section {
 }
 
 @media (max-width: 768px) {
-  .header{
+  .header {
     background: var(--bg-color);
   }
+
   .home {
     grid-template-columns: 1fr;
     text-align: center;
@@ -759,8 +769,13 @@ section {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .progress-bar {
@@ -783,15 +798,30 @@ section {
 }
 
 @keyframes progress-pulse {
-  0% { opacity: 0.8; }
-  50% { opacity: 1; }
-  100% { opacity: 0.8; }
+  0% {
+    opacity: 0.8;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.8;
+  }
 }
 
 /* Add to existing animations */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .fade-in {
@@ -3930,11 +3960,12 @@ section {
 }
 
 @keyframes modalFadeIn {
-  from { 
+  from {
     opacity: 0;
     backdrop-filter: blur(0px);
   }
-  to { 
+
+  to {
     opacity: 1;
     backdrop-filter: blur(15px);
   }
@@ -3944,9 +3975,10 @@ section {
   background: var(--second-bg-color);
   border-radius: 24px;
   overflow: hidden;
-  width: min(95%, 650px); /* Increased width for desktop */
+  width: min(95%, 650px);
+  /* Increased width for desktop */
   max-height: 90vh;
-  box-shadow: 
+  box-shadow:
     0 25px 50px rgba(0, 0, 0, 0.6),
     0 0 0 1px rgba(255, 255, 255, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
@@ -3961,7 +3993,8 @@ section {
 }
 
 .server-banner {
-  height: 220px; /* Increased height */
+  height: 220px;
+  /* Increased height */
   background: linear-gradient(135deg, var(--main-color), var(--secondary-color));
   background-size: cover;
   background-position: center;
@@ -3984,21 +4017,22 @@ section {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(180deg, 
-    rgba(0, 0, 0, 0.1) 0%, 
-    rgba(0, 0, 0, 0.6) 100%);
+  background: linear-gradient(180deg,
+      rgba(0, 0, 0, 0.1) 0%,
+      rgba(0, 0, 0, 0.6) 100%);
   z-index: 1;
 }
 
 .server-icon {
-  width: 120px; /* Increased size */
+  width: 120px;
+  /* Increased size */
   height: 120px;
   border-radius: 50%;
   border: 6px solid var(--second-bg-color);
   object-fit: cover;
   position: absolute;
   bottom: -60px;
-  box-shadow: 
+  box-shadow:
     0 15px 40px rgba(0, 0, 0, 0.4),
     0 0 0 2px rgba(255, 255, 255, 0.1);
   z-index: 2;
@@ -4007,18 +4041,20 @@ section {
 
 .server-icon:hover {
   transform: scale(1.05);
-  box-shadow: 
+  box-shadow:
     0 20px 50px rgba(0, 0, 0, 0.5),
     0 0 0 2px var(--main-color);
 }
 
 .server-info {
-  padding: 80px 40px 40px; /* Increased padding */
+  padding: 80px 40px 40px;
+  /* Increased padding */
   text-align: center;
 }
 
 .server-info h3 {
-  font-size: 2.8rem; /* Increased font size */
+  font-size: 2.8rem;
+  /* Increased font size */
   margin-bottom: 1.2rem;
   color: var(--text-color);
   font-weight: 700;
@@ -4030,7 +4066,8 @@ section {
 }
 
 .server-info p {
-  font-size: 1.7rem; /* Increased font size */
+  font-size: 1.7rem;
+  /* Increased font size */
   color: rgba(255, 255, 255, 0.75);
   margin-bottom: 2.5rem;
   line-height: 1.7;
@@ -4042,7 +4079,8 @@ section {
 .server-stats {
   display: flex;
   justify-content: center;
-  gap: 4rem; /* Increased gap */
+  gap: 4rem;
+  /* Increased gap */
   margin: 3rem 0;
   padding: 2rem;
   background: rgba(255, 255, 255, 0.03);
@@ -4055,7 +4093,8 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 1.7rem; /* Increased font size */
+  font-size: 1.7rem;
+  /* Increased font size */
   font-weight: 600;
   transition: all 0.3s ease;
 }
@@ -4065,7 +4104,8 @@ section {
 }
 
 .stat i {
-  font-size: 2.8rem; /* Increased icon size */
+  font-size: 2.8rem;
+  /* Increased icon size */
   color: var(--main-color);
   margin-bottom: 1rem;
   padding: 1rem;
@@ -4104,9 +4144,11 @@ section {
   gap: 1.2rem;
   background: linear-gradient(135deg, #5865f2, #4752c4);
   color: white;
-  padding: 1.6rem 3rem; /* Increased padding */
+  padding: 1.6rem 3rem;
+  /* Increased padding */
   border-radius: 16px;
-  font-size: 1.9rem; /* Increased font size */
+  font-size: 1.9rem;
+  /* Increased font size */
   font-weight: 700;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   margin-top: 1.5rem;
@@ -4161,7 +4203,8 @@ section {
   cursor: pointer;
   transition: all 0.3s ease;
   z-index: 10;
-  width: 50px; /* Increased size */
+  width: 50px;
+  /* Increased size */
   height: 50px;
   display: flex;
   align-items: center;
@@ -4181,8 +4224,15 @@ section {
 
 /* Loading animation */
 @keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
 }
 
 .loading {
@@ -4278,7 +4328,8 @@ section {
 /* Desktop enhancements */
 @media (min-width: 1200px) {
   .modal-content {
-    width: min(90%, 750px); /* Even larger on big screens */
+    width: min(90%, 750px);
+    /* Even larger on big screens */
   }
 
   .server-banner {
