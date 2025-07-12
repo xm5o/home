@@ -29,6 +29,7 @@
     <title>- X D - Developer Portfolio</title>
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/contact.css" />
+    <link rel="stylesheet" href="css/celebrate.css" />
     <link
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
@@ -74,6 +75,33 @@
         <i class="bx bx-globe"></i> <span id="desktop-language-text">EN</span>
       </a> -->
     </header>
+
+    <div id="milestonePopup" class="milestone-popup">
+      <div class="popup-content">
+        <span class="close-popup">&times;</span>
+        <div class="celebration-header">
+          <i class="bx bxs-party"></i>
+          <h2>We've Hit <span id="milestoneNumber">1000</span> Views!</h2>
+        </div>
+        <div class="celebration-body">
+          <p>Amazing! Together we're growing this community.</p>
+          <div class="progress-container">
+            <div class="progress-bar">
+              <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-text">
+              <span>Current: <span id="currentCount">0</span></span>
+              <span>Next Goal: <span id="nextGoal">2000</span></span>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="celebration-footer">
+          <button class="share-btn">
+            <i class="bx bxs-share-alt"></i> Share the Milestone
+          </button>
+        </div> -->
+      </div>
+    </div>
 
     <!-- Home Section -->
     <section class="home" id="home">
@@ -144,7 +172,11 @@
               <i class="bx bx-code-alt"></i>
               View Projects
             </a>
-            <a href="https://xm5o.github.io/commission/" class="cta-btn projects-cta" target="_blank">
+            <a
+              href="https://xm5o.github.io/commission/"
+              class="cta-btn projects-cta"
+              target="_blank"
+            >
               <i class="bx bx-code-alt"></i>
               Commission
             </a>
@@ -166,7 +198,7 @@
       </div>
 
       <!-- Visitor Counter -->
-      <div class="visitor-counter" style="width: 150px">
+      <div class="visitor-counter" style="min-width: 150px; max-width: 350px">
         <div class="db-status" id="dbStatus"></div>
         <i class="bx bx-show-alt"></i>
         <div class="counter-content">
@@ -240,9 +272,9 @@
         <div class="spinner-inner"></div>
       </div>
       <p>Please wait...</p>
-      <div class="progress-bar">
+      <!-- <div class="progress-bar">
         <div class="progress"></div>
-      </div>
+      </div> -->
     </div>
 
     <div id="mainContent" style="display: none">
@@ -503,14 +535,14 @@
 
           <div class="projects-grid">
             <!-- Selina Discord Bot -->
-            <div class="project-card" data-category="app">
+            <!-- <div class="project-card" data-category="app">
               <div class="project-img-container">
                 <div
                   class="project-img"
                   style="background-image: url('./assets/selina.jpg')"
                 ></div>
-                <!-- <div class="status-badge">Early access</div> -->
-                <!-- <div class="project-overlay">
+                <div class="status-badge">Early access</div>
+                <div class="project-overlay">
                 <div class="project-quick-actions">
                   <a href="https://xm5o.github.io/selina/" class="quick-action-btn" target="_blank"
                   aria-label="Visit Website">
@@ -525,7 +557,7 @@
                     <i class="fab fa-discord"></i>
                   </a>
                 </div>
-              </div> -->
+              </div>
               </div>
               <div class="project-content">
                 <h3 class="project-title">Selina Discord Bot</h3>
@@ -554,6 +586,54 @@
                 <div class="project-actions">
                   <a class="add-button disabled">
                     <i class="fas fa-hourglass-half"></i> Coming Soon
+                  </a>
+                </div>
+              </div>
+            </div> -->
+
+            <div class="project-card" data-category="web">
+              <div class="project-img-container">
+                <div
+                  class="project-img"
+                  style="background-image: url('./assets/image.jpg')"
+                ></div>
+                <div class="status-badge">NEW</div>
+                <div class="project-overlay">
+                <div class="project-quick-actions">
+                  <a href="https://xm5o.github.io/commission/" class="quick-action-btn" target="_blank"
+                  aria-label="Visit Website">
+                  <i class="fas fa-globe"></i>
+                </a>
+                </div>
+              </div>
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Friday Night Funkin' Commission</h3>
+                <p class="project-description">
+                  If you need a charter, modcharter, or even a coder... Check my commission page for more details.
+                </p>
+
+                <div class="project-features">
+                  <div class="feature">
+                    Chart
+                  </div>
+                  <div class="feature">
+                    Modchart
+                  </div>
+                  <div class="feature">
+                    Code
+                  </div>
+                  <div class="feature">
+                    Free
+                  </div>
+                  <div class="feature">
+                     Paid
+                  </div>
+                </div>
+
+                <div class="project-actions">
+                  <a class="add-button primary" href="https://xm5o.github.io/commission/" target="_blank">
+                    <i class="fas fa-external-link-alt"></i> Visit Commission
                   </a>
                 </div>
               </div>
@@ -612,7 +692,7 @@
             </div>
 
             <!-- Fortnite Hub -->
-            <div class="project-card" data-category="web">
+            <!-- <div class="project-card" data-category="web">
               <div class="project-img-container">
                 <div
                   class="project-img"
@@ -661,7 +741,7 @@
                   </a>
                 </div>
               </div>
-            </div>
+            </div> -->
 
             <!-- Fortnite Leaks -->
             <!-- <div class="project-card" data-category="app">
@@ -983,6 +1063,8 @@
         </div>
       </footer>
     </div>
+
+    <script src="scripts/celebrate.js"></script>
 
     <script src="scripts/utils.js"></script>
     <script src="scripts/navbar.js"></script>

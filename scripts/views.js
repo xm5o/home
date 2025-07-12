@@ -426,6 +426,9 @@ class UniqueVisitorTracker {
       }
       counterElement.textContent = Math.floor(current).toLocaleString();
     }, 16);
+    setTimeout(() => {
+      checkMilestone(targetNumber);
+    }, duration + 100);
   }
 
   updateLastVisitorInfo(lastVisitor) {
